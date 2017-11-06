@@ -7,14 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63252DEF1C554D76EB1D9A26 /* Pods_CoinPriceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CDA1C3BDC726BD45C1909C /* Pods_CoinPriceTests.framework */; };
+		706232EA29DABE3455761DD9 /* Pods_CoinPrice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155CFE66B30F9D68F3917EE /* Pods_CoinPrice.framework */; };
+		79DB004AB0250EB7E5AFB1F6 /* Pods_CoinPriceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5FF8A28450F59E5961AF07 /* Pods_CoinPriceUITests.framework */; };
+		CE32B3901FAAE3930067A581 /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32B38F1FAAE3930067A581 /* setting.swift */; };
+		CE4CE5561F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4CE5571F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework */; };
+		CE4CE5581F8D254A001DD0B7 /* Pods_CoinPriceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4CE5591F8D254A001DD0B7 /* Pods_CoinPriceTests.framework */; };
+		CE529B421F94957A00F4CE5D /* chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE529B411F94957A00F4CE5D /* chart.swift */; };
+		CE5377591F8DD3A200D35845 /* ZAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53775A1F8DD3A200D35845 /* ZAlertView.framework */; };
+		CE7B3FA11F98D44C00111507 /* SwiftChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7B3FA21F98D44C00111507 /* SwiftChart.framework */; };
+		CE7E23B71FA754BD00EFE52A /* ticker_bithumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23B61FA754BD00EFE52A /* ticker_bithumb.swift */; };
+		CE7E23B91FA757C700EFE52A /* ticker_bitfinex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23B81FA757C700EFE52A /* ticker_bitfinex.swift */; };
+		CE7E23BC1FA758FB00EFE52A /* ticker_coinone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23BB1FA758FB00EFE52A /* ticker_coinone.swift */; };
+		CE7E23BE1FA75A7A00EFE52A /* ticker_poloniex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23BD1FA75A7A00EFE52A /* ticker_poloniex.swift */; };
+		CE7E23C01FA75ABD00EFE52A /* ticker_korbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23BF1FA75ABD00EFE52A /* ticker_korbit.swift */; };
+		CE7E23C21FA75AE000EFE52A /* ticker_bitflyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C11FA75AE000EFE52A /* ticker_bitflyer.swift */; };
+		CE7E23C41FA75B0600EFE52A /* ticker_coinnest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C31FA75B0600EFE52A /* ticker_coinnest.swift */; };
+		CE7E23C61FA75B1000EFE52A /* ticker_okcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C51FA75B1000EFE52A /* ticker_okcoin.swift */; };
+		CE7E23C81FA75B2200EFE52A /* ticker_huobi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C71FA75B2200EFE52A /* ticker_huobi.swift */; };
+		CE7E23CA1FA75B2C00EFE52A /* ticker_bittrex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C91FA75B2C00EFE52A /* ticker_bittrex.swift */; };
+		CE83CF031FADBD9F00790466 /* ticker in Resources */ = {isa = PBXBuildFile; fileRef = CE83CF021FADBD9F00790466 /* ticker */; };
+		CE83CF221FADBF4700790466 /* ticker_bitfinex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF181FADBF4400790466 /* ticker_bitfinex.swift */; };
+		CE83CF231FADBF4700790466 /* ticker_coinnest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF191FADBF4400790466 /* ticker_coinnest.swift */; };
+		CE83CF241FADBF4700790466 /* ticker_coinone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF1A1FADBF4400790466 /* ticker_coinone.swift */; };
+		CE83CF251FADBF4700790466 /* ticker_korbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF1B1FADBF4500790466 /* ticker_korbit.swift */; };
+		CE83CF261FADBF4700790466 /* ticker_bithumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF1C1FADBF4500790466 /* ticker_bithumb.swift */; };
+		CE83CF271FADBF4700790466 /* ticker_huobi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF1D1FADBF4500790466 /* ticker_huobi.swift */; };
+		CE83CF281FADBF4700790466 /* ticker_bittrex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF1E1FADBF4600790466 /* ticker_bittrex.swift */; };
+		CE83CF291FADBF4700790466 /* ticker_poloniex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF1F1FADBF4600790466 /* ticker_poloniex.swift */; };
+		CE83CF2A1FADBF4700790466 /* ticker_okcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF201FADBF4600790466 /* ticker_okcoin.swift */; };
+		CE83CF2B1FADBF4700790466 /* ticker_bitflyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83CF211FADBF4600790466 /* ticker_bitflyer.swift */; };
+		CE83CF341FAF2E0A00790466 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE83CF331FAF2E0A00790466 /* StoreKit.framework */; };
+		CEB612951FA86F6800DC5554 /* chart_korbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB612941FA86F6800DC5554 /* chart_korbit.swift */; };
+		CEB612971FA86F7700DC5554 /* chart_coinnest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB612961FA86F7700DC5554 /* chart_coinnest.swift */; };
+		CEB612991FA86F8300DC5554 /* chart_huobi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB612981FA86F8300DC5554 /* chart_huobi.swift */; };
+		CEB6129F1FA8719700DC5554 /* chart_okcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6129E1FA8719700DC5554 /* chart_okcoin.swift */; };
+		CEB612A11FA871AD00DC5554 /* chart_bitflyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB612A01FA871AD00DC5554 /* chart_bitflyer.swift */; };
+		CECAB0601FA81865001F0316 /* chart_bithumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB05F1FA81865001F0316 /* chart_bithumb.swift */; };
+		CECAB0631FA81AE3001F0316 /* chart_poloniex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB0621FA81AE3001F0316 /* chart_poloniex.swift */; };
+		CECAB0651FA81C56001F0316 /* chart_bittrex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB0641FA81C56001F0316 /* chart_bittrex.swift */; };
+		CECAB0671FA81D3D001F0316 /* chart_bitfinex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB0661FA81D3D001F0316 /* chart_bitfinex.swift */; };
+		CECAB0691FA81DB3001F0316 /* chart_coinone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB0681FA81DB3001F0316 /* chart_coinone.swift */; };
+		CED1E8651FB0A288006495EB /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1E8641FB0A288006495EB /* UIImageExtension.swift */; };
+		CEDCD8411FA071E900C6942A /* block_status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDCD8401FA071E900C6942A /* block_status.swift */; };
 		CEDE2C651F8CA8FD00161B8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE2C641F8CA8FD00161B8A /* AppDelegate.swift */; };
-		CEDE2C671F8CA8FD00161B8A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE2C661F8CA8FD00161B8A /* FirstViewController.swift */; };
-		CEDE2C691F8CA8FD00161B8A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE2C681F8CA8FD00161B8A /* SecondViewController.swift */; };
 		CEDE2C6C1F8CA8FD00161B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDE2C6A1F8CA8FD00161B8A /* Main.storyboard */; };
 		CEDE2C6E1F8CA8FD00161B8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDE2C6D1F8CA8FD00161B8A /* Assets.xcassets */; };
 		CEDE2C711F8CA8FD00161B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDE2C6F1F8CA8FD00161B8A /* LaunchScreen.storyboard */; };
 		CEDE2C7C1F8CA8FE00161B8A /* CoinPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE2C7B1F8CA8FE00161B8A /* CoinPriceTests.swift */; };
 		CEDE2C871F8CA8FE00161B8A /* CoinPriceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE2C861F8CA8FE00161B8A /* CoinPriceUITests.swift */; };
+		CEDE2C951F8CA92400161B8A /* coincell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE2C941F8CA92400161B8A /* coincell.swift */; };
+		CEE200581F91245A00C88D3C /* table_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE200571F91245A00C88D3C /* table_controller.swift */; };
+		CEE465281F9E38A0002297BB /* SelectionDialogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE465251F9E389F002297BB /* SelectionDialogItem.swift */; };
+		CEE4652A1F9E38A0002297BB /* SelectionDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE465271F9E38A0002297BB /* SelectionDialog.swift */; };
+		CEFDC37D1FADB43E0030DD02 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFDC37C1FADB43E0030DD02 /* NotificationCenter.framework */; };
+		CEFDC3801FADB43E0030DD02 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDC37F1FADB43E0030DD02 /* TodayViewController.swift */; };
+		CEFDC3831FADB43E0030DD02 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFDC3811FADB43E0030DD02 /* MainInterface.storyboard */; };
+		CEFDC3871FADB43E0030DD02 /* live_price.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEFDC37B1FADB43E0030DD02 /* live_price.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,13 +81,89 @@
 			remoteGlobalIDString = CEDE2C601F8CA8FD00161B8A;
 			remoteInfo = CoinPrice;
 		};
+		CEFDC3851FADB43E0030DD02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEDE2C591F8CA8FD00161B8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEFDC37A1FADB43E0030DD02;
+			remoteInfo = live_price;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CEFDC38B1FADB43E0030DD02 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CEFDC3871FADB43E0030DD02 /* live_price.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		18698EE62601CCAB69A7BCFC /* Pods-CoinPriceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPriceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPriceUITests/Pods-CoinPriceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3578067DBF5EE31A771B09D0 /* Pods-CoinPriceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPriceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPriceTests/Pods-CoinPriceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4155CFE66B30F9D68F3917EE /* Pods_CoinPrice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinPrice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AC13060088418BA302712C3 /* Pods-CoinPriceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPriceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPriceTests/Pods-CoinPriceTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E5FF8A28450F59E5961AF07 /* Pods_CoinPriceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinPriceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68CDA1C3BDC726BD45C1909C /* Pods_CoinPriceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinPriceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EF39B4A41C1B6A8FD4F97E9 /* Pods-CoinPrice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPrice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice.debug.xcconfig"; sourceTree = "<group>"; };
+		70CEC5716B2499E79A65EF2C /* Pods-CoinPrice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPrice.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice.release.xcconfig"; sourceTree = "<group>"; };
+		CE32B38F1FAAE3930067A581 /* setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
+		CE4CE54B1F8D250B001DD0B7 /* CollapsibleTableSectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CollapsibleTableSectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE4CE5551F8D253A001DD0B7 /* CollapsibleTableSectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CollapsibleTableSectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE4CE5571F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CoinPriceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE4CE5591F8D254A001DD0B7 /* Pods_CoinPriceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CoinPriceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE4CE55B1F8D2577001DD0B7 /* CollapsibleTableSectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CollapsibleTableSectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE529B411F94957A00F4CE5D /* chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart.swift; sourceTree = "<group>"; };
+		CE5377511F8DCFC400D35845 /* SelectionDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SelectionDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE53775A1F8DD3A200D35845 /* ZAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ZAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7B3F9F1F98CD0200111507 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7B3FA21F98D44C00111507 /* SwiftChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7E23B61FA754BD00EFE52A /* ticker_bithumb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bithumb.swift; sourceTree = "<group>"; };
+		CE7E23B81FA757C700EFE52A /* ticker_bitfinex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bitfinex.swift; sourceTree = "<group>"; };
+		CE7E23BB1FA758FB00EFE52A /* ticker_coinone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_coinone.swift; sourceTree = "<group>"; };
+		CE7E23BD1FA75A7A00EFE52A /* ticker_poloniex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_poloniex.swift; sourceTree = "<group>"; };
+		CE7E23BF1FA75ABD00EFE52A /* ticker_korbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_korbit.swift; sourceTree = "<group>"; };
+		CE7E23C11FA75AE000EFE52A /* ticker_bitflyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bitflyer.swift; sourceTree = "<group>"; };
+		CE7E23C31FA75B0600EFE52A /* ticker_coinnest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_coinnest.swift; sourceTree = "<group>"; };
+		CE7E23C51FA75B1000EFE52A /* ticker_okcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_okcoin.swift; sourceTree = "<group>"; };
+		CE7E23C71FA75B2200EFE52A /* ticker_huobi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_huobi.swift; sourceTree = "<group>"; };
+		CE7E23C91FA75B2C00EFE52A /* ticker_bittrex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bittrex.swift; sourceTree = "<group>"; };
+		CE83CF021FADBD9F00790466 /* ticker */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ticker; sourceTree = "<group>"; };
+		CE83CF181FADBF4400790466 /* ticker_bitfinex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bitfinex.swift; sourceTree = "<group>"; };
+		CE83CF191FADBF4400790466 /* ticker_coinnest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_coinnest.swift; sourceTree = "<group>"; };
+		CE83CF1A1FADBF4400790466 /* ticker_coinone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_coinone.swift; sourceTree = "<group>"; };
+		CE83CF1B1FADBF4500790466 /* ticker_korbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_korbit.swift; sourceTree = "<group>"; };
+		CE83CF1C1FADBF4500790466 /* ticker_bithumb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bithumb.swift; sourceTree = "<group>"; };
+		CE83CF1D1FADBF4500790466 /* ticker_huobi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_huobi.swift; sourceTree = "<group>"; };
+		CE83CF1E1FADBF4600790466 /* ticker_bittrex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bittrex.swift; sourceTree = "<group>"; };
+		CE83CF1F1FADBF4600790466 /* ticker_poloniex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_poloniex.swift; sourceTree = "<group>"; };
+		CE83CF201FADBF4600790466 /* ticker_okcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_okcoin.swift; sourceTree = "<group>"; };
+		CE83CF211FADBF4600790466 /* ticker_bitflyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bitflyer.swift; sourceTree = "<group>"; };
+		CE83CF2C1FADC00000790466 /* CoinPrice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoinPrice.entitlements; sourceTree = "<group>"; };
+		CE83CF2D1FADC03300790466 /* live_price.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = live_price.entitlements; sourceTree = "<group>"; };
+		CE83CF331FAF2E0A00790466 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CEB3326B1F8DCF110001913F /* SelectionDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SelectionDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB612941FA86F6800DC5554 /* chart_korbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_korbit.swift; sourceTree = "<group>"; };
+		CEB612961FA86F7700DC5554 /* chart_coinnest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_coinnest.swift; sourceTree = "<group>"; };
+		CEB612981FA86F8300DC5554 /* chart_huobi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_huobi.swift; sourceTree = "<group>"; };
+		CEB6129E1FA8719700DC5554 /* chart_okcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_okcoin.swift; sourceTree = "<group>"; };
+		CEB612A01FA871AD00DC5554 /* chart_bitflyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_bitflyer.swift; sourceTree = "<group>"; };
+		CECAB05F1FA81865001F0316 /* chart_bithumb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_bithumb.swift; sourceTree = "<group>"; };
+		CECAB0621FA81AE3001F0316 /* chart_poloniex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_poloniex.swift; sourceTree = "<group>"; };
+		CECAB0641FA81C56001F0316 /* chart_bittrex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_bittrex.swift; sourceTree = "<group>"; };
+		CECAB0661FA81D3D001F0316 /* chart_bitfinex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_bitfinex.swift; sourceTree = "<group>"; };
+		CECAB0681FA81DB3001F0316 /* chart_coinone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_coinone.swift; sourceTree = "<group>"; };
+		CECE4C161FA970F70027F648 /* PullToBounce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PullToBounce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED1E8641FB0A288006495EB /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIImageExtension.swift; path = ../UIImageExtension.swift; sourceTree = "<group>"; };
+		CEDCD8401FA071E900C6942A /* block_status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = block_status.swift; sourceTree = "<group>"; };
 		CEDE2C611F8CA8FD00161B8A /* CoinPrice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinPrice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDE2C641F8CA8FD00161B8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEDE2C661F8CA8FD00161B8A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		CEDE2C681F8CA8FD00161B8A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		CEDE2C6B1F8CA8FD00161B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEDE2C6D1F8CA8FD00161B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEDE2C701F8CA8FD00161B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +174,18 @@
 		CEDE2C821F8CA8FE00161B8A /* CoinPriceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinPriceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDE2C861F8CA8FE00161B8A /* CoinPriceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceUITests.swift; sourceTree = "<group>"; };
 		CEDE2C881F8CA8FE00161B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEDE2C941F8CA92400161B8A /* coincell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coincell.swift; sourceTree = "<group>"; };
+		CEE200571F91245A00C88D3C /* table_controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = table_controller.swift; sourceTree = "<group>"; };
+		CEE2005A1F92334800C88D3C /* CollapsibleTableSectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CollapsibleTableSectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE465141F9E3166002297BB /* SelectionDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SelectionDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE465251F9E389F002297BB /* SelectionDialogItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionDialogItem.swift; sourceTree = "<group>"; };
+		CEE465271F9E38A0002297BB /* SelectionDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectionDialog.swift; path = "../New Group/SelectionDialog.swift"; sourceTree = "<group>"; };
+		CEFDC37B1FADB43E0030DD02 /* live_price.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = live_price.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEFDC37C1FADB43E0030DD02 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		CEFDC37F1FADB43E0030DD02 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CEFDC3821FADB43E0030DD02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		CEFDC3841FADB43E0030DD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9694862E7CCA47A4A2E685E /* Pods-CoinPriceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPriceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPriceUITests/Pods-CoinPriceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +193,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7B3FA11F98D44C00111507 /* SwiftChart.framework in Frameworks */,
+				CE5377591F8DD3A200D35845 /* ZAlertView.framework in Frameworks */,
+				CE4CE5581F8D254A001DD0B7 /* Pods_CoinPriceTests.framework in Frameworks */,
+				CE83CF341FAF2E0A00790466 /* StoreKit.framework in Frameworks */,
+				CE4CE5561F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework in Frameworks */,
+				706232EA29DABE3455761DD9 /* Pods_CoinPrice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63252DEF1C554D76EB1D9A26 /* Pods_CoinPriceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,19 +214,131 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DB004AB0250EB7E5AFB1F6 /* Pods_CoinPriceUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEFDC3781FADB43E0030DD02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEFDC37D1FADB43E0030DD02 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FE33A5451724EC5043DA98E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6EF39B4A41C1B6A8FD4F97E9 /* Pods-CoinPrice.debug.xcconfig */,
+				70CEC5716B2499E79A65EF2C /* Pods-CoinPrice.release.xcconfig */,
+				3578067DBF5EE31A771B09D0 /* Pods-CoinPriceTests.debug.xcconfig */,
+				5AC13060088418BA302712C3 /* Pods-CoinPriceTests.release.xcconfig */,
+				D9694862E7CCA47A4A2E685E /* Pods-CoinPriceUITests.debug.xcconfig */,
+				18698EE62601CCAB69A7BCFC /* Pods-CoinPriceUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B04EDD1F04FA8780DAE62271 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE83CF331FAF2E0A00790466 /* StoreKit.framework */,
+				CECE4C161FA970F70027F648 /* PullToBounce.framework */,
+				CEE465141F9E3166002297BB /* SelectionDialog.framework */,
+				CE7B3FA21F98D44C00111507 /* SwiftChart.framework */,
+				CE7B3F9F1F98CD0200111507 /* Charts.framework */,
+				CEE2005A1F92334800C88D3C /* CollapsibleTableSectionViewController.framework */,
+				CE53775A1F8DD3A200D35845 /* ZAlertView.framework */,
+				CE5377511F8DCFC400D35845 /* SelectionDialog.framework */,
+				CEB3326B1F8DCF110001913F /* SelectionDialog.framework */,
+				CE4CE55B1F8D2577001DD0B7 /* CollapsibleTableSectionViewController.framework */,
+				CE4CE5591F8D254A001DD0B7 /* Pods_CoinPriceTests.framework */,
+				CE4CE5571F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework */,
+				CE4CE5551F8D253A001DD0B7 /* CollapsibleTableSectionViewController.framework */,
+				CE4CE54B1F8D250B001DD0B7 /* CollapsibleTableSectionViewController.framework */,
+				4155CFE66B30F9D68F3917EE /* Pods_CoinPrice.framework */,
+				68CDA1C3BDC726BD45C1909C /* Pods_CoinPriceTests.framework */,
+				5E5FF8A28450F59E5961AF07 /* Pods_CoinPriceUITests.framework */,
+				CEFDC37C1FADB43E0030DD02 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE7B76DC1F9F2E24006B9B72 /* selection_dialog */ = {
+			isa = PBXGroup;
+			children = (
+				CED1E8641FB0A288006495EB /* UIImageExtension.swift */,
+				CEE465271F9E38A0002297BB /* SelectionDialog.swift */,
+				CEE465251F9E389F002297BB /* SelectionDialogItem.swift */,
+			);
+			path = selection_dialog;
+			sourceTree = "<group>";
+		};
+		CE7E23BA1FA758CA00EFE52A /* ticker */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E23B81FA757C700EFE52A /* ticker_bitfinex.swift */,
+				CE7E23B61FA754BD00EFE52A /* ticker_bithumb.swift */,
+				CE7E23BB1FA758FB00EFE52A /* ticker_coinone.swift */,
+				CE7E23BD1FA75A7A00EFE52A /* ticker_poloniex.swift */,
+				CE7E23BF1FA75ABD00EFE52A /* ticker_korbit.swift */,
+				CE7E23C11FA75AE000EFE52A /* ticker_bitflyer.swift */,
+				CE7E23C31FA75B0600EFE52A /* ticker_coinnest.swift */,
+				CE7E23C51FA75B1000EFE52A /* ticker_okcoin.swift */,
+				CE7E23C71FA75B2200EFE52A /* ticker_huobi.swift */,
+				CE7E23C91FA75B2C00EFE52A /* ticker_bittrex.swift */,
+			);
+			path = ticker;
+			sourceTree = "<group>";
+		};
+		CE83CF321FAF0F1B00790466 /* ticker */ = {
+			isa = PBXGroup;
+			children = (
+				CE83CF211FADBF4600790466 /* ticker_bitflyer.swift */,
+				CE83CF1C1FADBF4500790466 /* ticker_bithumb.swift */,
+				CE83CF1E1FADBF4600790466 /* ticker_bittrex.swift */,
+				CE83CF191FADBF4400790466 /* ticker_coinnest.swift */,
+				CE83CF1A1FADBF4400790466 /* ticker_coinone.swift */,
+				CE83CF1D1FADBF4500790466 /* ticker_huobi.swift */,
+				CE83CF1B1FADBF4500790466 /* ticker_korbit.swift */,
+				CE83CF201FADBF4600790466 /* ticker_okcoin.swift */,
+				CE83CF1F1FADBF4600790466 /* ticker_poloniex.swift */,
+				CE83CF181FADBF4400790466 /* ticker_bitfinex.swift */,
+			);
+			name = ticker;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		CECAB0611FA8186B001F0316 /* chart */ = {
+			isa = PBXGroup;
+			children = (
+				CECAB05F1FA81865001F0316 /* chart_bithumb.swift */,
+				CECAB0621FA81AE3001F0316 /* chart_poloniex.swift */,
+				CECAB0641FA81C56001F0316 /* chart_bittrex.swift */,
+				CECAB0661FA81D3D001F0316 /* chart_bitfinex.swift */,
+				CECAB0681FA81DB3001F0316 /* chart_coinone.swift */,
+				CEB612941FA86F6800DC5554 /* chart_korbit.swift */,
+				CEB612961FA86F7700DC5554 /* chart_coinnest.swift */,
+				CEB612981FA86F8300DC5554 /* chart_huobi.swift */,
+				CEB6129E1FA8719700DC5554 /* chart_okcoin.swift */,
+				CEB612A01FA871AD00DC5554 /* chart_bitflyer.swift */,
+			);
+			path = chart;
+			sourceTree = "<group>";
+		};
 		CEDE2C581F8CA8FD00161B8A = {
 			isa = PBXGroup;
 			children = (
 				CEDE2C631F8CA8FD00161B8A /* CoinPrice */,
 				CEDE2C7A1F8CA8FE00161B8A /* CoinPriceTests */,
 				CEDE2C851F8CA8FE00161B8A /* CoinPriceUITests */,
+				CEFDC37E1FADB43E0030DD02 /* live_price */,
 				CEDE2C621F8CA8FD00161B8A /* Products */,
+				8FE33A5451724EC5043DA98E /* Pods */,
+				B04EDD1F04FA8780DAE62271 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +348,7 @@
 				CEDE2C611F8CA8FD00161B8A /* CoinPrice.app */,
 				CEDE2C771F8CA8FE00161B8A /* CoinPriceTests.xctest */,
 				CEDE2C821F8CA8FE00161B8A /* CoinPriceUITests.xctest */,
+				CEFDC37B1FADB43E0030DD02 /* live_price.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,13 +356,20 @@
 		CEDE2C631F8CA8FD00161B8A /* CoinPrice */ = {
 			isa = PBXGroup;
 			children = (
+				CE83CF2C1FADC00000790466 /* CoinPrice.entitlements */,
+				CECAB0611FA8186B001F0316 /* chart */,
+				CE7E23BA1FA758CA00EFE52A /* ticker */,
+				CE7B76DC1F9F2E24006B9B72 /* selection_dialog */,
 				CEDE2C641F8CA8FD00161B8A /* AppDelegate.swift */,
-				CEDE2C661F8CA8FD00161B8A /* FirstViewController.swift */,
-				CEDE2C681F8CA8FD00161B8A /* SecondViewController.swift */,
 				CEDE2C6A1F8CA8FD00161B8A /* Main.storyboard */,
 				CEDE2C6D1F8CA8FD00161B8A /* Assets.xcassets */,
 				CEDE2C6F1F8CA8FD00161B8A /* LaunchScreen.storyboard */,
 				CEDE2C721F8CA8FD00161B8A /* Info.plist */,
+				CEDE2C941F8CA92400161B8A /* coincell.swift */,
+				CEE200571F91245A00C88D3C /* table_controller.swift */,
+				CE529B411F94957A00F4CE5D /* chart.swift */,
+				CEDCD8401FA071E900C6942A /* block_status.swift */,
+				CE32B38F1FAAE3930067A581 /* setting.swift */,
 			);
 			path = CoinPrice;
 			sourceTree = "<group>";
@@ -128,6 +392,19 @@
 			path = CoinPriceUITests;
 			sourceTree = "<group>";
 		};
+		CEFDC37E1FADB43E0030DD02 /* live_price */ = {
+			isa = PBXGroup;
+			children = (
+				CE83CF2D1FADC03300790466 /* live_price.entitlements */,
+				CE83CF321FAF0F1B00790466 /* ticker */,
+				CE83CF021FADBD9F00790466 /* ticker */,
+				CEFDC37F1FADB43E0030DD02 /* TodayViewController.swift */,
+				CEFDC3811FADB43E0030DD02 /* MainInterface.storyboard */,
+				CEFDC3841FADB43E0030DD02 /* Info.plist */,
+			);
+			path = live_price;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,13 +412,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDE2C8B1F8CA8FE00161B8A /* Build configuration list for PBXNativeTarget "CoinPrice" */;
 			buildPhases = (
+				B4FE73F5CC57F20F9CD96871 /* [CP] Check Pods Manifest.lock */,
 				CEDE2C5D1F8CA8FD00161B8A /* Sources */,
 				CEDE2C5E1F8CA8FD00161B8A /* Frameworks */,
 				CEDE2C5F1F8CA8FD00161B8A /* Resources */,
+				9CCA614D9A007205C271E80B /* [CP] Embed Pods Frameworks */,
+				650CA03B1F4BF52F44808E72 /* [CP] Copy Pods Resources */,
+				CEFDC38B1FADB43E0030DD02 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CEFDC3861FADB43E0030DD02 /* PBXTargetDependency */,
 			);
 			name = CoinPrice;
 			productName = CoinPrice;
@@ -152,9 +434,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDE2C8E1F8CA8FE00161B8A /* Build configuration list for PBXNativeTarget "CoinPriceTests" */;
 			buildPhases = (
+				9586E390C1E894899D6BE929 /* [CP] Check Pods Manifest.lock */,
 				CEDE2C731F8CA8FE00161B8A /* Sources */,
 				CEDE2C741F8CA8FE00161B8A /* Frameworks */,
 				CEDE2C751F8CA8FE00161B8A /* Resources */,
+				20368C4B8CC7A33533919581 /* [CP] Embed Pods Frameworks */,
+				B3760C6718137F2609688B82 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +455,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEDE2C911F8CA8FE00161B8A /* Build configuration list for PBXNativeTarget "CoinPriceUITests" */;
 			buildPhases = (
+				23D827FA3D3CB28BB595CA83 /* [CP] Check Pods Manifest.lock */,
 				CEDE2C7E1F8CA8FE00161B8A /* Sources */,
 				CEDE2C7F1F8CA8FE00161B8A /* Frameworks */,
 				CEDE2C801F8CA8FE00161B8A /* Resources */,
+				54B5444F3BC159630BB76177 /* [CP] Embed Pods Frameworks */,
+				0EC69564BD1573083A0812B5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,6 +472,23 @@
 			productReference = CEDE2C821F8CA8FE00161B8A /* CoinPriceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		CEFDC37A1FADB43E0030DD02 /* live_price */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEFDC38A1FADB43E0030DD02 /* Build configuration list for PBXNativeTarget "live_price" */;
+			buildPhases = (
+				CEFDC3771FADB43E0030DD02 /* Sources */,
+				CEFDC3781FADB43E0030DD02 /* Frameworks */,
+				CEFDC3791FADB43E0030DD02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = live_price;
+			productName = live_price;
+			productReference = CEFDC37B1FADB43E0030DD02 /* live_price.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -191,12 +496,29 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = jungho;
 				TargetAttributes = {
 					CEDE2C601F8CA8FD00161B8A = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					CEDE2C761F8CA8FE00161B8A = {
 						CreatedOnToolsVersion = 9.0;
@@ -207,6 +529,15 @@
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CEDE2C601F8CA8FD00161B8A;
+					};
+					CEFDC37A1FADB43E0030DD02 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -226,6 +557,7 @@
 				CEDE2C601F8CA8FD00161B8A /* CoinPrice */,
 				CEDE2C761F8CA8FE00161B8A /* CoinPriceTests */,
 				CEDE2C811F8CA8FE00161B8A /* CoinPriceUITests */,
+				CEFDC37A1FADB43E0030DD02 /* live_price */,
 			);
 		};
 /* End PBXProject section */
@@ -255,16 +587,203 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEFDC3791FADB43E0030DD02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEFDC3831FADB43E0030DD02 /* MainInterface.storyboard in Resources */,
+				CE83CF031FADBD9F00790466 /* ticker in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EC69564BD1573083A0812B5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinPriceUITests/Pods-CoinPriceUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		20368C4B8CC7A33533919581 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinPriceTests/Pods-CoinPriceTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		23D827FA3D3CB28BB595CA83 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoinPriceUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54B5444F3BC159630BB76177 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinPriceUITests/Pods-CoinPriceUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		650CA03B1F4BF52F44808E72 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9586E390C1E894899D6BE929 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoinPriceTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CCA614D9A007205C271E80B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework",
+				"${BUILT_PRODUCTS_DIR}/ZAlertView/ZAlertView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftChart.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZAlertView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3760C6718137F2609688B82 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoinPriceTests/Pods-CoinPriceTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4FE73F5CC57F20F9CD96871 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoinPrice-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CEDE2C5D1F8CA8FD00161B8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDE2C691F8CA8FD00161B8A /* SecondViewController.swift in Sources */,
+				CEDCD8411FA071E900C6942A /* block_status.swift in Sources */,
+				CEE465281F9E38A0002297BB /* SelectionDialogItem.swift in Sources */,
+				CE7E23C61FA75B1000EFE52A /* ticker_okcoin.swift in Sources */,
 				CEDE2C651F8CA8FD00161B8A /* AppDelegate.swift in Sources */,
-				CEDE2C671F8CA8FD00161B8A /* FirstViewController.swift in Sources */,
+				CE7E23BE1FA75A7A00EFE52A /* ticker_poloniex.swift in Sources */,
+				CE7E23B71FA754BD00EFE52A /* ticker_bithumb.swift in Sources */,
+				CEB612A11FA871AD00DC5554 /* chart_bitflyer.swift in Sources */,
+				CE7E23B91FA757C700EFE52A /* ticker_bitfinex.swift in Sources */,
+				CECAB0651FA81C56001F0316 /* chart_bittrex.swift in Sources */,
+				CE7E23CA1FA75B2C00EFE52A /* ticker_bittrex.swift in Sources */,
+				CEDE2C951F8CA92400161B8A /* coincell.swift in Sources */,
+				CE529B421F94957A00F4CE5D /* chart.swift in Sources */,
+				CE7E23BC1FA758FB00EFE52A /* ticker_coinone.swift in Sources */,
+				CE7E23C41FA75B0600EFE52A /* ticker_coinnest.swift in Sources */,
+				CEB612991FA86F8300DC5554 /* chart_huobi.swift in Sources */,
+				CECAB0691FA81DB3001F0316 /* chart_coinone.swift in Sources */,
+				CEB612971FA86F7700DC5554 /* chart_coinnest.swift in Sources */,
+				CE7E23C21FA75AE000EFE52A /* ticker_bitflyer.swift in Sources */,
+				CECAB0671FA81D3D001F0316 /* chart_bitfinex.swift in Sources */,
+				CED1E8651FB0A288006495EB /* UIImageExtension.swift in Sources */,
+				CE32B3901FAAE3930067A581 /* setting.swift in Sources */,
+				CEB612951FA86F6800DC5554 /* chart_korbit.swift in Sources */,
+				CE7E23C01FA75ABD00EFE52A /* ticker_korbit.swift in Sources */,
+				CEB6129F1FA8719700DC5554 /* chart_okcoin.swift in Sources */,
+				CE7E23C81FA75B2200EFE52A /* ticker_huobi.swift in Sources */,
+				CEE4652A1F9E38A0002297BB /* SelectionDialog.swift in Sources */,
+				CEE200581F91245A00C88D3C /* table_controller.swift in Sources */,
+				CECAB0631FA81AE3001F0316 /* chart_poloniex.swift in Sources */,
+				CECAB0601FA81865001F0316 /* chart_bithumb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +803,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEFDC3771FADB43E0030DD02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE83CF291FADBF4700790466 /* ticker_poloniex.swift in Sources */,
+				CE83CF221FADBF4700790466 /* ticker_bitfinex.swift in Sources */,
+				CE83CF2A1FADBF4700790466 /* ticker_okcoin.swift in Sources */,
+				CE83CF231FADBF4700790466 /* ticker_coinnest.swift in Sources */,
+				CE83CF281FADBF4700790466 /* ticker_bittrex.swift in Sources */,
+				CE83CF251FADBF4700790466 /* ticker_korbit.swift in Sources */,
+				CE83CF271FADBF4700790466 /* ticker_huobi.swift in Sources */,
+				CE83CF261FADBF4700790466 /* ticker_bithumb.swift in Sources */,
+				CE83CF2B1FADBF4700790466 /* ticker_bitflyer.swift in Sources */,
+				CEFDC3801FADB43E0030DD02 /* TodayViewController.swift in Sources */,
+				CE83CF241FADBF4700790466 /* ticker_coinone.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -296,6 +833,11 @@
 			isa = PBXTargetDependency;
 			target = CEDE2C601F8CA8FD00161B8A /* CoinPrice */;
 			targetProxy = CEDE2C831F8CA8FE00161B8A /* PBXContainerItemProxy */;
+		};
+		CEFDC3861FADB43E0030DD02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEFDC37A1FADB43E0030DD02 /* live_price */;
+			targetProxy = CEFDC3851FADB43E0030DD02 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -314,6 +856,14 @@
 				CEDE2C701F8CA8FD00161B8A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CEFDC3811FADB43E0030DD02 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEFDC3821FADB43E0030DD02 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -428,11 +978,15 @@
 		};
 		CEDE2C8C1F8CA8FE00161B8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EF39B4A41C1B6A8FD4F97E9 /* Pods-CoinPrice.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CoinPrice/CoinPrice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8NQD3S88F;
 				INFOPLIST_FILE = CoinPrice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jungcode.CoinPrice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,11 +997,15 @@
 		};
 		CEDE2C8D1F8CA8FE00161B8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70CEC5716B2499E79A65EF2C /* Pods-CoinPrice.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CoinPrice/CoinPrice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8NQD3S88F;
 				INFOPLIST_FILE = CoinPrice/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jungcode.CoinPrice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,6 +1016,7 @@
 		};
 		CEDE2C8F1F8CA8FE00161B8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3578067DBF5EE31A771B09D0 /* Pods-CoinPriceTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -475,6 +1034,7 @@
 		};
 		CEDE2C901F8CA8FE00161B8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AC13060088418BA302712C3 /* Pods-CoinPriceTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -492,6 +1052,7 @@
 		};
 		CEDE2C921F8CA8FE00161B8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9694862E7CCA47A4A2E685E /* Pods-CoinPriceUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -508,6 +1069,7 @@
 		};
 		CEDE2C931F8CA8FE00161B8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18698EE62601CCAB69A7BCFC /* Pods-CoinPriceUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -519,6 +1081,40 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CoinPrice;
+			};
+			name = Release;
+		};
+		CEFDC3881FADB43E0030DD02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = live_price/live_price.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8NQD3S88F;
+				INFOPLIST_FILE = live_price/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jungcode.CoinPrice.live-price";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEFDC3891FADB43E0030DD02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = live_price/live_price.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8NQD3S88F;
+				INFOPLIST_FILE = live_price/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jungcode.CoinPrice.live-price";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -557,6 +1153,15 @@
 			buildConfigurations = (
 				CEDE2C921F8CA8FE00161B8A /* Debug */,
 				CEDE2C931F8CA8FE00161B8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEFDC38A1FADB43E0030DD02 /* Build configuration list for PBXNativeTarget "live_price" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEFDC3881FADB43E0030DD02 /* Debug */,
+				CEFDC3891FADB43E0030DD02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
