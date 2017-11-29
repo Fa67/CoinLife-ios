@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SwiftChart
+import NVActivityIndicatorView
 
 var tmppp = ""
 var dataa = ["---","---","---","---","---","---"]
@@ -21,8 +22,15 @@ var order_loading_b = false
 var order_loading_a = false
 
 class askcell: UITableViewCell {
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var amount: UILabel!
+    @IBOutlet weak var price_ask: UILabel!
+    @IBOutlet weak var amount_ask: UILabel!
+    
+    @IBOutlet weak var view_bid: UIView!
+    @IBOutlet weak var price_bid: UILabel!
+    @IBOutlet weak var amount_bid: UILabel!
+    @IBOutlet weak var view_ask: UIView!
+    @IBOutlet weak var leftt: NSLayoutConstraint!
+    @IBOutlet weak var right: NSLayoutConstraint!
 }
 
 class buycell: UITableViewCell {
@@ -31,15 +39,18 @@ class buycell: UITableViewCell {
     
 }
 
-class chart: UIViewController, ChartDelegate  {
+class chart: UITableViewController, ChartDelegate  , NVActivityIndicatorViewable  {
   
+ 
     
     var tmp_max = Float(0)
     @IBOutlet weak var asktable: UITableView!
-    @IBOutlet weak var bidtable: UITableView!
+    //@IBOutlet weak var bidtable: UITableView!
     @IBAction func segment_(_ sender: Any) {
+        let size = CGSize(width: 30, height: 30)
+        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType(rawValue: 1)!)
         time_check = segment_wow.selectedSegmentIndex + 2
-        is_allow_chart.text = "로딩 중"
+        is_allow_chart.text = ""
         tmppp = ""
         check = 0
         chart.removeAllSeries()
@@ -70,7 +81,22 @@ class chart: UIViewController, ChartDelegate  {
     
     fileprivate var labelLeadingMarginInitialConstant: CGFloat!
     
+    @objc func candle(_ button:UIBarButtonItem!){
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "candle") as! candle
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
     override func viewDidLoad() {
+        let size = CGSize(width: 30, height: 30)
+        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType(rawValue: 1)!)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.5) {
+            //NVActivityIndicatorPresenter.sharedInstance.setMessage("Authenticating...")
+            self.stopAnimating()
+        }
+        
+        is_allow_chart.text = ""
+        
         ask = []
         bid = []
         bidmax = Float(0)
@@ -88,10 +114,19 @@ class chart: UIViewController, ChartDelegate  {
         dataa[4] = "---"//저가
         dataa[5] = "---"//거래량
         
-        labelLeadingMarginInitialConstant = labelLeadingMarginConstraint.constant
+        
         
         getdata()
         timerDidFire2()
+
+        let rightButton = UIBarButtonItem(title: "해외 봉 차트", style: UIBarButtonItemStyle.plain, target: self, action: #selector(candle(_:)))
+        self.navigationItem.rightBarButtonItem = rightButton
+        
+        
+        
+        labelLeadingMarginInitialConstant = labelLeadingMarginConstraint.constant
+        
+        
         if(timer != nil){timer.invalidate()}
         timer = Timer(timeInterval: 10.0, target: self, selector: #selector(table_controller.timerDidFire), userInfo: nil, repeats: true)
         RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
@@ -100,6 +135,8 @@ class chart: UIViewController, ChartDelegate  {
         timer2 = Timer(timeInterval: 1.0, target: self, selector: #selector(table_controller.timerDidFire2), userInfo: nil, repeats: true)
         RunLoop.current.add(timer2, forMode: RunLoopMode.commonModes)
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool){
         
@@ -138,14 +175,17 @@ class chart: UIViewController, ChartDelegate  {
     
     @objc func timerDidFire2(){
         
-        asktable.reloadData()
-        asktable.dataSource = self
-        asktable.delegate = self
+        if order_loading_b == false && order_loading_a == false{
+            asktable.reloadData()
+            asktable.dataSource = self
+            asktable.delegate = self
+        }
+        
         //asktable.register(UITableViewCell.self, forCellReuseIdentifier: "askcell")
         
-        bidtable.reloadData()
-        bidtable.dataSource = self
-        bidtable.delegate = self
+        //bidtable.reloadData()
+        //bidtable.dataSource = self
+        //bidtable.delegate = self
         //bidtable.register(UITableViewCell.self, forCellReuseIdentifier: "buycell")
         
         if !(tmppp == "") && check == 0 && !(check == -2){
@@ -207,24 +247,33 @@ class chart: UIViewController, ChartDelegate  {
     }
     
     func getdata(){
-        var yesterday = Calendar.current.date(byAdding: .hour, value: -12, to: Date())
-       
+        var yesterday = Calendar.current.date(byAdding: .day, value: -2, to: Date())
+        
         if time_check == 2{
             periods = "60"
-            yesterday = Calendar.current.date(byAdding: .minute, value: -60, to: Date())
+            yesterday = Calendar.current.date(byAdding: .hour, value: -2, to: Date())
         }
         if time_check == 3{
             periods = "300"
-            yesterday = Calendar.current.date(byAdding: .hour, value: -6, to: Date())
+            yesterday = Calendar.current.date(byAdding: .hour, value: -10, to: Date())
         }
         if time_check == 4{
             periods = "900"
-            yesterday = Calendar.current.date(byAdding: .hour, value: -12, to: Date())
+            yesterday = Calendar.current.date(byAdding: .hour, value: -30, to: Date())
         }
         if time_check == 5{
-            periods = "3600"
-            yesterday = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+            periods = "1800"
+            yesterday = Calendar.current.date(byAdding: .day, value: -2, to: Date())
         }
+        if time_check == 6{
+            periods = "3600"
+            yesterday = Calendar.current.date(byAdding: .day, value: -10, to: Date())
+        }
+        if time_check == 7{
+            periods = "21600"
+            yesterday = Calendar.current.date(byAdding: .day, value: -60, to: Date())
+        }
+        
         
         /*let yes_t = (yesterday?.description.components(separatedBy: " ")[0] + " " + yesterday?.description.components(separatedBy: " ")[1])
          let dfmatter = DateFormatter()
@@ -270,16 +319,10 @@ class chart: UIViewController, ChartDelegate  {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        /*
-        timer?.invalidate()
-        timer = nil
-        timer2?.invalidate()
-        timer2 = nil*/
-    }
+   
     
     override func viewDidDisappear(_ animated: Bool) {
+        self.stopAnimating()
         timer?.invalidate()
         timer = nil
         timer2?.invalidate()
@@ -294,47 +337,73 @@ class chart: UIViewController, ChartDelegate  {
         var labels: [Float] = []
         var labelsAsString: Array<String> = []
         
+        
+        
+        if !tmppp.contains("["){
+            print(tmppp)
+            is_allow_chart.text = "미지원 차트 입니다."
+            self.stopAnimating()
+            check = -2
+            return
+        }
         let datee = tmppp.components(separatedBy: "[")
         if (datee.count < 10){
+            print(tmppp)
             is_allow_chart.text = "미지원 차트 입니다."
+            self.stopAnimating()
             check = -2
             return
         }
         is_allow_chart.text = ""
         for i in 2...datee.count - 3 {
-            if !datee[i].contains(","){
-                is_allow_chart.text = datee[i]
-                check = -2
-                return
+            let date_f = datee[i].components(separatedBy: ",")[0]
+            if date_f == ""{
+                continue
             }
-            var date_f = datee[i].components(separatedBy: ",")[0]
-            if (Float(date_f) == nil){
-                is_allow_chart.text = "테스터 분들 이 오류가 뜨면 캡쳐 해서 연락주세요.."
-                check = -2
-                return
-            }
-            date_f = date_f.replacingOccurrences(of: " ", with: "")
+            //date_f = date_f.replacingOccurrences(of: " ", with: "")
             let date = Date(timeIntervalSince1970: Double(date_f)!)
             let dateFormatter = DateFormatter()
             //dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
             dateFormatter.locale = NSLocale.current
-            if time_check == 2 || time_check == 1{
+            if time_check == 2{
                 dateFormatter.dateFormat = "hh"
             }
-            else if time_check == 3 || time_check == 4{
+            else if time_check == 3{
+                dateFormatter.dateFormat = "hh"
+            }
+            else if time_check == 4{
                 dateFormatter.dateFormat = "hh"
             }
             else if time_check == 5{
                 dateFormatter.dateFormat = "dd"
             }
+            else if time_check == 6{
+                dateFormatter.dateFormat = "dd"
+            }
+            else if time_check == 7{
+                dateFormatter.dateFormat = "MM"
+            }
             
-            let strDate = dateFormatter.string(from: date)
+            var strDate = dateFormatter.string(from: date)
+            //print(strDate)
+            if (strDate.contains("시")){
+                strDate = strDate.components(separatedBy: "시")[0]
+            }
+            if (strDate.contains("일")){
+                strDate = strDate.components(separatedBy: "일")[0]
+            }
+            if (strDate.contains("월")){
+                strDate = strDate.components(separatedBy: "월")[0]
+            }
             
-            var vaule_t = datee[i].components(separatedBy: ",")[4]
-            vaule_t = vaule_t.replacingOccurrences(of: " ", with: "")
+            let vaule_t = datee[i].components(separatedBy: ",")[4]
+            if vaule_t == ""{
+                continue
+            }
             if (Float(vaule_t) == 0){
                 continue
             }
+            
             let value_f = vaule_t
             if (table_controller.send_data[1] == "BitTrex") || (table_controller.send_data[1] == "Poloniex"){
                 if table_controller.send_data[0] == "BTC"{
@@ -345,38 +414,59 @@ class chart: UIViewController, ChartDelegate  {
             }else if (table_controller.send_data[1] == "BitFinex") {
                 serieData.append( Float(value_f)!  * Float(table_controller.usd)!)
             }
-            else if (table_controller.send_data[1] == "Okcoin"){
-                serieData.append( Float(value_f)!  * Float(table_controller.usd)!)
-            }
-            else if (table_controller.send_data[1] == "Bitflyer"){
-                serieData.append( Float(value_f)!  * Float(table_controller.jpy)!)
+            else if (table_controller.send_data[1] == "BitFlyer"){
+                serieData.append( Float(value_f)!  * Float(table_controller.jpy)! * 0.01)
             }
             else{
                  serieData.append( Float(value_f)! )
             }
             
             if month_cnt == -1 || !(month_cnt == Int(strDate)!){
-                //print(monthh)
+                if (time_check == 6) || (time_check == 3){
+                    if (Int(strDate)! % 2 != 0){
+                        continue
+                    }
+                }
+                if (time_check == 4){
+                    if (Int(strDate)! % 4 != 0){
+                        continue
+                    }
+                }
                 month_cnt = Int(strDate)!
                 labels.append(Float(i))
-                labelsAsString.append(strDate)
+                //labelsAsString.append("")
+                if (time_check == 5) || (time_check == 6){
+                    labelsAsString.append(strDate + "일")
+                }
+                else if (time_check == 2) || (time_check == 3) || (time_check == 4){
+                    labelsAsString.append(strDate + "시")
+                }
+                else if (time_check == 7){
+                    labelsAsString.append(strDate + "월")
+                }else{
+                    labelsAsString.append(strDate)
+                }
+                
             }
         }
         let series = ChartSeries(serieData)
         series.area = true
         
-        chart.lineWidth = 0.5
-        chart.labelFont = UIFont.systemFont(ofSize: 12)
+        chart.lineWidth = 1.2
+        chart.labelFont = UIFont.systemFont(ofSize: 11)
         chart.xLabels = labels
         chart.xLabelsFormatter = { (labelIndex: Int, labelValue: Float) -> String in
             return labelsAsString[labelIndex]
         }
+        //chart.showXLabelsAndGrid = true
+        //chart.xLabelsSkipLast = true
         chart.xLabelsTextAlignment = .center
         chart.yLabelsOnRightSide = true
         // Add some padding above the x-axis
         chart.minY = serieData.min()! - 5
         chart.removeAllSeries()
         chart.add(series)
+        self.stopAnimating()
     }
     
     // Chart delegate
@@ -389,7 +479,7 @@ class chart: UIViewController, ChartDelegate  {
             numberFormatter.minimumFractionDigits = 2
             numberFormatter.maximumFractionDigits = 2
             label.text = numberFormatter.string(from: NSNumber(value: value))
-            
+        
             // Align the label to the touch left position, centered
             var constant = labelLeadingMarginInitialConstant + left - (label.frame.width / 2)
             
@@ -425,8 +515,8 @@ class chart: UIViewController, ChartDelegate  {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //order_loading_b = true
-        //order_loading_a = true
+        order_loading_b = true
+        order_loading_a = true
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         order_loading_b = false
@@ -434,14 +524,8 @@ class chart: UIViewController, ChartDelegate  {
     }
    
     
-    
-    
-}
-
-extension chart: UITableViewDelegate,UITableViewDataSource {
-    
     //섹션 별 개수 가져오기
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         var count:Int?
         
@@ -449,18 +533,16 @@ extension chart: UITableViewDelegate,UITableViewDataSource {
             count = bid.count
         }
         
-        if tableView == self.bidtable{
-            count = ask.count
-        }
+        
         
         return count!
     }
     
     //테이블 데이터 로드
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell:UITableViewCell?
-       
+        
         
         if bidmax > askmax{
             tmp_max = bidmax
@@ -468,6 +550,7 @@ extension chart: UITableViewDelegate,UITableViewDataSource {
             tmp_max = askmax
         }
         
+        /*
         if (tableView == self.bidtable){
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "buycell", for: indexPath) as! buycell
@@ -499,42 +582,89 @@ extension chart: UITableViewDelegate,UITableViewDataSource {
             let alp = Float(ask[indexPath.row].components(separatedBy: ",")[1])!/Float(tmp_max)
             cell.contentView.backgroundColor = UIColor(red: 0/255, green: 151/255, blue: 167/255, alpha: CGFloat(alp))
             
-           
+            
             return cell
-        }
+        }*/
         if (tableView == self.asktable){
             let cell = tableView.dequeueReusableCell(withIdentifier: "askcell", for: indexPath) as! askcell
             if bid.count - 1 < indexPath.row{
-                cell.price.text = "error"
-                cell.amount.text = "error"
+                cell.price_ask.text = "error"
+                cell.amount_ask.text = "error"
                 return cell
             }
-            var tmp_price = ""
+            var tmp_amount = bid[indexPath.row ].components(separatedBy: ",")[1]
+            var tmp_price = Double(bid[indexPath.row].components(separatedBy: ",")[0])
             if (table_controller.send_data[1] == "BitTrex") || (table_controller.send_data[1] == "Poloniex"){
                 if table_controller.send_data[0] == "BTC"{
-                    tmp_price = ( Double(bid[indexPath.row].components(separatedBy: ",")[0])!  * Double(table_controller.usd)!).description
+                    tmp_price = ( tmp_price!  * Double(table_controller.usd)!)
                 }else{
-                    tmp_price = ( Double(bid[indexPath.row].components(separatedBy: ",")[0])!  * Double(table_controller.usd)! * Double(usbtc)).description
+                    tmp_price = ( tmp_price!  * Double(table_controller.usd)! * Double(usbtc))
                 }
             }else if (table_controller.send_data[1] == "BitFinex") {
-                tmp_price = ( Double(bid[indexPath.row].components(separatedBy: ",")[0])!  * Double(table_controller.usd)!).description
-            }else{
-                tmp_price = bid[indexPath.row].components(separatedBy: ",")[0]
-            }
-            if tmp_price.contains("."){
-                tmp_price = tmp_price.components(separatedBy: ".")[0]
+                tmp_price = ( tmp_price! * Double(table_controller.usd)!)
+            }else if (table_controller.send_data[1] == "BitFlyer") {
+                tmp_price = ( tmp_price! * Double(table_controller.jpy)! * 0.01)
             }
             
-            cell.price.text = tmp_price
-            cell.amount.text = bid[indexPath.row ].components(separatedBy: ",")[1]
-            let alp = Float(bid[indexPath.row].components(separatedBy: ",")[1])!/Float(tmp_max)
-            cell.contentView.backgroundColor = UIColor(red: 0/255, green: 151/255, blue: 167/255, alpha: CGFloat(alp))
-           
+            //tmp_price = Double(Int(tmp_price!))
+          
+            
+            cell.price_ask.text = Int(tmp_price!).description
+            tmp_amount = (round(Float(tmp_amount)! * pow(10.0, Float(2))) / pow(10.0, Float(2))).description
+            cell.amount_ask.text = tmp_amount
+            var alp = Float(bid[indexPath.row].components(separatedBy: ",")[1])!/Float(tmp_max)
+            //cell.amount_ask.text = ""
+            //cell.view_ask.backgroundColor = UIColor(red: 0/255, green: 151/255, blue: 167/255, alpha: CGFloat(alp))
+            //cell.view_ask.frame.size.width =  CGFloat(Float(cell.width) * alp * 0.5)
+            //cell.view_ask.frame = CGRect(x: 0, y: 0, width: cell.view_ask.frame.width * CGFloat(alp), height: cell.view_ask.frame.height)
+            cell.leftt.constant = CGFloat(Float(cell.view_ask.frame.size.width) * (1 - alp))
+            
+            
+            if ask.count - 1 < indexPath.row{
+                cell.price_bid.text = "error"
+                cell.amount_bid.text = "error"
+                return cell
+            }
+            tmp_amount = ask[indexPath.row].components(separatedBy: ",")[1]
+            tmp_price = Double(ask[indexPath.row].components(separatedBy: ",")[0])
+            if (table_controller.send_data[1] == "BitTrex") || (table_controller.send_data[1] == "Poloniex"){
+                if table_controller.send_data[0] == "BTC"{
+                    tmp_price = ( tmp_price! * Double(table_controller.usd)!)
+                }else{
+                    tmp_price = ( tmp_price!  * Double(table_controller.usd)! * Double(usbtc))
+                }
+            }else if (table_controller.send_data[1] == "BitFinex") {
+                tmp_price = ( tmp_price!  * Double(table_controller.usd)!)
+            }else if (table_controller.send_data[1] == "BitFlyer") {
+                tmp_price = ( tmp_price!  * Double(table_controller.jpy)! * 0.01)
+            }
+            
+            //tmp_price = Double(Int(tmp_price!))
+            
+            cell.price_bid.text = Int(tmp_price!).description
+            tmp_amount = (round(Float(tmp_amount)! * pow(10.0, Float(2))) / pow(10.0, Float(2))).description
+            cell.amount_bid.text = tmp_amount
+            alp = Float(ask[indexPath.row].components(separatedBy: ",")[1])!/Float(tmp_max)
+            //cell.view_bid.backgroundColor = UIColor(red: 0/255, green: 151/255, blue: 167/255, alpha: CGFloat(alp))
+            cell.right.constant = CGFloat(Float(cell.view_bid.frame.size.width) * (1.0 - alp))
+            
             return cell
         }
         return cell!
         
     }
     
+    /*
+    fileprivate func showExampleController(_ controller: UIViewController) {
+        if let currentExampleController = showExampleController {
+            currentExampleController.removeFromParentViewController()
+            currentExampleController.view.removeFromSuperview()
+        }
+        addChildViewController(controller)
+        view.addSubview(controller.view)
+        showExampleController = controller
+    }*/
+    
 }
+
 

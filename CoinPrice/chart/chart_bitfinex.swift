@@ -18,8 +18,13 @@ class chart_bitfinex {
             //chart_bitfinex.is_doing_c = true
             //chart_bitfinex.is_doing_p = true
             
+            var coin_tmp2 = table_controller.send_data[0]
+            if (table_controller.send_data[0] == "QTUM"){
+                //coin_tmp2 = "QTM"
+            }
+            
             var url2:URL
-            url2 = URL(string: "https://api.cryptowat.ch/markets/bitfinex/" + table_controller.send_data[0] + "usd/ohlc?after=" + dateSt + "&before=" + dateSt_now + "&periods=" + periods  )!
+            url2 = URL(string: "https://api.cryptowat.ch/markets/bitfinex/" + coin_tmp2.lowercased() + "usd/ohlc?after=" + dateSt + "&periods=" + periods  )!
             let task2 = URLSession.shared.dataTask(with: url2 as URL) { data, response, error in
                 guard let data = data, error == nil else { return }
                 //print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
@@ -30,7 +35,11 @@ class chart_bitfinex {
             task2.resume()
             
             if !order_loading_b && !order_loading_a{
-                let url3 = URL(string: "https://api.cryptowat.ch/markets/bitfinex/" + table_controller.send_data[0] + "usd/orderbook"  )
+                var coin_tmp = table_controller.send_data[0]
+                if (table_controller.send_data[0] == "QTUM"){
+                    //coin_tmp = "QTM"
+                }
+                let url3 = URL(string: "https://api.cryptowat.ch/markets/bitfinex/" + coin_tmp + "usd/orderbook"  )
                 let task3 = URLSession.shared.dataTask(with: url3! as URL) { data, response, error in
                     guard let data = data, error == nil else { return }
                     let text = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
@@ -69,16 +78,21 @@ class chart_bitfinex {
                 task3.resume()
             }
             
-          
-            
-            let url = URL(string: "https://api.bitfinex.com/v2/tickers?symbols=t" + table_controller.send_data[0] + "USD")
+            var coin_tmp = table_controller.send_data[0]
+            if (table_controller.send_data[0] == "QTUM"){
+                coin_tmp = "QTM"
+            }else if(table_controller.send_data[0] == "DASH"){
+                coin_tmp = "DSH"
+            }
+            let url = URL(string: "https://api.bitfinex.com/v2/tickers?symbols=t" + coin_tmp + "USD")
             let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
                 guard let data = data, error == nil else { return }
                 let text = NSString(data: data, encoding: String.Encoding.ascii.rawValue)! as String
                 //print(coin_kind[i][0])
                 //print(text)
-                print("빗파")
-                if (text.contains("\"t" + table_controller.send_data[0] + "USD\"")){
+                //print("빗파")
+                if (text.contains("\"t" + coin_tmp + "USD\"")){
+                    print(text)
                     dataa[0] = text.components(separatedBy: ",")[7]
                     dataa[0] = String(Int(Float(dataa[0])! * Float(table_controller.usd)!))//달러 적용 현재가
                     dataa[1] = text.components(separatedBy: ",")[6]

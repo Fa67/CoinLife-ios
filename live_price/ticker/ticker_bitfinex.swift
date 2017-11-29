@@ -22,7 +22,14 @@ class ticker_bitfinex {
                 for i in 0...coin_kind.count - 1 {
                     if ( coin_kind[i][1] == "BitFinex") || !(whole_str.contains("t" + coin_kind[i][0] + "USD") && primium_change == "Bitfinex" ){
                         //print(coin_kind[i][0])
-                        whole_str = whole_str + ",t" + coin_kind[i][0] + "USD"
+                        if (coin_kind[i][0] == "QTUM"){
+                            whole_str = whole_str + ",t" + "QTM" + "USD"
+                        }else if(coin_kind[i][0] == "DASH"){
+                            whole_str = whole_str + ",t" + "DSH" + "USD"
+                        }else{
+                           whole_str = whole_str + ",t" + coin_kind[i][0] + "USD"
+                        }
+                        
                     }
                 }
                 
@@ -38,9 +45,19 @@ class ticker_bitfinex {
                     //var coin_cnt = whole_str.components(separatedBy: ",")
                     for i in 0...coin_kind.count - 1 {
                         
+                        var coin_tmp = coin_kind[i][0]
+                        if (coin_kind[i][0] == "QTUM"){
+                            coin_tmp = "QTM"
+                        }else if(coin_kind[i][0] == "DASH"){
+                            coin_tmp = "DSH"
+                        }
+                        
                         if ( coin_kind[i][1] == "BitFinex"){
-                            if (text.contains("\"t" + coin_kind[i][0] + "USD\"")){
-                                let lets_text = text.components(separatedBy: "\"t" + coin_kind[i][0] + "USD\"")[1]
+                            
+                            
+                            
+                            if (text.contains("\"t" + coin_tmp + "USD\"")){
+                                let lets_text = text.components(separatedBy: "\"t" + coin_tmp + "USD\"")[1]
                                 coin_kind[i][2] = lets_text.components(separatedBy: ",")[7]
                                 coin_kind[i][3] = lets_text.components(separatedBy: ",")[6]
                                 //coin_kind[i][2] = self.split(str: text,w1: "\"last_price\":\"",w2: "\"")//현재가격
@@ -66,9 +83,9 @@ class ticker_bitfinex {
                             }
                         }
                         if primium_change == "Bitfinex"{
-                            if !(primium.contains {$0.contains(coin_kind[i][0])}){
-                                if (text.contains("\"t" + coin_kind[i][0] + "USD\"")){
-                                    let lets_text = text.components(separatedBy: "\"t" + coin_kind[i][0] + "USD\"")[1]
+                            if !(primium.contains {$0.contains(coin_tmp)}){
+                                if (text.contains("\"t" + coin_tmp + "USD\"")){
+                                    let lets_text = text.components(separatedBy: "\"t" + coin_tmp + "USD\"")[1]
                                     var tmppp = lets_text.components(separatedBy: ",")[7]
                                     tmppp = String(Int(Float(tmppp)! * Float(TodayViewController.usd)!))//달러 적용 현재가
                                     primium.append([coin_kind[i][0].uppercased(),tmppp])

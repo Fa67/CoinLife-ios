@@ -29,7 +29,7 @@ class ticker_bittrex {
                             let main_coin_str = text.components(separatedBy: "\"BTC-" + coin_kind[i][0] + "\"")[1]
                             coin_kind[i][2] = self.split(str: main_coin_str,w1: "\"Last\":",w2: ",")//현재가격
                             let open  = self.split(str: main_coin_str,w1: "\"PrevDay\":",w2: ",")//24시간전
-                            let rslt  = ((Float(coin_kind[i][2])! - Float(open)!) / Float(coin_kind[i][2])! * 100)//전일대비
+                            let rslt  = ((Float(coin_kind[i][2])! - Float(open)!) / Float(open)! * 100)//전일대비
                             let tmp = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))//소수점 제거
                             if(tmp > 0) {
                                 coin_kind[i][3] = ( "+" + String(tmp))
@@ -41,7 +41,7 @@ class ticker_bittrex {
                         else if coin_kind[i][1] == "BitTrex" && coin_kind[i][0] == "BTC"{
                             coin_kind[i][2] = (usbtc?.description)!//현재가
                             let open  = self.split(str: text.components(separatedBy: "\"USDT-" + coin_kind[i][0] + "\"")[1],w1: "\"PrevDay\":",w2: ",")//24시간전
-                            let rslt  = ((Float(coin_kind[i][2])! - Float(open)!) / Float(coin_kind[i][2])! * 100)//전일대비
+                            let rslt  = ((Float(coin_kind[i][2])! - Float(open)!) / Float(open)! * 100)//전일대비
                             let tmp = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))//소수점 제거
                             if(tmp > 0) {
                                 coin_kind[i][3] = ( "+" + String(tmp))

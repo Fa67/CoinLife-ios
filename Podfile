@@ -6,8 +6,8 @@ target 'CoinPrice' do
   use_frameworks!
   pod 'ZAlertView'
   pod 'SwiftChart'
-  pod 'Google-Mobile-Ads-SDK'
-
+  pod 'NVActivityIndicatorView'
+  #pod 'SwiftCharts', '~> 0.6'
   # Pods for CoinPrice
 
   target 'CoinPriceTests' do

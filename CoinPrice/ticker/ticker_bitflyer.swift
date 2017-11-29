@@ -17,7 +17,7 @@ class ticker_bitflyer {
             if coin_kind.count != 0{
                 for i in 0...coin_kind.count - 1 {
                     if ( coin_kind[i][1] == "BitFlyer"){
-                        let url = URL(string: "https://api.bitflyer.jp/v1/ticker?product_code=btc_usd")
+                        let url = URL(string: "https://api.bitflyer.jp/v1/ticker?product_code=btc_jpy")
                         let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
                             guard let data = data, error == nil else { return }
                             let text = NSString(data: data, encoding: String.Encoding.ascii.rawValue)! as String
@@ -26,7 +26,7 @@ class ticker_bitflyer {
                             if (text.contains("\"ltp\":") && coin_kind[i][0] == "BTC"){
                                 coin_kind[i][2] = text.components(separatedBy: "\"ltp\":")[1].components(separatedBy: ",")[0]
                                 coin_kind[i][3] = "미지원"
-                                coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(table_controller.usd)!))
+                                coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(table_controller.jpy)! * 0.01))
                                 usbtc = Float(coin_kind[i][2])!
                             }else if(text.contains("\"ltp\":")){
 
@@ -39,7 +39,7 @@ class ticker_bitflyer {
                                     if (text.contains("\"ltp\":")){
                                         coin_kind[i][2] = text.components(separatedBy: "\"ltp\":")[1].components(separatedBy: ",")[0]
                                         coin_kind[i][3] = "미지원"
-                                        coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(table_controller.usd)! * Float(btc_tmp!)))
+                                        coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(table_controller.jpy)! * 0.01 * Float(btc_tmp!)))
                                         if primium_change == "BitFlyer"{
                                            
                                         }

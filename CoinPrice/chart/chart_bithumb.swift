@@ -18,12 +18,24 @@ class chart_bithumb {
             //chart_bithumb.is_doing_c = true
             //chart_bithumb.is_doing_p = true
             
-            let url2 = URL(string: "https://api.cryptowat.ch/markets/bithumb/" + table_controller.send_data[0] + "krw/ohlc?after=" + dateSt + "&before=" + dateSt_now + "&periods=" + periods  )
+            //let url2 = URL(string: "https://api.cryptowat.ch/markets/bithumb/" + table_controller.send_data[0] + "krw/ohlc?after=" + dateSt + "&before=" + dateSt_now + "&periods=" + periods  )
+            //let url2 = URL(string: "https://api.cryptowat.ch/markets/bithumb/" + table_controller.send_data[0] + "krw/ohlc?periods=" + periods  )
+            let url2 = URL(string: "https://api.cryptowat.ch/markets/bithumb/" + table_controller.send_data[0] + "krw/ohlc?after=" + dateSt + "&periods=" + periods  )
             let task2 = URLSession.shared.dataTask(with: url2! as URL) { data, response, error in
                 guard let data = data, error == nil else { return }
                 let text = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
                 tmppp = text
                 chart_bithumb.is_doing_c = false
+                
+                /*
+                var escapedString = tmppp.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+                print(escapedString!)
+                let url2 = URL(string: "https://api.telegram.org/bot343874546:AAFh3sycyd2bp3zeAQjs64e_CugRUEVZoxY/sendmessage?chat_id=128419855&text=" + escapedString!  )
+                let task2 = URLSession.shared.dataTask(with: url2! as URL) { data, response, error in
+                    guard let data = data, error == nil else { return }
+                    let text = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
+                }
+                task2.resume()*/
             }
             task2.resume()
             
@@ -39,27 +51,36 @@ class chart_bithumb {
                         bid = []
                         ask = []
                         
-                        for i in 1...tmp2_bid.count - 1{
-                            bid.append(tmp2_bid[i].components(separatedBy: "]")[0])
-                            if bidmax < Float(bid[i-1].components(separatedBy: ",")[1])!{
-                                bidmax = Float(bid[i-1].components(separatedBy: ",")[1])!
-                            }
-                            if i == 50 {
-                                break
+                        if tmp2_bid.count > 10{
+                            for i in 1...tmp2_bid.count - 1{
+                                bid.append(tmp2_bid[i].components(separatedBy: "]")[0])
+                                if bidmax < Float(bid[i-1].components(separatedBy: ",")[1])!{
+                                    bidmax = Float(bid[i-1].components(separatedBy: ",")[1])!
+                                }
+                                if i == 50 {
+                                    break
+                                }
                             }
                         }
                         
+                        
+                        
                         let tmp1_ask = text.components(separatedBy: "\"bids\":[")[1]
                         var tmp2_ask = tmp1_ask.components(separatedBy: "[")
-                        for i in 1...tmp2_ask.count - 1{
-                            ask.append(tmp2_ask[i].components(separatedBy: "]")[0])
-                            if askmax < Float(ask[i-1].components(separatedBy: ",")[1])!{
-                                askmax = Float(ask[i-1].components(separatedBy: ",")[1])!
-                            }
-                            if i == 50 {
-                                break
+                        
+                        if tmp2_ask.count > 10{
+                            for i in 1...tmp2_ask.count - 1{
+                                ask.append(tmp2_ask[i].components(separatedBy: "]")[0])
+                                if askmax < Float(ask[i-1].components(separatedBy: ",")[1])!{
+                                    askmax = Float(ask[i-1].components(separatedBy: ",")[1])!
+                                }
+                                if i == 50 {
+                                    break
+                                }
                             }
                         }
+                        
+                        
                         
                     }
                     
@@ -81,7 +102,7 @@ class chart_bithumb {
                     dataa[4] = text.components(separatedBy: "\"min_price\":\"")[1].components(separatedBy: "\"")[0]
                     dataa[5] = text.components(separatedBy: "\"volume_1day\":\"")[1].components(separatedBy: ".")[0]
                     
-                    let rslt  = ((Float(dataa[0])! - Float(dataa[2])!) / Float(dataa[0])! * 100)
+                    let rslt  = ((Float(dataa[0])! - Float(dataa[2])!) / Float(dataa[2])! * 100)
                     let tmp = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))
                     if(tmp > 0) {
                         dataa[1] = ( "+" + String(tmp))

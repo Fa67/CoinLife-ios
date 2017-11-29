@@ -19,7 +19,7 @@ class chart_coinnest {
             
             
             var url2:URL
-            url2 = URL(string: "https://api.cryptowat.ch/markets/coinnest/" + table_controller.send_data[0] + "krw/ohlc?after=" + dateSt + "&before=" + dateSt_now + "&periods=" + periods  )!
+            url2 = URL(string: "https://api.cryptowat.ch/markets/coinnest/" + table_controller.send_data[0] + "krw/ohlc?after=" + dateSt + "&periods=" + periods  )!
             let task2 = URLSession.shared.dataTask(with: url2 as URL) { data, response, error in
                 guard let data = data, error == nil else { return }
                 //print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))

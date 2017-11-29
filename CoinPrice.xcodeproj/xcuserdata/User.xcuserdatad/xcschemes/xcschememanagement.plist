@@ -7,12 +7,40 @@
 		<key>CoinPrice.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>0</integer>
 		</dict>
 		<key>live_price.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>1</integer>
+		</dict>
+		<key>live_wallet.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>CEDE2C601F8CA8FD00161B8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEDE2C761F8CA8FE00161B8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEDE2C811F8CA8FE00161B8A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEFDC37A1FADB43E0030DD02</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

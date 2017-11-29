@@ -161,9 +161,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     //coin_kind를 section_change2로 변환
     func add_check_change(){
+        section_change = []
         if(!(coin_kind.count == 0)){
             for i in 0...coin_kind.count - 1 {
                 if(!section_change.contains(coin_kind[i][1])){
+                    if !(coin_kind[i][4] == "wallet"){
+                        
+                    }
                     section_change.append(coin_kind[i][1]);
                 }
             }
@@ -172,33 +176,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             for ii in 0...section_change.count - 1 {
                 for i in 0...coin_kind.count - 1 {
                     if(coin_kind[i][1].contains(section_change[ii])){
-                        section_change2[ii].append(coin_kind[i])
+                        //print(coin_kind[i][4])
+                        if !(coin_kind[i][4] == "wallet"){
+                            section_change2[ii].append(coin_kind[i])
+                        }
                     }
                 }
             }
         }
     }
     
-    func add_check_change2(){
-        if(!(coin_kind.count == 0)){
-            for i in 0...coin_kind.count - 1 {
-                if(!section_change.contains(coin_kind[i][0])){
-                    section_change.append(coin_kind[i][0]);
-                }
-            }
-            section_change2 =  [[[String]]](repeating:
-                [[String]](repeating: [], count: 0), count: section_change.count)
-            for ii in 0...section_change.count - 1 {
-                for i in 0...coin_kind.count - 1 {
-                    if(coin_kind[i][0].contains(section_change[ii])){
-                        section_change2[ii].append(coin_kind[i])
-                    }
-                }
-            }
-        }
-    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
        
     }
     
@@ -235,13 +227,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func load_arr() {
+        coin_kind = []
         let defaults = UserDefaults(suiteName: "group.jungcode.coin")
         defaults?.synchronize()
         let gettext = String(describing: defaults!.object(forKey: "arr") ?? "")
         
-        coin_kind = []
-        
-        if gettext == "0"{
+        if gettext == ""{
             return
         }
         
@@ -249,7 +240,18 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         tmp = gettext.components(separatedBy: "#")
         
         for i in 0...tmp.count - 2 {
-            coin_kind.append([tmp[i].components(separatedBy: "@")[0], tmp[i].components(separatedBy: "@")[1],"---","---"])
+            var tmpp_data = tmp[i].components(separatedBy: "@")
+            if tmpp_data.count == 3{
+                if (tmpp_data[2] == "wallet"){
+                    coin_kind.append([tmpp_data[0], tmpp_data[1],"---","---",tmpp_data[2]])
+                }else{
+                    coin_kind.append([tmpp_data[0], tmpp_data[1],"---","---","---"])
+                }
+                
+            }else{
+                coin_kind.append([tmpp_data[0], tmpp_data[1],"---","---","---"])
+            }
+            
         }
         //return String(describing: defaults!.object(forKey: "score") ?? "0")
     }
@@ -340,33 +342,13 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
         var pricee = section_change2[indexPath.section][indexPath.row][2]
         if !(Float(section_change2[indexPath.section][indexPath.row][2]) == nil){
             cell.price.textColor = UIColor.black
-            var price_tmp = ""
+
             //한화
-            if (kind_price == "" || kind_price == "KRW"){
-                if pricee.contains("."){
-                    pricee = pricee.components(separatedBy: ".")[0]
-                }
-                price_tmp = pricee
-                var made_price = ""
-                while price_tmp.characters.count >= 3{
-                    let str_cnt = price_tmp.characters.count
-                    let back = price_tmp.substring(from: price_tmp.index(price_tmp.endIndex, offsetBy: -3))
-                    price_tmp = price_tmp.substring(to: price_tmp.index(price_tmp.startIndex, offsetBy: str_cnt-3))
-                    if (made_price == ""){made_price = back
-                    }else{made_price = back + "," + made_price
-                    }
-                }
-                if !(price_tmp.characters.count == 0){
-                    if (made_price == ""){made_price = price_tmp
-                    }else{made_price = price_tmp + "," + made_price
-                    }
-                }
-                cell.price.text = made_price + "￦"
-            }else{//달러
-                price_tmp = String(Float(pricee)! / Float(TodayViewController.usd)!)
-                let tmp = round(Float(price_tmp)! * pow(10.0, Float(2))) / pow(10.0, Float(2))
-                cell.price.text = String(tmp) + "$"
+            if pricee.contains("."){
+                pricee = pricee.components(separatedBy: ".")[0]
             }
+            let price_tmp = coma(str: pricee)
+            cell.price.text = price_tmp + "￦"
         }else{
             cell.price.textColor = UIColor.gray
             if pricee == "---"{
@@ -413,11 +395,18 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
         //프리미엄 이름 저장
         var tmp2 = Float(0.0)
         let compare = section_change2[indexPath.section][indexPath.row][0]//오류부분
-        if (primium.count > 0) && !(Float(pricee) == nil) && (primium.contains {$0.contains(compare)}){
+        if (primium.count > 0) && !(Float(pricee) == nil)
+            && ((primium.contains {$0.contains(compare)}) ||
+                (primium.contains {$0.contains("DASH")}) ||
+                (primium.contains {$0.contains("DSH")})  ||
+                (primium.contains {$0.contains("QTM")}) ||
+                (primium.contains {$0.contains("QTUM")}) ||
+                (primium.contains {$0.contains("BCC")}) ||
+                (primium.contains {$0.contains("BCH")})){
             for i in 0...primium.count - 1 {
-                let compare2 = primium[i]////////////시발이거 어캐고침
-                let compare3 = compare2[0]
-                if  compare3 == compare{
+                //let compare2 = primium[i]////////////시발이거 어캐고침
+                //let compare3 = compare2[0]
+                if  primium[i][0] == compare || (primium[i][0] == "DASH" && compare == "DSH") || (primium[i][0] == "DSH" && compare == "DSH") || (primium[i][0] == "QTM" && compare == "QTUM") || (primium[i][0] == "QTUM" && compare == "QTM") || (primium[i][0] == "BCC" && compare == "BCH") || (primium[i][0] == "BCH" && compare == "BCC"){
                     if (Float(pricee)! == 0) || (Float(primium[i][1])! == 0){///이것도 시발ㄹ
                         break
                     }
@@ -465,6 +454,33 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func coma(str:String) ->String{
+        var tmpp = str
+        if tmpp.contains("."){
+            tmpp = tmpp.components(separatedBy: ".")[0]
+        }
+        var price_tmp = tmpp
+        var made_price = ""
+        while price_tmp.characters.count >= 3{
+            let str_cnt = price_tmp.characters.count
+            let back = price_tmp.substring(from: price_tmp.index(price_tmp.endIndex, offsetBy: -3))
+            price_tmp = price_tmp.substring(to: price_tmp.index(price_tmp.startIndex, offsetBy: str_cnt-3))
+            if (made_price == ""){
+                made_price = back
+            }else{
+                made_price = back + "," + made_price
+            }
+        }
+        if !(price_tmp.characters.count == 0){
+            if (made_price == ""){
+                made_price = price_tmp
+            }else{
+                made_price = price_tmp + "," + made_price
+            }
+        }
+        return made_price
     }
     
 }

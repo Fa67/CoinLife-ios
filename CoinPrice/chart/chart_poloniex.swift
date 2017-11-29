@@ -19,10 +19,10 @@ class chart_poloniex {
             let url3:URL
             var url2:URL
             if table_controller.send_data[0] == "BTC"{
-                url2 = URL(string: "https://api.cryptowat.ch/markets/poloniex/" + table_controller.send_data[0] + "usdt/ohlc?after=" + dateSt + "&before=" + dateSt_now + "&periods=" + periods  )!
+                url2 = URL(string: "https://api.cryptowat.ch/markets/poloniex/" + table_controller.send_data[0] + "usdt/ohlc?after=" + dateSt + "&periods=" + periods  )!
                 url3 = URL(string: "https://api.cryptowat.ch/markets/poloniex/" + table_controller.send_data[0] + "usdt/orderbook"  )!
             }else{
-                url2 = URL(string: "https://api.cryptowat.ch/markets/poloniex/" + table_controller.send_data[0] + "btc/ohlc?after=" + dateSt + "&before=" + dateSt_now + "&periods=" + periods  )!
+                url2 = URL(string: "https://api.cryptowat.ch/markets/poloniex/" + table_controller.send_data[0] + "btc/ohlc?after=" + dateSt + "&periods=" + periods  )!
                 url3 = URL(string: "https://api.cryptowat.ch/markets/poloniex/" + table_controller.send_data[0] + "btc/orderbook"  )!
             }
             let task2 = URLSession.shared.dataTask(with: url2 as URL) { data, response, error in

@@ -18,13 +18,15 @@ class chart_coinone {
             //chart_coinone.is_doing_p = true
             
             var url2:URL
-            url2 = URL(string: "https://api.cryptowat.ch/markets/coinone/" + table_controller.send_data[0] + "krw/ohlc?after=" + dateSt + "&before=" + dateSt_now + "&periods=" + periods  )!
+            url2 = URL(string: "https://api.cryptowat.ch/markets/coinone/" + table_controller.send_data[0] + "krw/ohlc?after=" + dateSt + "&periods=" + periods  )!
             let task2 = URLSession.shared.dataTask(with: url2 as URL) { data, response, error in
                 guard let data = data, error == nil else { return }
                 //print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
                 let text = NSString(data: data, encoding: String.Encoding.ascii.rawValue)! as String
                 tmppp = text
                 chart_coinone.is_doing_c = false
+                
+                
             }
             task2.resume()
             
@@ -41,7 +43,7 @@ class chart_coinone {
                     dataa[4] = text.components(separatedBy: "\"low\":\"")[1].components(separatedBy: "\"")[0]
                     dataa[5] = text.components(separatedBy: "\"volume\":\"")[1].components(separatedBy: ".")[0]
                     
-                    let rslt  = ((Float(dataa[0])! - Float(dataa[2])!) / Float(dataa[0])! * 100)
+                    let rslt  = ((Float(dataa[0])! - Float(dataa[2])!) / Float(dataa[2])! * 100)
                     let tmp = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))
                     if(tmp > 0) {
                         dataa[1] = ( "+" + String(tmp))

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0FA7E344BE4583A60FD93001F4D0E2E8"
+               BlueprintIdentifier = "4162FEEA0F688F92907EFF7534FF1223"
                BuildableName = "ZAlertView.framework"
                BlueprintName = "ZAlertView"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0FA7E344BE4583A60FD93001F4D0E2E8"
+            BlueprintIdentifier = "4162FEEA0F688F92907EFF7534FF1223"
             BuildableName = "ZAlertView.framework"
             BlueprintName = "ZAlertView"
             ReferencedContainer = "container:Pods.xcodeproj">

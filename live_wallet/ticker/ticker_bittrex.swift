@@ -31,11 +31,7 @@ class ticker_bittrex {
                             let open  = self.split(str: main_coin_str,w1: "\"PrevDay\":",w2: ",")//24시간전
                             let rslt  = ((Float(coin_kind[i][2])! - Float(open)!) / Float(coin_kind[i][2])! * 100)//전일대비
                             let tmp = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))//소수점 제거
-                            if(tmp > 0) {
-                                coin_kind[i][3] = ( "+" + String(tmp))
-                            }else{
-                                coin_kind[i][3] = ( String(tmp))
-                            }
+                            
                             coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(TodayViewController.usd)! * usbtc!))//달러 적용 현재가
                         }
                         else if coin_kind[i][1] == "BitTrex" && coin_kind[i][0] == "BTC"{
@@ -43,30 +39,15 @@ class ticker_bittrex {
                             let open  = self.split(str: text.components(separatedBy: "\"USDT-" + coin_kind[i][0] + "\"")[1],w1: "\"PrevDay\":",w2: ",")//24시간전
                             let rslt  = ((Float(coin_kind[i][2])! - Float(open)!) / Float(coin_kind[i][2])! * 100)//전일대비
                             let tmp = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))//소수점 제거
-                            if(tmp > 0) {
-                                coin_kind[i][3] = ( "+" + String(tmp))
-                            }else{
-                                coin_kind[i][3] = ( String(tmp))
-                            }
+                            
                             coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(TodayViewController.usd)!))//달러 적용 현재가
                         }else if (coin_kind[i][1] == "BitTrex") {
                             coin_kind[i][2] = "미지원"
-                            coin_kind[i][3] = "미지원"
+                            
                         }
                         
                     }
-                    if primium_change == "BitTrex"{
-                        primium = []
-                        primium.append(["BTC",String(Int(usbtc! * Float(TodayViewController.usd)!))])
-                        for i in 0...coin_kind.count - 1 {
-                            if text.contains("\"BTC-" + coin_kind[i][0].uppercased() + "\""){
-                                let tmp = text.components(separatedBy: "\"BTC-" + coin_kind[i][0].uppercased() + "\"")[1]
-                                //let name = tmp.components(separatedBy: "\":")[0].uppercased()
-                                let value = Float(tmp.components(separatedBy: "\"Last\":")[1].components(separatedBy: ",")[0])
-                                primium.append([coin_kind[i][0].uppercased(),String(Int(value! * Float(TodayViewController.usd)! * usbtc!))])
-                            }
-                        }
-                    }
+                    
                     //ticker_bittrex.is_doing = false
                 }
                 task.resume()

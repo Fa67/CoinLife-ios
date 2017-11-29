@@ -28,27 +28,13 @@ class ticker_coinone {
                             let open = self.split(str: main_coin_str,w1: "\"yesterday_last\":\"",w2: "\"")//24시간전
                             let rslt  = ((Float(coin_kind[i][2])! - Float(open)!) / Float(coin_kind[i][2])! * 100)//전일대비
                             let tmp = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))
-                            if(tmp > 0) {
-                                coin_kind[i][3] = ( "+" + String(tmp))
-                            }else{
-                                coin_kind[i][3] = ( String(tmp))
-                            }
+                           
                         }else if (coin_kind[i][1] == "Coinone"){
                             coin_kind[i][2] = "미지원"
-                            coin_kind[i][3] = "미지원"
+                           
                         }
                     }
-                    if primium_change == "Coinone" {
-                        primium = []
-                        for i in 0...coin_kind.count - 1 {
-                            if text.contains("\"" + coin_kind[i][0].lowercased() + "\""){
-                                let tmp = text.components(separatedBy: "\"" + coin_kind[i][0].lowercased() + "\"")[1]
-                                //let name = tmp.components(separatedBy: "\":")[0].uppercased()
-                                let value = Float(tmp.components(separatedBy: "\"last\":\"")[1].components(separatedBy: "\"")[0])
-                                primium.append([coin_kind[i][0].uppercased(),String(Int(value!))])
-                            }
-                        }
-                    }
+                    
                     //ticker_coinone.is_doing = false
                 }
                 task.resume()
