@@ -8,9 +8,8 @@
 
 import Foundation
 import UIKit
-import SwiftChart
-import NVActivityIndicatorView
 
+import NVActivityIndicatorView
 
 class change_c_cell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
@@ -18,39 +17,26 @@ class change_c_cell: UITableViewCell {
 
 class change_c: UITableViewController  {
     
-    
     @IBOutlet weak var tableview: UITableView!
     
     override func viewDidLoad() {
         tableview.dataSource = self
         tableview.delegate = self
-        
         self.tableView.isEditing = true
-        
     }
-    
-    
-    
     override func viewWillAppear(_ animated: Bool){
-        
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
     }
-    
     override func viewDidDisappear(_ animated: Bool) {
-       
     }
-    
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
     }
-    
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
     }
-    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let tmp1 = sourceIndexPath.row
         let tmp2 = destinationIndexPath.row
@@ -81,42 +67,29 @@ class change_c: UITableViewController  {
                     i = i + 1
                 }
             }
-
-           
-            
         }else{
             let f_change = section_change[tmp1]
             let s_change = section_change[tmp2]
             var end = 0
             for i in 0...coin_kind.count - 1 {
-                if(coin_kind[i][1] == s_change){
+                if(coin_kind[i][1] == f_change){
                     end = i
                     break
                 }
             }
             
-            var tmp = end
-            var i = coin_kind.count - 1
-            for _ in 0...coin_kind.count - 1  {
-                if i == tmp{
+            for i in 0...coin_kind.count - 1  {
+                if(coin_kind[i][1] == s_change){
+                    let movedObject = coin_kind[end]
+                    //print(movedObject)
+                    coin_kind.remove(at: end)
+                    coin_kind.insert(movedObject, at: i)
                     break
-                }
-                if(coin_kind[i][1] == f_change){
-                    let movedObject = coin_kind[i]
-                    print(movedObject)
-                    coin_kind.remove(at: i)
-                    coin_kind.insert(movedObject, at: end)
-                    tmp = tmp + 1
-                }else{
-                    i = i  - 1
                 }
             }
             
-           
         }
-        
-        
-  
+
         add_check_change()
         save_arr()
         table_controller.right_now_refresh = 1
@@ -128,12 +101,9 @@ class change_c: UITableViewController  {
     
     //테이블 데이터 로드
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "change_c_cell", for: indexPath) as! change_c_cell
         cell.name.text = section_change[indexPath.row]
-        
         return cell
-        
     }
     func add_check_change(){
         if(!(coin_kind.count == 0)){
@@ -165,9 +135,9 @@ class change_c: UITableViewController  {
         var text = ""
         if !(coin_kind.count == 0){
             for i in 0...coin_kind.count - 1 {
-                if coin_kind[i].count == 5{
+                if coin_kind[i].count == 7{
                     if (coin_kind[i][4] == "wallet"){
-                        text.append( coin_kind[i][0] + "@" + coin_kind[i][1] + "@" + coin_kind[i][4] + "#")
+                        //text.append( coin_kind[i][0] + "@" + coin_kind[i][1] + "@" + coin_kind[i][4] + "#")
                     }else{
                         text.append( coin_kind[i][0] + "@" + coin_kind[i][1] + "@" + "---" + "#")
                     }
@@ -177,12 +147,10 @@ class change_c: UITableViewController  {
                 
             }
         }
-        
         let defaults = UserDefaults(suiteName: "group.jungcode.coin")
         defaults?.set(String(text), forKey: "arr")
         defaults?.synchronize()
     }
-    
 }
 
 

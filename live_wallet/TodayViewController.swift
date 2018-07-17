@@ -12,15 +12,13 @@ import NotificationCenter
 var coin_kind: [[String]] = []//여기에 걍 막 저장
 var section_change: [String] = []//거래소 리스트
 
+var up_list = ""
 
 class walletcell: UITableViewCell {
-    @IBOutlet weak var coin_name: UILabel!
-    @IBOutlet weak var count: UILabel!
-    @IBOutlet weak var price: UILabel!
-
-    @IBOutlet weak var coin_image: UIImageView!
+    @IBOutlet var count: UILabel!
     
-    @IBOutlet weak var topcolor: UIView!
+    @IBOutlet var price: UILabel!
+    @IBOutlet var coin_name: UILabel!
     
 }
 
@@ -29,6 +27,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     var timer:Timer!
     static var usd = "0"//환율
+    static var jpy = "0"//환율
     @IBOutlet weak var tableview: UITableView!
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
@@ -40,8 +39,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             
             var heightt = 0
             //heightt = heightt + section_change2.count * 25
-            for i in 0...coin_kind.count - 1 {
-                heightt = heightt + 110
+            for _ in 0...coin_kind.count - 1 {
+                heightt = heightt + 55
             }
             //print(heightt)
             self.preferredContentSize = CGSize(width: maxSize.width, height: CGFloat(heightt))
@@ -52,6 +51,33 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         self.extensionContext?.widgetLargestAvailableDisplayMode = NCWidgetDisplayMode.expanded
         // Do any additional setup after loading the view from its nib.
+        var url = URL(string: "https://search.naver.com/p/csearch/content/apirender_ssl.nhn?_callback=a&pkid=141&key=exchangeApiNationOnly&where=nexearch&q=1%EB%8B%AC%EB%9F%AC&u1=keb&u6=standardUnit&u7=0&u3=USD&u4=KRW&u5=info&u2=1")
+        
+        let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
+            guard let data = data, error == nil else { return }
+            let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            //print(parset)
+            //table_controller.usd = (parset?.components(separatedBy: "\"KRW\":")[1].components(separatedBy: "}")[0])!
+            TodayViewController.usd = (parset?.components(separatedBy: "\"price\" : \"")[2].components(separatedBy: "\"")[0].replacingOccurrences(of: ",", with: ""))!
+        }
+        task.resume()
+        url = URL(string: "https://search.naver.com/p/csearch/content/apirender_ssl.nhn?pkid=141&key=exchangeApiNationOnly&where=nexearch&q=jpy&u1=keb&u7=0&u3=JPY&u4=KRW&u5=info&u2=100")
+        let task2 = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
+            guard let data = data, error == nil else { return }
+            let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            TodayViewController.jpy = (parset?.components(separatedBy: "\"price\" : \"")[2].components(separatedBy: "\"")[0].replacingOccurrences(of: ",", with: ""))!
+        }
+        task2.resume()
+        
+        url = URL(string: "https://s3.ap-northeast-2.amazonaws.com/crix-production/crix_master")
+        let task12 = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
+            guard let data = data, error == nil else { return }
+            let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            up_list = parset! as String
+            self.scan_all()
+        }
+        task12.resume()
+        
         load_arr()
         timerDidFire()
         scan_all()
@@ -84,6 +110,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let gettext = String(describing: defaults!.object(forKey: "arr") ?? "")
         
         if gettext == ""{
+            coin_kind = []
             return
         }
         
@@ -123,22 +150,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func scan_all(){
         if !(section_change.count == 0){
-            let url = URL(string: "https://search.naver.com/p/csearch/content/apirender_ssl.nhn?_callback=a&pkid=141&key=exchangeApiNationOnly&where=nexearch&q=1%EB%8B%AC%EB%9F%AC&u1=keb&u6=standardUnit&u7=0&u3=USD&u4=KRW&u5=info&u2=1")
             
-            let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
-                guard let data = data, error == nil else { return }
-                let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-                //print(parset)
-                //table_controller.usd = (parset?.components(separatedBy: "\"KRW\":")[1].components(separatedBy: "}")[0])!
-                TodayViewController.usd = (parset?.components(separatedBy: "\"price\" : \"")[2].components(separatedBy: "\"")[0].replacingOccurrences(of: ",", with: ""))!
-                
-            }
-            task.resume()
             
             var tmp_str = ""
             for i in 0...section_change.count - 1 {
                 if(section_change[i] == "Bithumb" ){
                     tmp_str = tmp_str + "bithumb"
+                }
+                if(section_change[i] == "Binance" ){
+                    tmp_str = tmp_str + "Binance"
                 }
                 if(section_change[i] == "Coinone" ){
                     tmp_str = tmp_str + "coinone"
@@ -162,9 +182,29 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 if(section_change[i] == "BitFlyer" ){
                     tmp_str = tmp_str + "bitflyer"
                 }
+                if(section_change[i] == "Upbit" ){
+                    tmp_str = tmp_str + "Upbit"
+                }
+                if(section_change[i] == "Yobit" ){
+                    tmp_str = tmp_str + "Yobit"
+                }
                 
                 
             }
+            if(tmp_str.contains("bithumb")){Ticker().bithumb()}
+            if(tmp_str.contains("coinone")){Ticker().coinone()}
+            if(tmp_str.contains("poloniex")){Ticker().poloniex()}
+            if(tmp_str.contains("bittrex")){Ticker().bittrex()}
+            if(tmp_str.contains("bitfinex")){Ticker().bitfinex()}
+            if(tmp_str.contains("korbit")){Ticker().korbit()}
+            if(tmp_str.contains("coinnest")){Ticker().coinnest()}
+            if(tmp_str.contains("bitflyer")){Ticker().bitflyer()}
+            if(tmp_str.contains("Upbit")){Ticker().upbit()}
+            if(tmp_str.contains("Yobit")){Ticker().yobit()}
+            if(tmp_str.contains("Binance")){Ticker().binance()}
+            if(tmp_str.contains("Gateio")){Ticker().gateio()}
+            if(tmp_str.contains("Cexio")){Ticker().cexio()}
+            /*
             if(tmp_str.contains("bithumb")){ticker_bithumb()}
             if(tmp_str.contains("coinone")){ticker_coinone()}
             if(tmp_str.contains("poloniex")){ticker_poloniex()}
@@ -173,6 +213,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             if(tmp_str.contains("korbit")){ticker_korbit()}
             if(tmp_str.contains("coinnest")){ticker_coinnest()}
             if(tmp_str.contains("bitflyer")){ticker_bitflyer()}
+            if(tmp_str.contains("Upbit")){ticker_upbit()}
+            if(tmp_str.contains("Yobit")){ticker_yobit()}*/
         }
     }
     
@@ -192,8 +234,14 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "walletcell", for: indexPath) as! walletcell
         
-        cell.coin_name.text = coin_kind[indexPath.row][0] + "/" + coin_kind[indexPath.row][1]
-        cell.count.text = coin_kind[indexPath.row][3] + ""
+        let tmp = coin_kind[indexPath.row][0] + "/" + coin_kind[indexPath.row][1]
+        cell.coin_name.text = tmp
+        
+        cell.count.layer.cornerRadius = 5
+        cell.count.layer.masksToBounds = true
+        cell.count.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.8)
+        cell.count.textColor = UIColor.white
+        cell.count.text = " " + coin_kind[indexPath.row][3] + "   "
         
         /*
         for i in 0...coin_kind.count - 1 {
@@ -221,10 +269,10 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
         
         
         if !(image_ccc == nil){
-            cell.coin_image.image = image_ccc
-            cell.topcolor.backgroundColor = image_ccc?.getPixelColor(pos:CGPoint(x: (image_ccc?.size.width)!/2,y:50))
+            //cell.coin_image.image = image_ccc
+            //cell.topcolor.backgroundColor = image_ccc?.getPixelColor(pos:CGPoint(x: (image_ccc?.size.width)!/2,y:50))
         }else{
-            cell.coin_image.image = nil
+            //cell.coin_image.image = nil
             //cell.topcolor.backgroundColor
            
         }
@@ -240,8 +288,8 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
         }
         var price_tmp = tmpp
         var made_price = ""
-        while price_tmp.characters.count >= 3{
-            let str_cnt = price_tmp.characters.count
+        while price_tmp.count >= 3{
+            let str_cnt = price_tmp.count
             let back = price_tmp.substring(from: price_tmp.index(price_tmp.endIndex, offsetBy: -3))
             price_tmp = price_tmp.substring(to: price_tmp.index(price_tmp.startIndex, offsetBy: str_cnt-3))
             if (made_price == ""){
@@ -250,7 +298,7 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
                 made_price = back + "," + made_price
             }
         }
-        if !(price_tmp.characters.count == 0){
+        if !(price_tmp.count == 0){
             if (made_price == ""){
                 made_price = price_tmp
             }else{
@@ -280,7 +328,7 @@ extension UIImage {
         assert(outputExtent.size.width == 1 && outputExtent.size.height == 1)
         
         // Render to bitmap.
-        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: kCIFormatRGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: CIFormat.RGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
         
         // Compute result.
         let result = UIColor(red: CGFloat(bitmap[0]) / 255.0, green: CGFloat(bitmap[1]) / 255.0, blue: CGFloat(bitmap[2]) / 255.0, alpha: CGFloat(bitmap[3]) / 255.0)

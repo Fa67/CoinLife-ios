@@ -24,17 +24,13 @@ class ticker_bithumb {
                         if coin_kind[i][1] == "Bithumb" && text.contains(coin_kind[i][0]){
                             let main_coin_str = text.components(separatedBy: coin_kind[i][0])[1]
                             coin_kind[i][2] = self.split(str: main_coin_str,w1: "\"closing_price\":\"",w2: "\"")//현재가
-                            let open = self.split(str: main_coin_str,w1: "\"opening_price\":\"",w2: "\"")//24시간전 가격
-                            let before_ = ((Float(coin_kind[i][2])! - Float(open)!) / Float(coin_kind[i][2])! * 100)//전일대비 비율
-                            let del_num = round(before_ * pow(10.0, Float(2))) / pow(10.0, Float(2))//소수점 제거
-                            
+
                         }else if (coin_kind[i][1] == "Bithumb"){
                             coin_kind[i][2] = "미지원"
-              
+
                         }
                     }
                     
-                    //ticker_bithumb.is_doing = false
                 }
                 task.resume()
             }
@@ -42,6 +38,20 @@ class ticker_bithumb {
     }
     
     func split(str:String,w1:String,w2:String) -> String{
-        return str.components(separatedBy: w1)[1].components(separatedBy: w2)[0]
+        var tmp = ""
+        if (str.contains(w1)){
+            tmp = str.components(separatedBy: w1)[1]
+        }else{
+            return "0"
+        }
+        if (tmp.contains(w2)){
+            tmp = tmp.components(separatedBy: w2)[0]
+        }else{
+            return "0"
+        }
+        if (Float(tmp) == nil){
+            return "0"
+        }
+        return tmp
     }
 }

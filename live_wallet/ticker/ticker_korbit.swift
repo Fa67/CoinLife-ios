@@ -13,7 +13,7 @@ class ticker_korbit {
     
     init() {
         if (!ticker_korbit.is_doing){
-            //ticker_korbit.is_doing = true
+
             if coin_kind.count != 0{
                 for i in 0...coin_kind.count - 1 {
                     if ( coin_kind[i][1] == "Korbit"){
@@ -22,18 +22,14 @@ class ticker_korbit {
                         let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
                             guard let data = data, error == nil else { return }
                             let text = NSString(data: data, encoding: String.Encoding.ascii.rawValue)! as String
-                            //print(text)
+
                             if (text.contains("\"last\":\"")){
-                                coin_kind[i][2] = text.components(separatedBy: "\"last\":\"")[1].components(separatedBy: "\"")[0]
-                               
-                                
-                               
+                                coin_kind[i][2] = self.split(str: text,w1: "\"last\":\"",w2: "\"")
+
                             }else {
                                 coin_kind[i][2] = "미지원"
-                               
+
                             }
-                            //ticker_korbit.is_doing = false
-                            
                         }
                         task.resume()
                     }
@@ -43,7 +39,21 @@ class ticker_korbit {
     }
     
     func split(str:String,w1:String,w2:String) -> String{
-        return str.components(separatedBy: w1)[1].components(separatedBy: w2)[0]
+        var tmp = ""
+        if (str.contains(w1)){
+            tmp = str.components(separatedBy: w1)[1]
+        }else{
+            return "0"
+        }
+        if (tmp.contains(w2)){
+            tmp = tmp.components(separatedBy: w2)[0]
+        }else{
+            return "0"
+        }
+        if (Float(tmp) == nil){
+            return "0"
+        }
+        return tmp
     }
 }
 

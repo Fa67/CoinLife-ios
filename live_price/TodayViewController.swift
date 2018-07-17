@@ -19,17 +19,20 @@ var primium_change_tmp = ""
 var kind_price = ""
 var is_scroll = 0
 
+var up_list = ""
+
 class coincell4: UITableViewCell {
     @IBOutlet weak var coin_name: UILabel!
     @IBOutlet weak var change: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var before: UILabel!
     @IBOutlet weak var primium: UILabel!
+    @IBOutlet var change2: UILabel!
 }
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     
-    var enablecant = 6
+    var enablecant = 7
     @IBOutlet weak var reload_text: UIButton!
     @IBOutlet weak var time: UILabel!
     static var usd = "0"//환율
@@ -43,18 +46,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @objc func timerDidFire(){
-        reload_text.setTitle(enablecant.description, for: .normal)
-
+        reload_text.setTitle(enablecant.description, for: UIControl.State.normal)
+        list_refresh()
         if( enablecant < 0){
-            enablecant = 6
-            reload_text.isEnabled = true
-            reload_text.setTitle("새로고침", for: .normal)
-            timer.invalidate()
+            enablecant = 7
+            //reload_text.isEnabled = true
+            //reload_text.setTitle("새로고침", for: .normal)
+            reload_text.setTitle(enablecant.description, for: UIControl.State.normal)
+            reload_text.isEnabled = false
+            list_refresh()
+            scan_all()
+            //timer.invalidate()
         }
         enablecant = enablecant - 1
     }
     
-    static var cny = "0"//환율
     static var jpy = "0"//환율
     var timer3:Timer!
     var timer:Timer!
@@ -63,6 +69,31 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var url = URL(string: "https://search.naver.com/p/csearch/content/apirender_ssl.nhn?pkid=141&key=exchangeApiNationOnly&where=nexearch&q=usd&u1=keb&u7=0&u3=USD&u4=KRW&u5=info&u2=1")
+        let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
+            guard let data = data, error == nil else { return }
+            let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            TodayViewController.usd = (parset?.components(separatedBy: "\"price\" : \"")[2].components(separatedBy: "\"")[0].replacingOccurrences(of: ",", with: ""))!
+        }
+        task.resume()
+        
+        url = URL(string: "https://search.naver.com/p/csearch/content/apirender_ssl.nhn?pkid=141&key=exchangeApiNationOnly&where=nexearch&q=jpy&u1=keb&u7=0&u3=JPY&u4=KRW&u5=info&u2=100")
+        let task2 = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
+            guard let data = data, error == nil else { return }
+            let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            TodayViewController.jpy = (parset?.components(separatedBy: "\"price\" : \"")[2].components(separatedBy: "\"")[0].replacingOccurrences(of: ",", with: ""))!
+        }
+        task2.resume()
+        
+        url = URL(string: "https://s3.ap-northeast-2.amazonaws.com/crix-production/crix_master")
+        let task12 = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
+            guard let data = data, error == nil else { return }
+            let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            up_list = parset! as String
+            self.scan_all()
+        }
+        task12.resume()
+        //reload_text.isEnabled = false
         load_arr()
         load_primium()
         load_kind()
@@ -70,14 +101,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         list_refresh()
         scan_all()
 
+        reload_text.isEnabled = false
+        
         if(timer3 != nil) {timer3.invalidate()}
-        timer3 = Timer(timeInterval: 2.0, target: self, selector: #selector(TodayViewController.timerDidFire3), userInfo: nil, repeats: true)
+        timer3 = Timer(timeInterval: 1.0, target: self, selector: #selector(TodayViewController.timerDidFire), userInfo: nil, repeats: true)
         RunLoop.current.add(timer3, forMode: RunLoopMode.commonModes)
         
         tableview.dataSource = self
         tableview.delegate = self
         self.extensionContext?.widgetLargestAvailableDisplayMode = NCWidgetDisplayMode.expanded
-        
+       
     }
     
     func scan_all(){
@@ -85,63 +118,37 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             let now = Calendar.current.date(byAdding: .minute, value: 0, to: Date())
             time.text = (now?.description.components(separatedBy: " ")[0])! + " " + (now?.description.components(separatedBy: " ")[1])!
             //print(now?.description)
-            let url = URL(string: "https://search.naver.com/p/csearch/content/apirender_ssl.nhn?_callback=a&pkid=141&key=exchangeApiNationOnly&where=nexearch&q=1%EB%8B%AC%EB%9F%AC&u1=keb&u6=standardUnit&u7=0&u3=USD&u4=KRW&u5=info&u2=1")
             
-            let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
-                guard let data = data, error == nil else { return }
-                let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-                //print(parset)
-                //table_controller.usd = (parset?.components(separatedBy: "\"KRW\":")[1].components(separatedBy: "}")[0])!
-                TodayViewController.usd = (parset?.components(separatedBy: "\"price\" : \"")[2].components(separatedBy: "\"")[0].replacingOccurrences(of: ",", with: ""))!
-                
-            }
-            task.resume()
-            
-        
             var tmp_str = ""
             for i in 0...section_change.count - 1 {
-                if(section_change[i] == "Bithumb" || primium_change == "Bithumb"){
-                    tmp_str = tmp_str + "bithumb"
-                }
-                if(section_change[i] == "Coinone" || primium_change == "Coinone"){
-                    tmp_str = tmp_str + "coinone"
-                }
-                if(section_change[i] == "Poloniex" || primium_change == "Poloniex"){
-                    tmp_str = tmp_str + "poloniex"
-                }
-                if(section_change[i] == "BitTrex" || primium_change == "BitTrex"){
-                    tmp_str = tmp_str + "bittrex"
-                }
-                if(section_change[i] == "BitFinex" || primium_change == "Bitfinex"){
-                    tmp_str = tmp_str + "bitfinex"
-                }
-                if(section_change[i] == "Korbit" || primium_change == "Korbit"){
-                    tmp_str = tmp_str + "korbit"
-                }
-                if(section_change[i] == "Coinnest" || primium_change == "Coinnest"){
-                    tmp_str = tmp_str + "coinnest"
-                }
-                if(section_change[i] == "Huobi" || primium_change == "Huobi"){
-                    //tmp_str = tmp_str + "poloniex"
-                }
-                if(section_change[i] == "Okcoin" || primium_change == "Okcoin"){
-                    //ticker_okcoin()
-                    
-                }
-                if(section_change[i] == "BitFlyer" || primium_change == "BitFlyer"){
-                    tmp_str = tmp_str + "bitflyer"
-                }
-                
-                
+                if(section_change[i] == "Bithumb" || primium_change == "Bithumb"){tmp_str = tmp_str + "bithumb"}
+                if(section_change[i] == "Coinone" || primium_change == "Coinone"){tmp_str = tmp_str + "coinone"}
+                if(section_change[i] == "Poloniex" || primium_change == "Poloniex"){tmp_str = tmp_str + "poloniex"}
+                if(section_change[i] == "BitTrex" || primium_change == "BitTrex"){tmp_str = tmp_str + "bittrex"}
+                if(section_change[i] == "BitFinex" || primium_change == "Bitfinex"){tmp_str = tmp_str + "bitfinex"}
+                if(section_change[i] == "Korbit" || primium_change == "Korbit"){tmp_str = tmp_str + "korbit"}
+                if(section_change[i] == "Coinnest" || primium_change == "Coinnest"){tmp_str = tmp_str + "coinnest"}
+                if(section_change[i] == "BitFlyer" || primium_change == "BitFlyer"){tmp_str = tmp_str + "bitflyer"}
+                if(section_change[i] == "Yobit" || primium_change == "Yobit"){tmp_str = tmp_str + "Yobit"}
+                if(section_change[i] == "Upbit" || primium_change == "Upbit"){tmp_str = tmp_str + "Upbit"}
+                if(section_change[i] == "Yobit" || primium_change == "Yobit"){tmp_str = tmp_str + "Yobit"}
+                if(section_change[i] == "Binance" || primium_change == "Binance"){tmp_str = tmp_str + "Binance"}
+                if(section_change[i] == "Gateio" || primium_change == "Gateio"){tmp_str = tmp_str + "Gateio"}
+                if(section_change[i] == "Cexio" || primium_change == "Cexio"){tmp_str = tmp_str + "Cexio"}
             }
-            if(tmp_str.contains("bithumb")){ticker_bithumb()}
-            if(tmp_str.contains("coinone")){ticker_coinone()}
-            if(tmp_str.contains("poloniex")){ticker_poloniex()}
-            if(tmp_str.contains("bittrex")){ticker_bittrex()}
-            if(tmp_str.contains("bitfinex")){ticker_bitfinex()}
-            if(tmp_str.contains("korbit")){ticker_korbit()}
-            if(tmp_str.contains("coinnest")){ticker_coinnest()}
-            if(tmp_str.contains("bitflyer")){ticker_bitflyer()}
+            if(tmp_str.contains("bithumb")){Ticker().bithumb()}
+            if(tmp_str.contains("coinone")){Ticker().coinone()}
+            if(tmp_str.contains("poloniex")){Ticker().poloniex()}
+            if(tmp_str.contains("bittrex")){Ticker().bittrex()}
+            if(tmp_str.contains("bitfinex")){Ticker().bitfinex()}
+            if(tmp_str.contains("korbit")){Ticker().korbit()}
+            if(tmp_str.contains("coinnest")){Ticker().coinnest()}
+            if(tmp_str.contains("bitflyer")){Ticker().bitflyer()}
+            if(tmp_str.contains("Upbit")){Ticker().upbit()}
+            if(tmp_str.contains("Yobit")){Ticker().yobit()}
+            if(tmp_str.contains("Binance")){Ticker().binance()}
+            if(tmp_str.contains("Gateio")){Ticker().gateio()}
+            if(tmp_str.contains("Cexio")){Ticker().cexio()}
         }
     }
     
@@ -201,10 +208,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         else {
             //expanded
             
-            var heightt = 40
+            var heightt = 0
             //heightt = heightt + section_change2.count * 25
+            
             for i in 0...section_change2.count - 1 {
-                heightt = heightt + section_change2[i].count * 35 + 25
+                heightt = heightt + section_change2[i].count * 55 + 0
             }
             //print(heightt)
             self.preferredContentSize = CGSize(width: maxSize.width, height: CGFloat(heightt))
@@ -243,11 +251,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             var tmpp_data = tmp[i].components(separatedBy: "@")
             if tmpp_data.count == 3{
                 if (tmpp_data[2] == "wallet"){
-                    coin_kind.append([tmpp_data[0], tmpp_data[1],"---","---",tmpp_data[2]])
+                    //coin_kind.append([tmpp_data[0], tmpp_data[1],"---","---",tmpp_data[2]])
                 }else{
                     coin_kind.append([tmpp_data[0], tmpp_data[1],"---","---","---"])
                 }
-                
             }else{
                 coin_kind.append([tmpp_data[0], tmpp_data[1],"---","---","---"])
             }
@@ -266,7 +273,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             primium_change=gettext
             
         }
-        catch {}
+
         //return String(describing: defaults!.object(forKey: "score") ?? "0")
     }
     
@@ -278,7 +285,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         do {
             kind_price=gettext
         }
-        catch {}
         //return String(describing: defaults!.object(forKey: "score") ?? "0")
     }
     
@@ -318,6 +324,9 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
         return 0
     }
     //section 높이
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.0
+    }
     
      func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
     {
@@ -332,23 +341,52 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
         let cell = tableview.dequeueReusableCell(withIdentifier: "coincell4", for: indexPath) as! coincell4
         
         //코인 이름 저장
-        cell.coin_name.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+        //cell.coin_name.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         cell.coin_name.text = section_change2[indexPath.section][indexPath.row][0]
         
+        var word = ""
+        
+        var pricee = section_change2[indexPath.section][indexPath.row][2]
+        
+        let change_name = section_change2[indexPath.section][indexPath.row][1]
+        cell.change2.text = change_name
+        if (change_name == "Bithumb") || (change_name == "Coinone") || (change_name == "Coinnest") || (change_name == "Bithumb") || (change_name == "Korbit") || (change_name == "Upbit"){
+            word = "KRW"
+        }
+        else if (change_name == "Binance") || (change_name == "BitFinex") || (change_name == "BitTrex") || (change_name == "Cexio") || (change_name == "Gateio") || (change_name == "Yobit") || (change_name == "Poloniex"){
+            //word_x = Double(Float(TodayViewController.usd)!)
+            //print(pricee)
+            //print(TodayViewController.usd)
+            if (pricee != "---") && (pricee != "ip"){
+                pricee = (Double(pricee)! / Double(TodayViewController.usd)!).description
+            }
+            
+            word = "USD"
+        }
+        else if (change_name == "BitFlyer"){
+            if (pricee != "---") && (pricee != "ip"){
+                pricee = (Double(pricee)! / Double(TodayViewController.jpy)! * 100).description
+            }
+            //word_x = Double(Float(TodayViewController.jpy)!)
+            word = "JPY"
+        }
+        
         //거래소 이름 저장
-        cell.change.text = section_change2[indexPath.section][indexPath.row][1]
+        cell.change.text = section_change2[indexPath.section][indexPath.row][1] + " | " + word
         
         //가격 이름 저장
-        var pricee = section_change2[indexPath.section][indexPath.row][2]
+        
         if !(Float(section_change2[indexPath.section][indexPath.row][2]) == nil){
             cell.price.textColor = UIColor.black
 
             //한화
-            if pricee.contains("."){
-                pricee = pricee.components(separatedBy: ".")[0]
+            var price_tmp = pricee
+
+            price_tmp = coma(str: pricee)
+            if (price_tmp.contains(".0")){
+                price_tmp = price_tmp.components(separatedBy: ".0")[0]
             }
-            let price_tmp = coma(str: pricee)
-            cell.price.text = price_tmp + "￦"
+            cell.price.text = price_tmp
         }else{
             cell.price.textColor = UIColor.gray
             if pricee == "---"{
@@ -357,13 +395,15 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
                 cell.price.text = "미지원"
             }
             else if pricee == "ip"{
-                cell.price.text = "IP차단"
+                cell.price.text = "오류"
             }else{
                 cell.price.text = "오류"
             }
         }
         
         //전일대비 이름 저장
+        cell.before.layer.cornerRadius = 5
+        cell.before.layer.masksToBounds = true
         let before_v = section_change2[indexPath.section][indexPath.row][3]
         let tmp_before = Float(before_v)
         if tmp_before == nil{
@@ -371,74 +411,91 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
             if before_v == "---"{
                 cell.before.text = "로딩중"//로딩중
             }else if before_v == "미지원"{
+                cell.before.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                cell.before.textColor = UIColor.white
                 cell.before.text = "미지원"
             }else if before_v == "ip"{
-                cell.before.text = "IP차단"
+                cell.before.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                cell.before.textColor = UIColor.white
+                cell.before.text = "오류"
             }else{
+                cell.before.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                cell.before.textColor = UIColor.white
                 cell.before.text = "오류"
             }
         }else{
-            cell.before.text = section_change2[indexPath.section][indexPath.row][3] + "%"
-            if section_change2[indexPath.section][indexPath.row][3] == "0"{
+            cell.before.text = "" + section_change2[indexPath.section][indexPath.row ][3] + "% "
+            if section_change2[indexPath.section][indexPath.row ][3] == "0"{
                 //cell.before.text = "---" + ""
             }
             if tmp_before! > Float(0)   {
-                cell.before.textColor = UIColor(red: 70/255, green: 170/255, blue: 70/255, alpha: 1.0)
+                cell.before.backgroundColor = UIColor(red: 70/255, green: 170/255, blue: 70/255, alpha: 0.6)
+                cell.before.textColor = UIColor.white
             }else if  tmp_before! < Float(0) {
-                cell.before.textColor = UIColor(red: 200/255, green: 70/255, blue: 70/255, alpha: 1.0)
+                cell.before.backgroundColor = UIColor(red: 200/255, green: 70/255, blue: 70/255, alpha: 0.6)
+                cell.before.textColor = UIColor.white
             }else{
-                cell.before.textColor = UIColor.gray
+                cell.before.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                cell.before.textColor = UIColor.white
             }
         }
         
         
         //프리미엄 이름 저장
+        cell.primium.layer.cornerRadius = 5
+        cell.primium.layer.masksToBounds = true
         var tmp2 = Float(0.0)
-        let compare = section_change2[indexPath.section][indexPath.row][0]//오류부분
-        if (primium.count > 0) && !(Float(pricee) == nil)
-            && ((primium.contains {$0.contains(compare)}) ||
-                (primium.contains {$0.contains("DASH")}) ||
-                (primium.contains {$0.contains("DSH")})  ||
-                (primium.contains {$0.contains("QTM")}) ||
-                (primium.contains {$0.contains("QTUM")}) ||
-                (primium.contains {$0.contains("BCC")}) ||
-                (primium.contains {$0.contains("BCH")})){
+        let compare = section_change2[indexPath.section][indexPath.row ][0]//오류부분
+        if (primium.count > 0) && !(Float(pricee) == nil) && pricee != "---"
+            && ((primium.contains {$0.contains(compare)})){
             for i in 0...primium.count - 1 {
-                //let compare2 = primium[i]////////////시발이거 어캐고침
-                //let compare3 = compare2[0]
-                if  primium[i][0] == compare || (primium[i][0] == "DASH" && compare == "DSH") || (primium[i][0] == "DSH" && compare == "DSH") || (primium[i][0] == "QTM" && compare == "QTUM") || (primium[i][0] == "QTUM" && compare == "QTM") || (primium[i][0] == "BCC" && compare == "BCH") || (primium[i][0] == "BCH" && compare == "BCC"){
+                if  primium[i][0] == compare{
                     if (Float(pricee)! == 0) || (Float(primium[i][1])! == 0){///이것도 시발ㄹ
-                        break
+                        cell.primium.text = "없음"
+                        cell.primium.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                        cell.primium.textColor = UIColor.white
+                        continue
                     }
-                    let rslt  = ((Float(pricee)! - Float(primium[i][1])!) / Float(pricee)! * 100)//오류부분
+                    let rslt  = ((Float(section_change2[indexPath.section][indexPath.row][2])! - Float(primium[i][1])!) / Float(primium[i][1])! * 100)//오류부분
                     if(rslt < -99 || rslt > 99){
-                        break
+                        //break
                     }
                     tmp2 = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))
                     if tmp2.description.contains("100"){
-                        break
+                        //break
                     }
                     var plus = ""
                     if tmp2 > Float(0)   {
                         plus = "+"
-                        cell.primium.textColor = UIColor(red: 70/255, green: 170/255, blue: 70/255, alpha: 1.0)
+                        cell.primium.backgroundColor = UIColor(red: 70/255, green: 170/255, blue: 70/255, alpha: 0.6)
+                        cell.primium.textColor = UIColor.white
                     }else if  tmp2 < Float(0) {
-                        cell.primium.textColor = UIColor(red: 200/255, green: 70/255, blue: 70/255, alpha: 1.0)
+                        cell.primium.backgroundColor = UIColor(red: 200/255, green: 70/255, blue: 70/255, alpha: 0.6)
+                        cell.primium.textColor = UIColor.white
                     }else{
-                        cell.primium.textColor = UIColor.gray
+                        cell.primium.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                        cell.primium.textColor = UIColor.white
                     }
-                    cell.primium.text = plus + (tmp2.description) + "%"
+                    cell.primium.text = "" + plus + (tmp2.description) + "% "
                 }
             }
         }else{
             cell.primium.textColor = UIColor.gray
             if pricee == "---"{
+                cell.primium.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                cell.primium.textColor = UIColor.white
                 cell.primium.text = "로딩중"//로딩중
             }else if pricee == "미지원"{
+                cell.primium.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                cell.primium.textColor = UIColor.white
                 cell.primium.text = "미지원"
             }else if pricee == "ip"{
-                cell.primium.text = "IP차단"
+                cell.primium.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                cell.primium.textColor = UIColor.white
+                cell.primium.text = "오류"
             }else{
+                cell.primium.backgroundColor = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 0.6)
+                cell.primium.textColor = UIColor.white
                 cell.primium.text = "없음"
             }
         }
@@ -457,14 +514,20 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func coma(str:String) ->String{
+        var comback = ""
         var tmpp = str
         if tmpp.contains("."){
+            comback = tmpp.components(separatedBy: ".")[1]
+            if comback.count >= 2{
+                comback = comback.substring(to: comback.index(comback.startIndex, offsetBy: 2))
+            }
             tmpp = tmpp.components(separatedBy: ".")[0]
+            
         }
         var price_tmp = tmpp
         var made_price = ""
-        while price_tmp.characters.count >= 3{
-            let str_cnt = price_tmp.characters.count
+        while price_tmp.count >= 3{
+            let str_cnt = price_tmp.count
             let back = price_tmp.substring(from: price_tmp.index(price_tmp.endIndex, offsetBy: -3))
             price_tmp = price_tmp.substring(to: price_tmp.index(price_tmp.startIndex, offsetBy: str_cnt-3))
             if (made_price == ""){
@@ -473,14 +536,57 @@ extension TodayViewController: UITableViewDelegate,UITableViewDataSource {
                 made_price = back + "," + made_price
             }
         }
-        if !(price_tmp.characters.count == 0){
+        if !(price_tmp.count == 0){
             if (made_price == ""){
                 made_price = price_tmp
             }else{
                 made_price = price_tmp + "," + made_price
             }
         }
-        return made_price
+        if comback == ""{
+            return made_price
+        }else{
+            return made_price + "." + comback
+        }
+    }
+    
+    func coma_order(str:String) ->String{
+        var tmpp = str
+        var tmpp2 = ""
+        if tmpp.contains("."){
+            tmpp2 = tmpp.components(separatedBy: ".")[1]
+            tmpp = tmpp.components(separatedBy: ".")[0]
+            tmpp2 = "." + tmpp2
+        }
+        var price_tmp = tmpp
+        var made_price = ""
+        while price_tmp.count >= 3{
+            let str_cnt = price_tmp.count
+            let back = price_tmp.substring(from: price_tmp.index(price_tmp.endIndex, offsetBy: -3))
+            price_tmp = price_tmp.substring(to: price_tmp.index(price_tmp.startIndex, offsetBy: str_cnt-3))
+            if (made_price == ""){
+                made_price = back
+            }else{
+                made_price = back + "," + made_price
+            }
+        }
+        if !(price_tmp.count == 0){
+            if (made_price == ""){
+                made_price = price_tmp
+            }else{
+                made_price = price_tmp + "," + made_price
+            }
+        }
+        
+        if made_price.count > 3{
+            return made_price
+        }else{
+            return made_price + tmpp2
+        }
+        
+        
+        
+        
     }
     
 }

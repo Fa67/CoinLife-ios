@@ -10,54 +10,31 @@
 		63252DEF1C554D76EB1D9A26 /* Pods_CoinPriceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CDA1C3BDC726BD45C1909C /* Pods_CoinPriceTests.framework */; };
 		706232EA29DABE3455761DD9 /* Pods_CoinPrice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155CFE66B30F9D68F3917EE /* Pods_CoinPrice.framework */; };
 		79DB004AB0250EB7E5AFB1F6 /* Pods_CoinPriceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5FF8A28450F59E5961AF07 /* Pods_CoinPriceUITests.framework */; };
-		BE9AC0845832FAE9B6EE73D4 /* Pods_CoinPriceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4CE5591F8D254A001DD0B7 /* Pods_CoinPriceTests.framework */; };
+		CE19EB731FFE5FED009C776A /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19EB721FFE5FEC009C776A /* Ticker.swift */; };
+		CE2A80742095B8BE00B61EF0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2A80732095B8BE00B61EF0 /* TabBarController.swift */; };
+		CE3236781FD43C3D00F465EA /* ticker_korbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32366E1FD43C3100F465EA /* ticker_korbit.swift */; };
+		CE3236791FD43C3D00F465EA /* ticker_poloniex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32366F1FD43C3300F465EA /* ticker_poloniex.swift */; };
+		CE32367A1FD43C3D00F465EA /* ticker_bithumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3236701FD43C3400F465EA /* ticker_bithumb.swift */; };
+		CE32367B1FD43C3D00F465EA /* ticker_bitfinex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3236711FD43C3600F465EA /* ticker_bitfinex.swift */; };
+		CE32367C1FD43C3D00F465EA /* ticker_coinone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3236721FD43C3700F465EA /* ticker_coinone.swift */; };
+		CE32367D1FD43C3D00F465EA /* ticker_bitflyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3236731FD43C3800F465EA /* ticker_bitflyer.swift */; };
+		CE32367E1FD43C3D00F465EA /* ticker_coinnest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3236741FD43C3A00F465EA /* ticker_coinnest.swift */; };
+		CE32367F1FD43C3D00F465EA /* ticker_yobit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3236751FD43C3B00F465EA /* ticker_yobit.swift */; };
+		CE3236801FD43C3D00F465EA /* ticker_bittrex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3236761FD43C3C00F465EA /* ticker_bittrex.swift */; };
+		CE3236811FD43C3D00F465EA /* ticker_upbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3236771FD43C3D00F465EA /* ticker_upbit.swift */; };
 		CE32B3901FAAE3930067A581 /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32B38F1FAAE3930067A581 /* setting.swift */; };
 		CE3572C01FBB3A1B00807495 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFDC37C1FADB43E0030DD02 /* NotificationCenter.framework */; };
 		CE3572C31FBB3A1B00807495 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572C21FBB3A1B00807495 /* TodayViewController.swift */; };
 		CE3572C61FBB3A1B00807495 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3572C41FBB3A1B00807495 /* MainInterface.storyboard */; };
 		CE3572CA1FBB3A1B00807495 /* live_wallet.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE3572BF1FBB3A1B00807495 /* live_wallet.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CE3572D91FBB3C9800807495 /* ticker_bitflyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572CF1FBB3C9500807495 /* ticker_bitflyer.swift */; };
-		CE3572DA1FBB3C9800807495 /* ticker_korbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572D01FBB3C9600807495 /* ticker_korbit.swift */; };
-		CE3572DB1FBB3C9800807495 /* ticker_poloniex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572D11FBB3C9600807495 /* ticker_poloniex.swift */; };
-		CE3572DD1FBB3C9800807495 /* ticker_coinone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572D31FBB3C9600807495 /* ticker_coinone.swift */; };
-		CE3572DE1FBB3C9800807495 /* ticker_bitfinex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572D41FBB3C9600807495 /* ticker_bitfinex.swift */; };
-		CE3572DF1FBB3C9800807495 /* ticker_bittrex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572D51FBB3C9700807495 /* ticker_bittrex.swift */; };
-		CE3572E01FBB3C9800807495 /* ticker_coinnest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572D61FBB3C9700807495 /* ticker_coinnest.swift */; };
-		CE3572E11FBB3C9800807495 /* ticker_bithumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572D71FBB3C9700807495 /* ticker_bithumb.swift */; };
-		CE3572EE1FBB3E3300807495 /* ticker_bithumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572E41FBB3E2800807495 /* ticker_bithumb.swift */; };
-		CE3572EF1FBB3E3300807495 /* ticker_bittrex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572E51FBB3E2900807495 /* ticker_bittrex.swift */; };
-		CE3572F11FBB3E3300807495 /* ticker_poloniex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572E71FBB3E2C00807495 /* ticker_poloniex.swift */; };
-		CE3572F31FBB3E3300807495 /* ticker_coinone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572E91FBB3E2E00807495 /* ticker_coinone.swift */; };
-		CE3572F41FBB3E3300807495 /* ticker_korbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572EA1FBB3E3000807495 /* ticker_korbit.swift */; };
-		CE3572F51FBB3E3300807495 /* ticker_bitfinex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572EB1FBB3E3100807495 /* ticker_bitfinex.swift */; };
-		CE3572F61FBB3E3300807495 /* ticker_bitflyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572EC1FBB3E3200807495 /* ticker_bitflyer.swift */; };
-		CE3572F71FBB3E3300807495 /* ticker_coinnest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3572ED1FBB3E3300807495 /* ticker_coinnest.swift */; };
 		CE4CE5561F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4CE5571F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework */; };
 		CE4CE5581F8D254A001DD0B7 /* Pods_CoinPriceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4CE5591F8D254A001DD0B7 /* Pods_CoinPriceTests.framework */; };
-		CE529B421F94957A00F4CE5D /* chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE529B411F94957A00F4CE5D /* chart.swift */; };
 		CE5377591F8DD3A200D35845 /* ZAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE53775A1F8DD3A200D35845 /* ZAlertView.framework */; };
-		CE75BB651FC6D70300C6E277 /* change_c.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75BB641FC6D70300C6E277 /* change_c.swift */; };
-		CE7B3FA11F98D44C00111507 /* SwiftChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7B3FA21F98D44C00111507 /* SwiftChart.framework */; };
-		CE7E23B71FA754BD00EFE52A /* ticker_bithumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23B61FA754BD00EFE52A /* ticker_bithumb.swift */; };
-		CE7E23B91FA757C700EFE52A /* ticker_bitfinex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23B81FA757C700EFE52A /* ticker_bitfinex.swift */; };
-		CE7E23BC1FA758FB00EFE52A /* ticker_coinone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23BB1FA758FB00EFE52A /* ticker_coinone.swift */; };
-		CE7E23BE1FA75A7A00EFE52A /* ticker_poloniex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23BD1FA75A7A00EFE52A /* ticker_poloniex.swift */; };
-		CE7E23C01FA75ABD00EFE52A /* ticker_korbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23BF1FA75ABD00EFE52A /* ticker_korbit.swift */; };
-		CE7E23C21FA75AE000EFE52A /* ticker_bitflyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C11FA75AE000EFE52A /* ticker_bitflyer.swift */; };
-		CE7E23C41FA75B0600EFE52A /* ticker_coinnest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C31FA75B0600EFE52A /* ticker_coinnest.swift */; };
-		CE7E23C61FA75B1000EFE52A /* ticker_okcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C51FA75B1000EFE52A /* ticker_okcoin.swift */; };
-		CE7E23C81FA75B2200EFE52A /* ticker_huobi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C71FA75B2200EFE52A /* ticker_huobi.swift */; };
-		CE7E23CA1FA75B2C00EFE52A /* ticker_bittrex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E23C91FA75B2C00EFE52A /* ticker_bittrex.swift */; };
-		CEB612951FA86F6800DC5554 /* chart_korbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB612941FA86F6800DC5554 /* chart_korbit.swift */; };
-		CEB612971FA86F7700DC5554 /* chart_coinnest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB612961FA86F7700DC5554 /* chart_coinnest.swift */; };
-		CEB612991FA86F8300DC5554 /* chart_huobi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB612981FA86F8300DC5554 /* chart_huobi.swift */; };
-		CEB6129F1FA8719700DC5554 /* chart_okcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6129E1FA8719700DC5554 /* chart_okcoin.swift */; };
-		CEB612A11FA871AD00DC5554 /* chart_bitflyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB612A01FA871AD00DC5554 /* chart_bitflyer.swift */; };
-		CECAB0601FA81865001F0316 /* chart_bithumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB05F1FA81865001F0316 /* chart_bithumb.swift */; };
-		CECAB0631FA81AE3001F0316 /* chart_poloniex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB0621FA81AE3001F0316 /* chart_poloniex.swift */; };
-		CECAB0651FA81C56001F0316 /* chart_bittrex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB0641FA81C56001F0316 /* chart_bittrex.swift */; };
-		CECAB0671FA81D3D001F0316 /* chart_bitfinex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB0661FA81D3D001F0316 /* chart_bitfinex.swift */; };
-		CECAB0691FA81DB3001F0316 /* chart_coinone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB0681FA81DB3001F0316 /* chart_coinone.swift */; };
+		CEA8775B206A54FD00074E24 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8775A206A54FC00074E24 /* Ticker.swift */; };
+		CEBF674B208CC817008B2B85 /* loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF674A208CC817008B2B85 /* loading.swift */; };
+		CEBF674F208D8D33008B2B85 /* change_c.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF674E208D8D33008B2B85 /* change_c.swift */; };
+		CEC9D59C1FD7BD7200BF0DB1 /* ViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9D59B1FD7BD7200BF0DB1 /* ViewControllerUtils.swift */; };
+		CEC9D59E1FD7C14100BF0DB1 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9D59D1FD7C14100BF0DB1 /* Ticker.swift */; };
 		CECD86BB1FC53C420029EAB9 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECD86BC1FC53C420029EAB9 /* NVActivityIndicatorView.framework */; };
 		CED1E8651FB0A288006495EB /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED1E8641FB0A288006495EB /* UIImageExtension.swift */; };
 		CED6FB0F1FB5E3CD004EFE5A /* wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6FB0E1FB5E3CD004EFE5A /* wallet.swift */; };
@@ -66,7 +43,6 @@
 		CEDE2C651F8CA8FD00161B8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE2C641F8CA8FD00161B8A /* AppDelegate.swift */; };
 		CEDE2C6C1F8CA8FD00161B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDE2C6A1F8CA8FD00161B8A /* Main.storyboard */; };
 		CEDE2C6E1F8CA8FD00161B8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDE2C6D1F8CA8FD00161B8A /* Assets.xcassets */; };
-		CEDE2C711F8CA8FD00161B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDE2C6F1F8CA8FD00161B8A /* LaunchScreen.storyboard */; };
 		CEDE2C7C1F8CA8FE00161B8A /* CoinPriceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE2C7B1F8CA8FE00161B8A /* CoinPriceTests.swift */; };
 		CEDE2C871F8CA8FE00161B8A /* CoinPriceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE2C861F8CA8FE00161B8A /* CoinPriceUITests.swift */; };
 		CEE200581F91245A00C88D3C /* table_controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE200571F91245A00C88D3C /* table_controller.swift */; };
@@ -78,7 +54,6 @@
 		CEFDC3801FADB43E0030DD02 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFDC37F1FADB43E0030DD02 /* TodayViewController.swift */; };
 		CEFDC3831FADB43E0030DD02 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFDC3811FADB43E0030DD02 /* MainInterface.storyboard */; };
 		CEFDC3871FADB43E0030DD02 /* live_price.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEFDC37B1FADB43E0030DD02 /* live_price.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		DDB2DCE4CDBABD50C236D31F /* Pods_CoinPriceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4CE5571F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,66 +111,46 @@
 		68CDA1C3BDC726BD45C1909C /* Pods_CoinPriceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoinPriceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EF39B4A41C1B6A8FD4F97E9 /* Pods-CoinPrice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPrice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice.debug.xcconfig"; sourceTree = "<group>"; };
 		70CEC5716B2499E79A65EF2C /* Pods-CoinPrice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPrice.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice.release.xcconfig"; sourceTree = "<group>"; };
+		CE19EB721FFE5FEC009C776A /* Ticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
+		CE2A80732095B8BE00B61EF0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CE32366E1FD43C3100F465EA /* ticker_korbit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_korbit.swift; sourceTree = "<group>"; };
+		CE32366F1FD43C3300F465EA /* ticker_poloniex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_poloniex.swift; sourceTree = "<group>"; };
+		CE3236701FD43C3400F465EA /* ticker_bithumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_bithumb.swift; sourceTree = "<group>"; };
+		CE3236711FD43C3600F465EA /* ticker_bitfinex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_bitfinex.swift; sourceTree = "<group>"; };
+		CE3236721FD43C3700F465EA /* ticker_coinone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_coinone.swift; sourceTree = "<group>"; };
+		CE3236731FD43C3800F465EA /* ticker_bitflyer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_bitflyer.swift; sourceTree = "<group>"; };
+		CE3236741FD43C3A00F465EA /* ticker_coinnest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_coinnest.swift; sourceTree = "<group>"; };
+		CE3236751FD43C3B00F465EA /* ticker_yobit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_yobit.swift; sourceTree = "<group>"; };
+		CE3236761FD43C3C00F465EA /* ticker_bittrex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_bittrex.swift; sourceTree = "<group>"; };
+		CE3236771FD43C3D00F465EA /* ticker_upbit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_upbit.swift; sourceTree = "<group>"; };
 		CE32B38F1FAAE3930067A581 /* setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
 		CE3572BF1FBB3A1B00807495 /* live_wallet.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = live_wallet.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3572C21FBB3A1B00807495 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		CE3572C51FBB3A1B00807495 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		CE3572C71FBB3A1B00807495 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE3572CE1FBB3A2200807495 /* live_wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = live_wallet.entitlements; sourceTree = "<group>"; };
-		CE3572CF1FBB3C9500807495 /* ticker_bitflyer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ticker_bitflyer.swift; path = live_wallet/ticker/ticker_bitflyer.swift; sourceTree = SOURCE_ROOT; };
-		CE3572D01FBB3C9600807495 /* ticker_korbit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ticker_korbit.swift; path = live_wallet/ticker/ticker_korbit.swift; sourceTree = SOURCE_ROOT; };
-		CE3572D11FBB3C9600807495 /* ticker_poloniex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ticker_poloniex.swift; path = live_wallet/ticker/ticker_poloniex.swift; sourceTree = SOURCE_ROOT; };
-		CE3572D31FBB3C9600807495 /* ticker_coinone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ticker_coinone.swift; path = live_wallet/ticker/ticker_coinone.swift; sourceTree = SOURCE_ROOT; };
-		CE3572D41FBB3C9600807495 /* ticker_bitfinex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ticker_bitfinex.swift; path = live_wallet/ticker/ticker_bitfinex.swift; sourceTree = SOURCE_ROOT; };
-		CE3572D51FBB3C9700807495 /* ticker_bittrex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ticker_bittrex.swift; path = live_wallet/ticker/ticker_bittrex.swift; sourceTree = SOURCE_ROOT; };
-		CE3572D61FBB3C9700807495 /* ticker_coinnest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ticker_coinnest.swift; path = live_wallet/ticker/ticker_coinnest.swift; sourceTree = SOURCE_ROOT; };
-		CE3572D71FBB3C9700807495 /* ticker_bithumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ticker_bithumb.swift; path = live_wallet/ticker/ticker_bithumb.swift; sourceTree = SOURCE_ROOT; };
-		CE3572E41FBB3E2800807495 /* ticker_bithumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_bithumb.swift; sourceTree = "<group>"; };
-		CE3572E51FBB3E2900807495 /* ticker_bittrex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_bittrex.swift; sourceTree = "<group>"; };
-		CE3572E71FBB3E2C00807495 /* ticker_poloniex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_poloniex.swift; sourceTree = "<group>"; };
-		CE3572E91FBB3E2E00807495 /* ticker_coinone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_coinone.swift; sourceTree = "<group>"; };
-		CE3572EA1FBB3E3000807495 /* ticker_korbit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_korbit.swift; sourceTree = "<group>"; };
-		CE3572EB1FBB3E3100807495 /* ticker_bitfinex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_bitfinex.swift; sourceTree = "<group>"; };
-		CE3572EC1FBB3E3200807495 /* ticker_bitflyer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_bitflyer.swift; sourceTree = "<group>"; };
-		CE3572ED1FBB3E3300807495 /* ticker_coinnest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_coinnest.swift; sourceTree = "<group>"; };
 		CE4CE54B1F8D250B001DD0B7 /* CollapsibleTableSectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CollapsibleTableSectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4CE5551F8D253A001DD0B7 /* CollapsibleTableSectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CollapsibleTableSectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4CE5571F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CoinPriceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4CE5591F8D254A001DD0B7 /* Pods_CoinPriceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CoinPriceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4CE55B1F8D2577001DD0B7 /* CollapsibleTableSectionViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CollapsibleTableSectionViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE529B411F94957A00F4CE5D /* chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart.swift; sourceTree = "<group>"; };
 		CE5377511F8DCFC400D35845 /* SelectionDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SelectionDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE53775A1F8DD3A200D35845 /* ZAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ZAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE74AD711FBC542600AACFF7 /* Onboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Onboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE75BB641FC6D70300C6E277 /* change_c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = change_c.swift; sourceTree = "<group>"; };
 		CE7B3F9F1F98CD0200111507 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7B3FA21F98D44C00111507 /* SwiftChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE7E23B61FA754BD00EFE52A /* ticker_bithumb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bithumb.swift; sourceTree = "<group>"; };
-		CE7E23B81FA757C700EFE52A /* ticker_bitfinex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bitfinex.swift; sourceTree = "<group>"; };
-		CE7E23BB1FA758FB00EFE52A /* ticker_coinone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_coinone.swift; sourceTree = "<group>"; };
-		CE7E23BD1FA75A7A00EFE52A /* ticker_poloniex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_poloniex.swift; sourceTree = "<group>"; };
-		CE7E23BF1FA75ABD00EFE52A /* ticker_korbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_korbit.swift; sourceTree = "<group>"; };
-		CE7E23C11FA75AE000EFE52A /* ticker_bitflyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bitflyer.swift; sourceTree = "<group>"; };
-		CE7E23C31FA75B0600EFE52A /* ticker_coinnest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_coinnest.swift; sourceTree = "<group>"; };
-		CE7E23C51FA75B1000EFE52A /* ticker_okcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_okcoin.swift; sourceTree = "<group>"; };
-		CE7E23C71FA75B2200EFE52A /* ticker_huobi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_huobi.swift; sourceTree = "<group>"; };
-		CE7E23C91FA75B2C00EFE52A /* ticker_bittrex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticker_bittrex.swift; sourceTree = "<group>"; };
 		CE83CF2C1FADC00000790466 /* CoinPrice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CoinPrice.entitlements; sourceTree = "<group>"; };
 		CE83CF2D1FADC03300790466 /* live_price.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = live_price.entitlements; sourceTree = "<group>"; };
+		CEA8775A206A54FC00074E24 /* Ticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		CEB3326B1F8DCF110001913F /* SelectionDialog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SelectionDialog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEB612941FA86F6800DC5554 /* chart_korbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_korbit.swift; sourceTree = "<group>"; };
-		CEB612961FA86F7700DC5554 /* chart_coinnest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_coinnest.swift; sourceTree = "<group>"; };
-		CEB612981FA86F8300DC5554 /* chart_huobi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_huobi.swift; sourceTree = "<group>"; };
-		CEB6129E1FA8719700DC5554 /* chart_okcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_okcoin.swift; sourceTree = "<group>"; };
-		CEB612A01FA871AD00DC5554 /* chart_bitflyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_bitflyer.swift; sourceTree = "<group>"; };
+		CEB5883D1FD256E200A74D78 /* GHImageCaching.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GHImageCaching.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEBF674A208CC817008B2B85 /* loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loading.swift; sourceTree = "<group>"; };
+		CEBF674E208D8D33008B2B85 /* change_c.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = change_c.swift; sourceTree = "<group>"; };
 		CEC594CA1FB7D5D000C1A703 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC594CF1FB868D100C1A703 /* SwiftCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC81E7E1FB178E1000155FC /* FCAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FCAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CECAB05F1FA81865001F0316 /* chart_bithumb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_bithumb.swift; sourceTree = "<group>"; };
-		CECAB0621FA81AE3001F0316 /* chart_poloniex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_poloniex.swift; sourceTree = "<group>"; };
-		CECAB0641FA81C56001F0316 /* chart_bittrex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_bittrex.swift; sourceTree = "<group>"; };
-		CECAB0661FA81D3D001F0316 /* chart_bitfinex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_bitfinex.swift; sourceTree = "<group>"; };
-		CECAB0681FA81DB3001F0316 /* chart_coinone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chart_coinone.swift; sourceTree = "<group>"; };
+		CEC9D59B1FD7BD7200BF0DB1 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
+		CEC9D59D1FD7C14100BF0DB1 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		CECD86BC1FC53C420029EAB9 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NVActivityIndicatorView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECE4C161FA970F70027F648 /* PullToBounce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PullToBounce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED1E8641FB0A288006495EB /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIImageExtension.swift; path = ../UIImageExtension.swift; sourceTree = "<group>"; };
@@ -206,7 +161,6 @@
 		CEDE2C641F8CA8FD00161B8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDE2C6B1F8CA8FD00161B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEDE2C6D1F8CA8FD00161B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CEDE2C701F8CA8FD00161B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEDE2C721F8CA8FD00161B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEDE2C771F8CA8FE00161B8A /* CoinPriceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinPriceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDE2C7B1F8CA8FE00161B8A /* CoinPriceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceTests.swift; sourceTree = "<group>"; };
@@ -243,7 +197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CECD86BB1FC53C420029EAB9 /* NVActivityIndicatorView.framework in Frameworks */,
-				CE7B3FA11F98D44C00111507 /* SwiftChart.framework in Frameworks */,
 				CE5377591F8DD3A200D35845 /* ZAlertView.framework in Frameworks */,
 				CE4CE5581F8D254A001DD0B7 /* Pods_CoinPriceTests.framework in Frameworks */,
 				CE4CE5561F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework in Frameworks */,
@@ -256,7 +209,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				63252DEF1C554D76EB1D9A26 /* Pods_CoinPriceTests.framework in Frameworks */,
-				BE9AC0845832FAE9B6EE73D4 /* Pods_CoinPriceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				79DB004AB0250EB7E5AFB1F6 /* Pods_CoinPriceUITests.framework in Frameworks */,
-				DDB2DCE4CDBABD50C236D31F /* Pods_CoinPriceUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +247,7 @@
 		B04EDD1F04FA8780DAE62271 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEB5883D1FD256E200A74D78 /* GHImageCaching.framework */,
 				CECD86BC1FC53C420029EAB9 /* NVActivityIndicatorView.framework */,
 				CE74AD711FBC542600AACFF7 /* Onboard.framework */,
 				CEC594CF1FB868D100C1A703 /* SwiftCharts.framework */,
@@ -325,6 +277,7 @@
 		CE3572C11FBB3A1B00807495 /* live_wallet */ = {
 			isa = PBXGroup;
 			children = (
+				CEA8775A206A54FC00074E24 /* Ticker.swift */,
 				CE3572E31FBB3C9B00807495 /* ticker */,
 				CE3572CE1FBB3A2200807495 /* live_wallet.entitlements */,
 				CE3572C21FBB3A1B00807495 /* TodayViewController.swift */,
@@ -338,29 +291,16 @@
 		CE3572E31FBB3C9B00807495 /* ticker */ = {
 			isa = PBXGroup;
 			children = (
-				CE3572D41FBB3C9600807495 /* ticker_bitfinex.swift */,
-				CE3572CF1FBB3C9500807495 /* ticker_bitflyer.swift */,
-				CE3572D71FBB3C9700807495 /* ticker_bithumb.swift */,
-				CE3572D51FBB3C9700807495 /* ticker_bittrex.swift */,
-				CE3572D61FBB3C9700807495 /* ticker_coinnest.swift */,
-				CE3572D31FBB3C9600807495 /* ticker_coinone.swift */,
-				CE3572D01FBB3C9600807495 /* ticker_korbit.swift */,
-				CE3572D11FBB3C9600807495 /* ticker_poloniex.swift */,
-			);
-			path = ticker;
-			sourceTree = "<group>";
-		};
-		CE3572F91FBB3F4200807495 /* ticker */ = {
-			isa = PBXGroup;
-			children = (
-				CE3572EB1FBB3E3100807495 /* ticker_bitfinex.swift */,
-				CE3572EC1FBB3E3200807495 /* ticker_bitflyer.swift */,
-				CE3572E41FBB3E2800807495 /* ticker_bithumb.swift */,
-				CE3572E51FBB3E2900807495 /* ticker_bittrex.swift */,
-				CE3572ED1FBB3E3300807495 /* ticker_coinnest.swift */,
-				CE3572E91FBB3E2E00807495 /* ticker_coinone.swift */,
-				CE3572EA1FBB3E3000807495 /* ticker_korbit.swift */,
-				CE3572E71FBB3E2C00807495 /* ticker_poloniex.swift */,
+				CE3236711FD43C3600F465EA /* ticker_bitfinex.swift */,
+				CE3236731FD43C3800F465EA /* ticker_bitflyer.swift */,
+				CE3236701FD43C3400F465EA /* ticker_bithumb.swift */,
+				CE3236761FD43C3C00F465EA /* ticker_bittrex.swift */,
+				CE3236741FD43C3A00F465EA /* ticker_coinnest.swift */,
+				CE3236721FD43C3700F465EA /* ticker_coinone.swift */,
+				CE32366E1FD43C3100F465EA /* ticker_korbit.swift */,
+				CE32366F1FD43C3300F465EA /* ticker_poloniex.swift */,
+				CE3236771FD43C3D00F465EA /* ticker_upbit.swift */,
+				CE3236751FD43C3B00F465EA /* ticker_yobit.swift */,
 			);
 			path = ticker;
 			sourceTree = "<group>";
@@ -373,40 +313,6 @@
 				CEE465251F9E389F002297BB /* SelectionDialogItem.swift */,
 			);
 			path = selection_dialog;
-			sourceTree = "<group>";
-		};
-		CE7E23BA1FA758CA00EFE52A /* ticker */ = {
-			isa = PBXGroup;
-			children = (
-				CE7E23B81FA757C700EFE52A /* ticker_bitfinex.swift */,
-				CE7E23B61FA754BD00EFE52A /* ticker_bithumb.swift */,
-				CE7E23BB1FA758FB00EFE52A /* ticker_coinone.swift */,
-				CE7E23BD1FA75A7A00EFE52A /* ticker_poloniex.swift */,
-				CE7E23BF1FA75ABD00EFE52A /* ticker_korbit.swift */,
-				CE7E23C11FA75AE000EFE52A /* ticker_bitflyer.swift */,
-				CE7E23C31FA75B0600EFE52A /* ticker_coinnest.swift */,
-				CE7E23C51FA75B1000EFE52A /* ticker_okcoin.swift */,
-				CE7E23C71FA75B2200EFE52A /* ticker_huobi.swift */,
-				CE7E23C91FA75B2C00EFE52A /* ticker_bittrex.swift */,
-			);
-			path = ticker;
-			sourceTree = "<group>";
-		};
-		CECAB0611FA8186B001F0316 /* chart */ = {
-			isa = PBXGroup;
-			children = (
-				CECAB05F1FA81865001F0316 /* chart_bithumb.swift */,
-				CECAB0621FA81AE3001F0316 /* chart_poloniex.swift */,
-				CECAB0641FA81C56001F0316 /* chart_bittrex.swift */,
-				CECAB0661FA81D3D001F0316 /* chart_bitfinex.swift */,
-				CECAB0681FA81DB3001F0316 /* chart_coinone.swift */,
-				CEB612941FA86F6800DC5554 /* chart_korbit.swift */,
-				CEB612961FA86F7700DC5554 /* chart_coinnest.swift */,
-				CEB612981FA86F8300DC5554 /* chart_huobi.swift */,
-				CEB6129E1FA8719700DC5554 /* chart_okcoin.swift */,
-				CEB612A01FA871AD00DC5554 /* chart_bitflyer.swift */,
-			);
-			path = chart;
 			sourceTree = "<group>";
 		};
 		CEDE2C581F8CA8FD00161B8A = {
@@ -439,22 +345,22 @@
 			isa = PBXGroup;
 			children = (
 				CE83CF2C1FADC00000790466 /* CoinPrice.entitlements */,
-				CECAB0611FA8186B001F0316 /* chart */,
-				CE7E23BA1FA758CA00EFE52A /* ticker */,
 				CE7B76DC1F9F2E24006B9B72 /* selection_dialog */,
 				CEDE2C641F8CA8FD00161B8A /* AppDelegate.swift */,
 				CEDE2C6A1F8CA8FD00161B8A /* Main.storyboard */,
 				CEDE2C6D1F8CA8FD00161B8A /* Assets.xcassets */,
-				CEDE2C6F1F8CA8FD00161B8A /* LaunchScreen.storyboard */,
 				CEDE2C721F8CA8FD00161B8A /* Info.plist */,
-				CE529B411F94957A00F4CE5D /* chart.swift */,
+				CEC9D59D1FD7C14100BF0DB1 /* Ticker.swift */,
 				CEE200571F91245A00C88D3C /* table_controller.swift */,
 				CEDCD8401FA071E900C6942A /* block_status.swift */,
 				CE32B38F1FAAE3930067A581 /* setting.swift */,
 				CED6FB0E1FB5E3CD004EFE5A /* wallet.swift */,
 				CEDB89E61FB6B3C300B78167 /* CardView.swift */,
-				CE75BB641FC6D70300C6E277 /* change_c.swift */,
+				CEBF674E208D8D33008B2B85 /* change_c.swift */,
 				CEFB76351FC9368E0026D6A4 /* candle.swift */,
+				CEC9D59B1FD7BD7200BF0DB1 /* ViewControllerUtils.swift */,
+				CEBF674A208CC817008B2B85 /* loading.swift */,
+				CE2A80732095B8BE00B61EF0 /* TabBarController.swift */,
 			);
 			path = CoinPrice;
 			sourceTree = "<group>";
@@ -481,7 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				CE83CF2D1FADC03300790466 /* live_price.entitlements */,
-				CE3572F91FBB3F4200807495 /* ticker */,
+				CE19EB721FFE5FEC009C776A /* Ticker.swift */,
 				CEFDC37F1FADB43E0030DD02 /* TodayViewController.swift */,
 				CEFDC3811FADB43E0030DD02 /* MainInterface.storyboard */,
 				CEFDC3841FADB43E0030DD02 /* Info.plist */,
@@ -598,11 +504,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = jungho;
 				TargetAttributes = {
 					CE3572BE1FBB3A1B00807495 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -612,6 +519,7 @@
 					};
 					CEDE2C601F8CA8FD00161B8A = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -633,16 +541,19 @@
 					};
 					CEDE2C761F8CA8FE00161B8A = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CEDE2C601F8CA8FD00161B8A;
 					};
 					CEDE2C811F8CA8FE00161B8A = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CEDE2C601F8CA8FD00161B8A;
 					};
 					CEFDC37A1FADB43E0030DD02 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -688,7 +599,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDE2C711F8CA8FD00161B8A /* LaunchScreen.storyboard in Resources */,
 				CEDE2C6E1F8CA8FD00161B8A /* Assets.xcassets in Resources */,
 				CEDE2C6C1F8CA8FD00161B8A /* Main.storyboard in Resources */,
 			);
@@ -823,13 +733,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeableTabBarController/SwipeableTabBarController.framework",
 				"${BUILT_PRODUCTS_DIR}/ZAlertView/ZAlertView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftChart.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeableTabBarController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZAlertView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -877,15 +787,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3572DE1FBB3C9800807495 /* ticker_bitfinex.swift in Sources */,
-				CE3572E11FBB3C9800807495 /* ticker_bithumb.swift in Sources */,
-				CE3572E01FBB3C9800807495 /* ticker_coinnest.swift in Sources */,
-				CE3572D91FBB3C9800807495 /* ticker_bitflyer.swift in Sources */,
-				CE3572DF1FBB3C9800807495 /* ticker_bittrex.swift in Sources */,
-				CE3572DA1FBB3C9800807495 /* ticker_korbit.swift in Sources */,
+				CE3236811FD43C3D00F465EA /* ticker_upbit.swift in Sources */,
+				CEA8775B206A54FD00074E24 /* Ticker.swift in Sources */,
+				CE3236791FD43C3D00F465EA /* ticker_poloniex.swift in Sources */,
+				CE32367F1FD43C3D00F465EA /* ticker_yobit.swift in Sources */,
+				CE3236781FD43C3D00F465EA /* ticker_korbit.swift in Sources */,
 				CE3572C31FBB3A1B00807495 /* TodayViewController.swift in Sources */,
-				CE3572DB1FBB3C9800807495 /* ticker_poloniex.swift in Sources */,
-				CE3572DD1FBB3C9800807495 /* ticker_coinone.swift in Sources */,
+				CE32367D1FD43C3D00F465EA /* ticker_bitflyer.swift in Sources */,
+				CE32367E1FD43C3D00F465EA /* ticker_coinnest.swift in Sources */,
+				CE3236801FD43C3D00F465EA /* ticker_bittrex.swift in Sources */,
+				CE32367A1FD43C3D00F465EA /* ticker_bithumb.swift in Sources */,
+				CE32367B1FD43C3D00F465EA /* ticker_bitfinex.swift in Sources */,
+				CE32367C1FD43C3D00F465EA /* ticker_coinone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,36 +808,19 @@
 			files = (
 				CEDCD8411FA071E900C6942A /* block_status.swift in Sources */,
 				CEE465281F9E38A0002297BB /* SelectionDialogItem.swift in Sources */,
-				CE7E23C61FA75B1000EFE52A /* ticker_okcoin.swift in Sources */,
 				CEDE2C651F8CA8FD00161B8A /* AppDelegate.swift in Sources */,
-				CE7E23BE1FA75A7A00EFE52A /* ticker_poloniex.swift in Sources */,
-				CE7E23B71FA754BD00EFE52A /* ticker_bithumb.swift in Sources */,
-				CEB612A11FA871AD00DC5554 /* chart_bitflyer.swift in Sources */,
-				CE7E23B91FA757C700EFE52A /* ticker_bitfinex.swift in Sources */,
-				CECAB0651FA81C56001F0316 /* chart_bittrex.swift in Sources */,
+				CE2A80742095B8BE00B61EF0 /* TabBarController.swift in Sources */,
+				CEC9D59C1FD7BD7200BF0DB1 /* ViewControllerUtils.swift in Sources */,
 				CEDB89E71FB6B3C300B78167 /* CardView.swift in Sources */,
-				CE7E23CA1FA75B2C00EFE52A /* ticker_bittrex.swift in Sources */,
-				CE529B421F94957A00F4CE5D /* chart.swift in Sources */,
-				CE7E23BC1FA758FB00EFE52A /* ticker_coinone.swift in Sources */,
-				CE7E23C41FA75B0600EFE52A /* ticker_coinnest.swift in Sources */,
 				CEFB76361FC9368E0026D6A4 /* candle.swift in Sources */,
-				CEB612991FA86F8300DC5554 /* chart_huobi.swift in Sources */,
-				CECAB0691FA81DB3001F0316 /* chart_coinone.swift in Sources */,
+				CEC9D59E1FD7C14100BF0DB1 /* Ticker.swift in Sources */,
+				CEBF674F208D8D33008B2B85 /* change_c.swift in Sources */,
+				CEBF674B208CC817008B2B85 /* loading.swift in Sources */,
 				CED6FB0F1FB5E3CD004EFE5A /* wallet.swift in Sources */,
-				CE75BB651FC6D70300C6E277 /* change_c.swift in Sources */,
-				CEB612971FA86F7700DC5554 /* chart_coinnest.swift in Sources */,
-				CE7E23C21FA75AE000EFE52A /* ticker_bitflyer.swift in Sources */,
-				CECAB0671FA81D3D001F0316 /* chart_bitfinex.swift in Sources */,
 				CED1E8651FB0A288006495EB /* UIImageExtension.swift in Sources */,
 				CE32B3901FAAE3930067A581 /* setting.swift in Sources */,
-				CEB612951FA86F6800DC5554 /* chart_korbit.swift in Sources */,
-				CE7E23C01FA75ABD00EFE52A /* ticker_korbit.swift in Sources */,
-				CEB6129F1FA8719700DC5554 /* chart_okcoin.swift in Sources */,
-				CE7E23C81FA75B2200EFE52A /* ticker_huobi.swift in Sources */,
 				CEE4652A1F9E38A0002297BB /* SelectionDialog.swift in Sources */,
 				CEE200581F91245A00C88D3C /* table_controller.swift in Sources */,
-				CECAB0631FA81AE3001F0316 /* chart_poloniex.swift in Sources */,
-				CECAB0601FA81865001F0316 /* chart_bithumb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,15 +844,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3572F71FBB3E3300807495 /* ticker_coinnest.swift in Sources */,
-				CE3572EE1FBB3E3300807495 /* ticker_bithumb.swift in Sources */,
-				CE3572F41FBB3E3300807495 /* ticker_korbit.swift in Sources */,
-				CE3572F11FBB3E3300807495 /* ticker_poloniex.swift in Sources */,
-				CE3572F51FBB3E3300807495 /* ticker_bitfinex.swift in Sources */,
-				CE3572F61FBB3E3300807495 /* ticker_bitflyer.swift in Sources */,
+				CE19EB731FFE5FED009C776A /* Ticker.swift in Sources */,
 				CEFDC3801FADB43E0030DD02 /* TodayViewController.swift in Sources */,
-				CE3572EF1FBB3E3300807495 /* ticker_bittrex.swift in Sources */,
-				CE3572F31FBB3E3300807495 /* ticker_coinone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,14 +891,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		CEDE2C6F1F8CA8FD00161B8A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEDE2C701F8CA8FD00161B8A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		CEFDC3811FADB43E0030DD02 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1033,7 +914,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jungcode.CoinPrice.live-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1050,7 +931,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jungcode.CoinPrice.live-wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1069,6 +950,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1076,6 +958,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1126,6 +1009,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1133,6 +1017,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1178,7 +1063,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jungcode.CoinPrice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1199,7 +1084,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jungcode.CoinPrice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1216,7 +1101,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jungcode.CoinPriceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinPrice.app/CoinPrice";
 			};
@@ -1234,7 +1119,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jungcode.CoinPriceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoinPrice.app/CoinPrice";
 			};
@@ -1251,7 +1136,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jungcode.CoinPriceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CoinPrice;
 			};
@@ -1268,7 +1153,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jungcode.CoinPriceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CoinPrice;
 			};
@@ -1286,7 +1171,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jungcode.CoinPrice.live-price";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1303,7 +1188,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jungcode.CoinPrice.live-price";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

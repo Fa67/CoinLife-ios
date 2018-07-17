@@ -5,9 +5,8 @@ target 'CoinPrice' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'ZAlertView'
-  pod 'SwiftChart'
   pod 'NVActivityIndicatorView'
-  #pod 'SwiftCharts', '~> 0.6'
+  pod 'SwipeableTabBarController'
   # Pods for CoinPrice
 
   target 'CoinPriceTests' do

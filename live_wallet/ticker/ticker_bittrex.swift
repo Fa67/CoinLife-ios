@@ -13,7 +13,7 @@ class ticker_bittrex {
     
     init() {
         if (!ticker_bittrex.is_doing){
-            //ticker_bittrex.is_doing = true
+
             if coin_kind.count != 0{
                 let url = URL(string: "https://www.bittrex.com/api/v1.1/public/getmarketsummaries")
                 let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
@@ -22,33 +22,34 @@ class ticker_bittrex {
                     let text = NSString(data: data, encoding: String.Encoding.ascii.rawValue)! as String
                     if !(text.contains("\"USDT-BTC")){return}
                     
-                    let usbtc = Float(text.components(separatedBy: "\"USDT-BTC")[1].components(separatedBy: "\"Last\":")[1].components(separatedBy: ",")[0])
-                    
+                    let usbtc  = Float(self.split(str: text.components(separatedBy: "\"USDT-BTC")[1],w1: "\"Last\":",w2: ","))
+
                     for i in 0...coin_kind.count - 1 {
-                        if coin_kind[i][1] == "BitTrex" && text.contains("\"BTC-" + coin_kind[i][0] + "\""){
-                            let main_coin_str = text.components(separatedBy: "\"BTC-" + coin_kind[i][0] + "\"")[1]
-                            coin_kind[i][2] = self.split(str: main_coin_str,w1: "\"Last\":",w2: ",")//현재가격
-                            let open  = self.split(str: main_coin_str,w1: "\"PrevDay\":",w2: ",")//24시간전
-                            let rslt  = ((Float(coin_kind[i][2])! - Float(open)!) / Float(coin_kind[i][2])! * 100)//전일대비
-                            let tmp = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))//소수점 제거
-                            
-                            coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(TodayViewController.usd)! * usbtc!))//달러 적용 현재가
+                        var coin_n_tmp = coin_kind[i][0].uppercased()
+                        if coin_n_tmp == "BCH"{
+                            coin_n_tmp = "BCC"
                         }
-                        else if coin_kind[i][1] == "BitTrex" && coin_kind[i][0] == "BTC"{
-                            coin_kind[i][2] = (usbtc?.description)!//현재가
-                            let open  = self.split(str: text.components(separatedBy: "\"USDT-" + coin_kind[i][0] + "\"")[1],w1: "\"PrevDay\":",w2: ",")//24시간전
-                            let rslt  = ((Float(coin_kind[i][2])! - Float(open)!) / Float(coin_kind[i][2])! * 100)//전일대비
-                            let tmp = round(rslt * pow(10.0, Float(2))) / pow(10.0, Float(2))//소수점 제거
-                            
-                            coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(TodayViewController.usd)!))//달러 적용 현재가
-                        }else if (coin_kind[i][1] == "BitTrex") {
-                            coin_kind[i][2] = "미지원"
-                            
+                        if coin_kind[i][1] == "BitTrex"{
+                            if text.contains("\"USDT-" + coin_n_tmp + "\""){
+                                let main_coin_str = text.components(separatedBy: "\"USDT-" + coin_n_tmp + "\"")[1]
+                                coin_kind[i][2] = self.split(str: main_coin_str,w1: "\"Last\":",w2: ",")
+    
+                                coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(TodayViewController.usd)!))//달러 적용 현재가
+                            }
+                            else if text.contains("\"BTC-" + coin_n_tmp + "\""){
+                                let main_coin_str = text.components(separatedBy: "\"BTC-" + coin_n_tmp + "\"")[1]
+                                coin_kind[i][2] = self.split(str: main_coin_str,w1: "\"Last\":",w2: ",")//현재가격
+
+                                coin_kind[i][2] = String(Int(Float(coin_kind[i][2])! * Float(TodayViewController.usd)! * usbtc!))//달러 적용 현재가
+                            }
+                            else{
+
+                            }
                         }
+                        
                         
                     }
                     
-                    //ticker_bittrex.is_doing = false
                 }
                 task.resume()
             }
@@ -56,7 +57,21 @@ class ticker_bittrex {
     }
     
     func split(str:String,w1:String,w2:String) -> String{
-        return str.components(separatedBy: w1)[1].components(separatedBy: w2)[0]
+        var tmp = ""
+        if (str.contains(w1)){
+            tmp = str.components(separatedBy: w1)[1]
+        }else{
+            return "0"
+        }
+        if (tmp.contains(w2)){
+            tmp = tmp.components(separatedBy: w2)[0]
+        }else{
+            return "0"
+        }
+        if (Float(tmp) == nil){
+            return "0"
+        }
+        return tmp
     }
 }
 

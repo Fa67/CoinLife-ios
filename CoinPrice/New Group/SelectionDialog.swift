@@ -60,7 +60,7 @@ open class SelectionDialog: UIView {
         self.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         UIApplication.shared.keyWindow?.addSubview(self)
         
-        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions(), animations: {
             self.backgroundColor = UIColor(white: 0, alpha: 0.4)
             dialogView.layer.opacity = 1
             dialogView.layer.transform = CATransform3DMakeScale(1, 1, 1)
@@ -73,7 +73,7 @@ open class SelectionDialog: UIView {
         
         dialogView.layer.opacity = 1
         
-        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions(), animations: {
             self.backgroundColor = UIColor(white: 0, alpha: 0)
             dialogView.layer.transform = CATransform3DConcat(currentTransform, CATransform3DMakeScale(0.6, 0.6, 1))
             dialogView.layer.opacity = 0
@@ -111,7 +111,7 @@ open class SelectionDialog: UIView {
     }
     
     fileprivate func setObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(SelectionDialog.deviceOrientationDidChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SelectionDialog.deviceOrientationDidChange(_:)), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     fileprivate func createDialogView() -> UIView {
@@ -154,8 +154,8 @@ open class SelectionDialog: UIView {
             itemTitleLabel.textAlignment = .center
             itemTitleLabel.textColor = UIColor.gray
             itemButton.addSubview(itemTitleLabel)
-            itemButton.setBackgroundImage(UIImage.createImageWithColor(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)), for: .highlighted)
-            itemButton.addTarget(item, action: #selector(SelectionDialogItem.handlerTap), for: .touchUpInside)
+            itemButton.setBackgroundImage(UIImage.createImageWithColor(UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)), for: UIControl.State.highlighted)
+            itemButton.addTarget(item, action: #selector(SelectionDialogItem.handlerTap), for: UIControl.Event.touchUpInside)
             
             if item.icon != nil {
                 itemTitleLabel.frame.origin.x = 34 + itemPadding*2
@@ -197,15 +197,15 @@ open class SelectionDialog: UIView {
         let minValue = min(CGFloat(items.count)*50.0, minHeight)
         let button = UIButton(frame: CGRect(x: 0, y: titleHeight + minValue, width: 300, height: buttonHeight))
         
-        button.addTarget(self, action: #selector(SelectionDialog.close), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(SelectionDialog.close), for: UIControl.Event.touchUpInside)
         
         let colorNormal = closeButtonColor != nil ? closeButtonColor : button.tintColor
         let colorHighlighted = closeButtonColorHighlighted != nil ? closeButtonColorHighlighted : colorNormal?.withAlphaComponent(0.5)
         
-        button.setTitle(closeButtonTitle, for: UIControlState())
-        button.setTitleColor(colorNormal, for: UIControlState())
-        button.setTitleColor(colorHighlighted, for: UIControlState.highlighted)
-        button.setTitleColor(colorHighlighted, for: UIControlState.disabled)
+        button.setTitle(closeButtonTitle, for: UIControl.State())
+        button.setTitleColor(colorNormal, for: UIControl.State())
+        button.setTitleColor(colorHighlighted, for: UIControl.State.highlighted)
+        button.setTitleColor(colorHighlighted, for: UIControl.State.disabled)
         
         let topLayer = CALayer()
         topLayer.frame = CGRect(x: 0, y: 0, width: 300, height: 0.5)
@@ -227,11 +227,11 @@ open class SelectionDialog: UIView {
     }
     
     fileprivate func applyMotionEffects(_ view: UIView) {
-        let horizontalEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.tiltAlongHorizontalAxis)
+        let horizontalEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffect.EffectType.tiltAlongHorizontalAxis)
         horizontalEffect.minimumRelativeValue = -motionEffectExtent
         horizontalEffect.maximumRelativeValue = +motionEffectExtent
         
-        let verticalEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.tiltAlongVerticalAxis)
+        let verticalEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffect.EffectType.tiltAlongVerticalAxis)
         verticalEffect.minimumRelativeValue = -motionEffectExtent
         verticalEffect.maximumRelativeValue = +motionEffectExtent
         
@@ -256,6 +256,6 @@ open class SelectionDialog: UIView {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 }
