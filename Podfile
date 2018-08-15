@@ -6,7 +6,7 @@ target 'CoinPrice' do
   use_frameworks!
   pod 'ZAlertView'
   pod 'NVActivityIndicatorView'
-  pod 'SwipeableTabBarController'
+
   # Pods for CoinPrice
 
   target 'CoinPriceTests' do

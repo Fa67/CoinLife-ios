@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F214BC8B28AC41E17DA5D3A /* Pods_CoinPriceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4CE5571F8D2547001DD0B7 /* Pods_CoinPriceUITests.framework */; };
+		5DA2E9BFD5B9C0E28F619178 /* Pods_CoinPriceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4CE5591F8D254A001DD0B7 /* Pods_CoinPriceTests.framework */; };
 		63252DEF1C554D76EB1D9A26 /* Pods_CoinPriceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CDA1C3BDC726BD45C1909C /* Pods_CoinPriceTests.framework */; };
 		706232EA29DABE3455761DD9 /* Pods_CoinPrice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155CFE66B30F9D68F3917EE /* Pods_CoinPrice.framework */; };
 		79DB004AB0250EB7E5AFB1F6 /* Pods_CoinPriceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5FF8A28450F59E5961AF07 /* Pods_CoinPriceUITests.framework */; };
 		CE19EB731FFE5FED009C776A /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19EB721FFE5FEC009C776A /* Ticker.swift */; };
-		CE2A80742095B8BE00B61EF0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2A80732095B8BE00B61EF0 /* TabBarController.swift */; };
 		CE3236781FD43C3D00F465EA /* ticker_korbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32366E1FD43C3100F465EA /* ticker_korbit.swift */; };
 		CE3236791FD43C3D00F465EA /* ticker_poloniex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32366F1FD43C3300F465EA /* ticker_poloniex.swift */; };
 		CE32367A1FD43C3D00F465EA /* ticker_bithumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3236701FD43C3400F465EA /* ticker_bithumb.swift */; };
@@ -112,7 +113,6 @@
 		6EF39B4A41C1B6A8FD4F97E9 /* Pods-CoinPrice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPrice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice.debug.xcconfig"; sourceTree = "<group>"; };
 		70CEC5716B2499E79A65EF2C /* Pods-CoinPrice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinPrice.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice.release.xcconfig"; sourceTree = "<group>"; };
 		CE19EB721FFE5FEC009C776A /* Ticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
-		CE2A80732095B8BE00B61EF0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CE32366E1FD43C3100F465EA /* ticker_korbit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_korbit.swift; sourceTree = "<group>"; };
 		CE32366F1FD43C3300F465EA /* ticker_poloniex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_poloniex.swift; sourceTree = "<group>"; };
 		CE3236701FD43C3400F465EA /* ticker_bithumb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ticker_bithumb.swift; sourceTree = "<group>"; };
@@ -209,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63252DEF1C554D76EB1D9A26 /* Pods_CoinPriceTests.framework in Frameworks */,
+				5DA2E9BFD5B9C0E28F619178 /* Pods_CoinPriceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79DB004AB0250EB7E5AFB1F6 /* Pods_CoinPriceUITests.framework in Frameworks */,
+				2F214BC8B28AC41E17DA5D3A /* Pods_CoinPriceUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +362,6 @@
 				CEFB76351FC9368E0026D6A4 /* candle.swift */,
 				CEC9D59B1FD7BD7200BF0DB1 /* ViewControllerUtils.swift */,
 				CEBF674A208CC817008B2B85 /* loading.swift */,
-				CE2A80732095B8BE00B61EF0 /* TabBarController.swift */,
 			);
 			path = CoinPrice;
 			sourceTree = "<group>";
@@ -733,13 +734,11 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CoinPrice/Pods-CoinPrice-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/SwipeableTabBarController/SwipeableTabBarController.framework",
 				"${BUILT_PRODUCTS_DIR}/ZAlertView/ZAlertView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeableTabBarController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZAlertView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -809,7 +808,6 @@
 				CEDCD8411FA071E900C6942A /* block_status.swift in Sources */,
 				CEE465281F9E38A0002297BB /* SelectionDialogItem.swift in Sources */,
 				CEDE2C651F8CA8FD00161B8A /* AppDelegate.swift in Sources */,
-				CE2A80742095B8BE00B61EF0 /* TabBarController.swift in Sources */,
 				CEC9D59C1FD7BD7200BF0DB1 /* ViewControllerUtils.swift in Sources */,
 				CEDB89E71FB6B3C300B78167 /* CardView.swift in Sources */,
 				CEFB76361FC9368E0026D6A4 /* candle.swift in Sources */,

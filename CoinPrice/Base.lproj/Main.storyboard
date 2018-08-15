@@ -107,6 +107,17 @@
                                 <constraint firstAttribute="trailing" secondItem="zdp-O4-2UC" secondAttribute="trailing" constant="10" id="pNq-y8-8FA"/>
                                 <constraint firstItem="dGQ-oC-1Yi" firstAttribute="centerY" secondItem="Sl9-KT-S7s" secondAttribute="centerY" id="uTJ-Xm-XLN"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.50275069880000001" green="0.50376744920000005" blue="0.49812979340000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="coincell2" id="xYb-kd-xbO" customClass="coincell2" customModule="CoinPrice" customModuleProvider="target">
@@ -1133,7 +1144,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="gogo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="TabBarController" customModule="CoinPrice" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="gogo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="JIA-wf-KSY"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

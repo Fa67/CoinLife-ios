@@ -2,19 +2,16 @@ PODS:
   - NVActivityIndicatorView (4.3.0):
     - NVActivityIndicatorView/Presenter (= 4.3.0)
   - NVActivityIndicatorView/Presenter (4.3.0)
-  - SwipeableTabBarController (1.2.2)
   - ZAlertView (1.0.4)
 
 DEPENDENCIES:
   - NVActivityIndicatorView
-  - SwipeableTabBarController
   - ZAlertView
 
 SPEC CHECKSUMS:
   NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
-  SwipeableTabBarController: 5f26a69e012995e7691a5ce4e3a692d1b497e539
   ZAlertView: 59fffdb4e37a01df461835566d5101052b8af953
 
-PODFILE CHECKSUM: 5cee3d88335b0e104eb72f2f8ebefa4260a92b89
+PODFILE CHECKSUM: 0e2ae9125bf27e1c1a9362f092847972ab60e5c4
 
 COCOAPODS: 1.4.0
