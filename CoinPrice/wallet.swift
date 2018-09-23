@@ -183,7 +183,7 @@ class wallet: UITableViewController {
         
         if(timer != nil){timer.invalidate()}
         timer = Timer(timeInterval: 2.0, target: self, selector: #selector(wallet.timerDidFire), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
      
         let defaults = UserDefaults(suiteName: "group.jungcode.coin")
         defaults?.synchronize()
@@ -386,7 +386,7 @@ extension UIImage {
         let inputImage = CIImage(cgImage: cgImg!)
         let extent = inputImage.extent
         let inputExtent = CIVector(x: extent.origin.x, y: extent.origin.y, z: extent.size.width, w: extent.size.height)
-        let filter = CIFilter(name: "CIAreaAverage", withInputParameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: inputExtent])!
+        let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: inputExtent])!
         let outputImage = filter.outputImage!
         let outputExtent = outputImage.extent
         assert(outputExtent.size.width == 1 && outputExtent.size.height == 1)

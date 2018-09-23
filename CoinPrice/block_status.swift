@@ -114,8 +114,11 @@ class block_status: UITableViewController , NVActivityIndicatorViewable{
             block_status.data[i][1] = "---"
             block_status.data[i][2] = "---"
         }
-
-        
+    }
+    
+    func roundToPlaces(value:Double, places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return round(value * divisor) / divisor
     }
     
     override func viewDidLoad() {
@@ -213,33 +216,31 @@ class block_status: UITableViewController , NVActivityIndicatorViewable{
         let cell = tableview.dequeueReusableCell(withIdentifier: "market", for: indexPath) as! market
 
         //코인 이름 저장
-        cell.name.text = get_market[indexPath.row][4].uppercased()
-        cell.change.text = coma(str: String(get_market[indexPath.row][2])) + "달러"
-        //cell.change.text = get_market[indexPath.row][2] + "$"
+        cell.name.text = (indexPath.row + 1).description + ". " + get_market[indexPath.row][4].uppercased()
         
-        let price_tmp = (Double(get_market[indexPath.row][2])! * Double(table_controller.usd)!)
-        var price_usd = coma(str: price_tmp.description)
-        if (Float(price_usd) == 0){
-            //price_usd = price_tmp
-        }
-        
-        if (price_usd.components(separatedBy: ".")[0].count > 2){
-            if (price_usd.contains(".")){
-                price_usd = price_usd.components(separatedBy: ".")[0]
-            }
+        //달러 계산
+        let get_doller = get_market[indexPath.row][2]
+        if (get_doller.components(separatedBy: ".")[0].count > 2){
+            let doller_ = roundToPlaces(value: Double(get_doller) ?? 0.0,places: 2).description
+            cell.change.text = coma(str: doller_.description) + " USD"
         }else{
-            if (price_usd.contains(".")){
-                price_usd = price_usd.components(separatedBy: ".")[0]
-            }
-            //price_usd = coma(str: price_usd)
+            let doller_ = roundToPlaces(value: Double(get_doller) ?? 0.0,places: 4).description
+            cell.change.text = coma(str: doller_.description) + " USD"
         }
-        cell.price.text = price_usd + "원"
         
-        //cell.vol.text = get_market[indexPath.row][1]
+        //원화 계산
+        let get_krw = (Double(get_market[indexPath.row][2])! * Double(table_controller.usd)!).description
+        if (get_krw.components(separatedBy: ".")[0].count > 2){
+            let krw_ = get_krw.components(separatedBy: ".")[0]
+            cell.price.text = coma(str: krw_.description) + " KRW"
+        }else{
+            let krw_ = roundToPlaces(value: Double(get_krw) ?? 0.0,places: 2).description
+            cell.price.text = coma(str: krw_.description) + " KRW"
+        }
+        
         cell.vol.text = get_market[indexPath.row][0]
         let change_n = Float(get_market[indexPath.row][3])
         cell.change2.setTitle("   " + (change_n?.description)! + "%   ",for: UIControl.State.normal)
-        //cell.change2.titleLabel = (change_n?.description)! + "%"
         cell.change2.layer.cornerRadius = 2
         //cell.layer.borderWidth = 1
         if change_n! > Float(0)   {
@@ -327,41 +328,3 @@ class block_status: UITableViewController , NVActivityIndicatorViewable{
         return .portrait
     }
 }
-
-extension UIImageView{
-    func setImageFromURl(stringImageUrl url: String){
-        if let url = NSURL(string: url) {
-            if let data = NSData(contentsOf: url as URL) {
-                self.image = UIImage(data: data as Data)
-            }
-        }
-    }
-    
-    func imageFromUrl(urlString: String) {
-        if let url = URL(string: urlString) {
-            let request = URLRequest(url: url)
-            NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: .main, completionHandler: { (response, data, error) in
-                if let imageData = data as NSData? {
-                    self.image = UIImage(data: imageData as Data)
-                }
-            })
-        }
-    }
-    
-    func imageFromServerURL(urlString: String, PlaceHolderImage:UIImage) {
-        if self.image == nil{
-            self.image = PlaceHolderImage
-        }
-        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
-            if error != nil {
-                print(error ?? "No Error")
-                return
-            }
-            DispatchQueue.main.async(execute: { () -> Void in
-                let image = UIImage(data: data!)
-                self.image = image
-            })
-        }).resume()
-    }
-}
-

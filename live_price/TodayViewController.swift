@@ -42,7 +42,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         scan_all()
         if(timer != nil) {timer.invalidate()}
         timer = Timer(timeInterval: 1.0, target: self, selector: #selector(TodayViewController.timerDidFire), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
     }
     
     @objc func timerDidFire(){
@@ -105,7 +105,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         if(timer3 != nil) {timer3.invalidate()}
         timer3 = Timer(timeInterval: 1.0, target: self, selector: #selector(TodayViewController.timerDidFire), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer3, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer3, forMode: RunLoop.Mode.common)
         
         tableview.dataSource = self
         tableview.delegate = self

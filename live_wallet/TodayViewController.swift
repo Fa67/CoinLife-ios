@@ -84,7 +84,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         if(timer != nil){timer.invalidate()}
         timer = Timer(timeInterval: 2.0, target: self, selector: #selector(TodayViewController.timerDidFire), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
     }
     
     override func didReceiveMemoryWarning() {
@@ -322,7 +322,7 @@ extension UIImage {
         let inputImage = CIImage(cgImage: cgImg!)
         let extent = inputImage.extent
         let inputExtent = CIVector(x: extent.origin.x, y: extent.origin.y, z: extent.size.width, w: extent.size.height)
-        let filter = CIFilter(name: "CIAreaAverage", withInputParameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: inputExtent])!
+        let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: inputExtent])!
         let outputImage = filter.outputImage!
         let outputExtent = outputImage.extent
         assert(outputExtent.size.width == 1 && outputExtent.size.height == 1)

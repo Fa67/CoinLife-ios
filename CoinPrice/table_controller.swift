@@ -108,15 +108,15 @@ class table_controller: UITableViewController  {
         
         if(timer != nil){timer.invalidate()}
         timer = Timer(timeInterval: 7.0, target: self, selector: #selector(table_controller.timerDidFire), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
         
         if(timer2 != nil){timer2.invalidate()}
         timer2 = Timer(timeInterval: 0.05, target: self, selector: #selector(table_controller.timerDidFire2), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer2, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer2, forMode: RunLoop.Mode.common)
         
         if(timer3 != nil) {timer3.invalidate()}
         timer3 = Timer(timeInterval: 2.0, target: self, selector: #selector(table_controller.timerDidFire3), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer3, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(timer3, forMode: RunLoop.Mode.common)
         
         tableview.dataSource = self
         tableview.delegate = self
@@ -576,6 +576,17 @@ class table_controller: UITableViewController  {
             }else{
                 cell.price.text = "오류"
             }
+        }
+        
+        if (cell.name2.text == "KRW"){
+            cell.price_sub.text = "≈" + cell.price_sub.text!
+        }
+        if (cell.name2.text == "USD"){
+            cell.price.text = "≈" + cell.price.text!
+        }
+        if (cell.name2.text == "BTC"){
+            cell.price_sub.text = "≈" + cell.price_sub.text!
+            cell.price.text = "≈" + cell.price.text!
         }
         
         //전일대비 이름 저장
