@@ -5,6 +5,8 @@ https://itunes.apple.com/us/app/%EC%BD%94%EC%9D%B8%EB%9D%BC%EC%9D%B4%ED%94%84-%E
 screenshot
 <br>
 <img src='https://github.com/iveinvalue/CoinLife-ios/blob/master/resource/0.png' width='200px'/>
+<img src='https://github.com/iveinvalue/CoinLife-ios/blob/master/resource/1.png' width='200px'/>
+<img src='https://github.com/iveinvalue/CoinLife-ios/blob/master/resource/2.png' width='200px'/>
 <br>
 <img src='https://github.com/iveinvalue/CoinLife-ios/blob/master/resource/se/1.jpg' width='200px'/>
 <img src='https://github.com/iveinvalue/CoinLife-ios/blob/master/resource/se/2.jpg' width='200px'/>
