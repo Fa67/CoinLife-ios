@@ -60,17 +60,19 @@ class Ticker {
                 if ( coin_kind[i][1] == "BitFinex") || !(whole_str.contains("t" + coin_kind[i][0] + "USD") && primium_change == "Bitfinex" ){
                     //print(coin_kind[i][0])
                     if (coin_kind[i][0] == "QTUM"){
-                        whole_str = whole_str + ",t" + "QTM" + "USD"
+                        //whole_str = whole_str + ",t" + "QTM" + "USD"
                     }else if(coin_kind[i][0] == "DASH"){
-                        whole_str = whole_str + ",t" + "DSH" + "USD"
+                        //whole_str = whole_str + ",t" + "DSH" + "USD"
                     }else if(coin_kind[i][0] == "IOTA"){
-                        whole_str = whole_str + ",t" + "IOT" + "USD"
+                        //whole_str = whole_str + ",t" + "IOT" + "USD"
                     }else if(coin_kind[i][0] == "MIOTA"){
-                        whole_str = whole_str + ",t" + "IOT" + "USD"
+                        //whole_str = whole_str + ",t" + "IOT" + "USD"
+                    }else if(coin_kind[i][0] == "BCH"){
+                        //whole_str = whole_str + ",t" + "BAB" + "USD"
                     }else{
-                        whole_str = whole_str + ",t" + coin_kind[i][0] + "USD"
+                        //whole_str = whole_str + ",t" + coin_kind[i][0] + "USD"
                     }
-                    
+                    whole_str = whole_str + ",t" + coin_kind[i][0] + "USD"
                 }
             }
             
@@ -86,17 +88,19 @@ class Ticker {
                 //var coin_cnt = whole_str.components(separatedBy: ",")
                 for i in 0...coin_kind.count - 1 {
                     
-                    var coin_tmp = coin_kind[i][0]
+                    let coin_tmp = coin_kind[i][0]
                     if (coin_kind[i][0] == "QTUM"){
-                        coin_tmp = "QTM"
+                        //coin_tmp = "QTM"
                     }else if(coin_kind[i][0] == "DASH"){
-                        coin_tmp = "DSH"
+                        //coin_tmp = "DSH"
                     }else if(coin_kind[i][0] == "BCC"){
-                        coin_tmp = "BCH"
+                        //coin_tmp = "BCH"
                     }else if(coin_kind[i][0] == "MIOTA"){
-                        coin_tmp = "IOT"
+                        //coin_tmp = "IOT"
+                    }else if(coin_kind[i][0] == "BCH"){
+                        //coin_tmp = "BAB"
                     }else if(coin_kind[i][0] == "IOTA"){
-                        coin_tmp = "IOT"
+                        //coin_tmp = "IOT"
                     }
                     
                     if ( coin_kind[i][1] == "BitFinex"){
@@ -381,10 +385,11 @@ class Ticker {
                 let usbtc  = Float(self.split(str: text.components(separatedBy: "\"USDT-BTC")[1],w1: "\"Last\":",w2: ","))
                 
                 for i in 0...coin_kind.count - 1 {
-                    var coin_n_tmp = coin_kind[i][0].uppercased()
-                    if coin_n_tmp == "BCH"{
-                        coin_n_tmp = "BCC"
+                    let coin_n_tmp = coin_kind[i][0].uppercased()
+                    if coin_n_tmp == "BAB"{
+                        //coin_n_tmp = "BCH"
                     }
+                    
                     if coin_kind[i][1] == "BitTrex"{
                         if text.contains("\"USDT-" + coin_n_tmp + "\""){
                             let main_coin_str = text.components(separatedBy: "\"USDT-" + coin_n_tmp + "\"")[1]
@@ -428,9 +433,9 @@ class Ticker {
                     primium = []
                     primium.append(["BTC",String(Int(usbtc! * Float(table_controller.usd)!))])
                     for i in 0...coin_kind.count - 1 {
-                        var coin_n_tmp = coin_kind[i][0].uppercased()
-                        if coin_n_tmp == "BCH"{
-                            coin_n_tmp = "BCC"
+                        let coin_n_tmp = coin_kind[i][0].uppercased()
+                        if coin_n_tmp == "BAB"{
+                            //coin_n_tmp = "BCH"
                         }
                         if text.contains("\"USDT-" + coin_n_tmp + "\""){
                             let tmp = text.components(separatedBy: "\"USDT-" + coin_n_tmp + "\"")[1]
@@ -461,9 +466,15 @@ class Ticker {
                 let usbtc  = Float(self.split(str: text.components(separatedBy: "symbol\":\"BTCUSDT\"")[1],w1: "\"price\":\"",w2: "\""))
                 
                 for i in 0...coin_kind.count - 1 {
-                    var coin_n_tmp = coin_kind[i][0].uppercased()
+                    let coin_n_tmp = coin_kind[i][0].uppercased()
                     if coin_n_tmp == "BCH"{
-                        coin_n_tmp = "BCC"
+                        //coin_n_tmp = "BCHABC"
+                    }
+                    if coin_n_tmp == "BSV"{
+                        //coin_n_tmp = "BCHSV"
+                    }
+                    if coin_n_tmp == "BAB"{
+                        //coin_n_tmp = "BCHABC"
                     }
                     if coin_kind[i][1] == "Binance"{
                         if text.contains("symbol\":\"" + coin_n_tmp + "USDT\""){
@@ -494,9 +505,15 @@ class Ticker {
                     primium = []
                     primium.append(["BTC",String(Int(usbtc! * Float(table_controller.usd)!))])
                     for i in 0...coin_kind.count - 1 {
-                        var coin_n_tmp = coin_kind[i][0].uppercased()
+                        let coin_n_tmp = coin_kind[i][0].uppercased()
                         if coin_n_tmp == "BCH"{
-                            coin_n_tmp = "BCC"
+                            //coin_n_tmp = "BCHABC"
+                        }
+                        if coin_n_tmp == "BSV"{
+                            //coin_n_tmp = "BCHSV"
+                        }
+                        if coin_n_tmp == "BAB"{
+                            //coin_n_tmp = "BCHABC"
                         }
                         if text.contains("symbol\":\"" + coin_n_tmp + "USDT\""){
                             let tmp = text.components(separatedBy: "symbol\":\"" + coin_n_tmp + "USDT\"")[1]
@@ -636,6 +653,7 @@ class Ticker {
                         if (check_upbit == 1){
                             if (up_list.contains("\"KRW-" + coin_kind[i][0] + "\"")){
                                 whole_str = whole_str + ",CRIX.UPBIT.KRW-" + coin_kind[i][0]
+                                //print(whole_str)
                             }
                         }else{
                             whole_str = whole_str + ",CRIX.UPBIT.KRW-" + coin_kind[i][0]
@@ -644,13 +662,14 @@ class Ticker {
                     }
                 }
             }
+            
             //print(whole_str)
             let url = URL(string: "https://crix-api.upbit.com/v1/crix/recent?codes=" + whole_str)
             let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
                 guard let data = data, error == nil else { return }
                 let text = NSString(data: data, encoding: String.Encoding.ascii.rawValue)! as String
                 //print(text)
-                if (text.contains("\"status\":404")){
+                if (text.contains("\"name\":404")){
                     check_upbit = 1
                 }else{
                     if primium_change == "Upbit"{
@@ -658,9 +677,9 @@ class Ticker {
                     }
                     
                     for i in 0...coin_kind.count - 1 {
-                        var coin_tmp = coin_kind[i][0]
-                        if (coin_kind[i][0] == "BCH"){
-                            coin_tmp = "BCC"
+                        let coin_tmp = coin_kind[i][0]
+                        if coin_tmp == "BAB"{
+                            //coin_tmp = "BCH"
                         }
                         if ( coin_kind[i][1] == "Upbit"){
                             if (text.contains("CRIX.UPBIT.KRW-" + coin_tmp)){

@@ -579,14 +579,14 @@ class table_controller: UITableViewController  {
         }
         
         if (cell.name2.text == "KRW"){
-            cell.price_sub.text = "≈" + cell.price_sub.text!
+            cell.price_sub.text = "" + cell.price_sub.text!
         }
         if (cell.name2.text == "USD"){
-            cell.price.text = "≈" + cell.price.text!
+            cell.price.text = "" + cell.price.text!
         }
         if (cell.name2.text == "BTC"){
-            cell.price_sub.text = "≈" + cell.price_sub.text!
-            cell.price.text = "≈" + cell.price.text!
+            cell.price_sub.text = "" + cell.price_sub.text!
+            cell.price.text = "" + cell.price.text!
         }
         
         //전일대비 이름 저장
@@ -1064,28 +1064,7 @@ class table_controller: UITableViewController  {
         }
         task.resume()
         
-        url = URL(string: "https://search.naver.com/p/csearch/content/apirender_ssl.nhn?pkid=141&key=exchangeApiNationOnly&where=nexearch&q=cny&u1=keb&u7=0&u3=CNY&u4=KRW&u5=info&u2=1")
-        task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
-            guard let data = data, error == nil else { return }
-            let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-            if (parset?.contains("\"price\" : \""))!{
-                table_controller.cny_r = (parset?.components(separatedBy: "\"price\" : \"")[2].components(separatedBy: "\"")[0].replacingOccurrences(of: ",", with: ""))!
-                let gettext2 = String(describing: self.defaults!.object(forKey: "money_v") ?? "")
-                if gettext2 == "" || gettext2 == "0"{
-                    table_controller.cny = table_controller.cny_r
-                }else{
-                    let gettext = String(describing: self.defaults!.object(forKey: "money_cny_f") ?? "")
-                    if gettext == ""{
-                        table_controller.cny = table_controller.cny_r
-                        table_controller.cny_f = table_controller.cny_r
-                    }else{
-                        table_controller.cny = gettext
-                        table_controller.cny_f = gettext
-                    }
-                }
-            }
-        }
-        task.resume()
+        
         
         url = URL(string: "https://coinmarketcap.com/")
         let task3 = URLSession.shared.dataTask(with: url! as URL) { data, response, error in

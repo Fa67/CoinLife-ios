@@ -36,31 +36,31 @@ class setting: UITableViewController {
             defaults?.set(String("1"), forKey: "money_v")
             usd_cell.contentView.alpha = 1
             jpy_cell.contentView.alpha = 1
-            cny_cell.contentView.alpha = 1
+            //cny_cell.contentView.alpha = 1
             usd_cell.isUserInteractionEnabled = true
             jpy_cell.isUserInteractionEnabled = true
-            cny_cell.isUserInteractionEnabled = true
+            //cny_cell.isUserInteractionEnabled = true
             usd_text.text = table_controller.usd_r
             jpy_text.text = table_controller.jpy_r
-            cny_text.text = table_controller.cny_r
+            //cny_text.text = table_controller.cny_r
             table_controller.usd_f = table_controller.usd_r
             table_controller.jpy_f = table_controller.jpy_r
-            table_controller.cny_f = table_controller.cny_r
+            //table_controller.cny_f = table_controller.cny_r
             defaults?.set(String(""), forKey: "money_usd_f")
             defaults?.set(String(""), forKey: "money_jpy_f")
-            defaults?.set(String(""), forKey: "money_cny_f")
+            //defaults?.set(String(""), forKey: "money_cny_f")
             table_controller.right_now_refresh = 1
         }else{
             defaults?.set(String("0"), forKey: "money_v")
             usd_cell.contentView.alpha = 0.5
             jpy_cell.contentView.alpha = 0.5
-            cny_cell.contentView.alpha = 0.5
+            //cny_cell.contentView.alpha = 0.5
             usd_cell.isUserInteractionEnabled = false
             jpy_cell.isUserInteractionEnabled = false
-            cny_cell.isUserInteractionEnabled = false
+            //cny_cell.isUserInteractionEnabled = false
             usd_text.text = table_controller.usd_r
             jpy_text.text = table_controller.jpy_r
-            cny_text.text = table_controller.cny_r
+            //cny_text.text = table_controller.cny_r
             table_controller.right_now_refresh = 1
         }
         defaults?.synchronize()
@@ -142,25 +142,7 @@ class setting: UITableViewController {
             dialog2.show()
         }
         
-        if indexPath.section == 0 && indexPath.row == 3 {
-            let dialog2 = ZAlertView(title: "원하는 값을 입력해주세요.", message: "", isOkButtonLeft: false, okButtonText: "입력", cancelButtonText: "취소",okButtonHandler: { alertView in alertView.dismissAlertView()
-                let get_tmp = String(describing: alertView.getTextFieldWithIdentifier("choose_coin_amount")).components(separatedBy: "text = '")[1].components(separatedBy: "'")[0]
-                
-                let get_float = Double(get_tmp)
-                if !(get_tmp == "") && get_float != nil && Double(get_float!) > Double(0) {
-                    self.usd_text.text = (get_float?.description)!
-                    table_controller.usd_f = (get_float?.description)!
-                    self.defaults?.set(String((get_float?.description)!), forKey: "money_cny_f")
-                    table_controller.right_now_refresh = 1
-                }else{
-                    let dialog = ZAlertView(title: "오류",message: "입력 값에 오류가 있습니다.",closeButtonText: "확인",closeButtonHandler: { alertView in alertView.dismissAlertView()})
-                    dialog.allowTouchOutsideToDismiss = false
-                    dialog.show()
-                }
-            },cancelButtonHandler: { alertView in alertView.dismissAlertView()})
-            dialog2.addTextField("choose_coin_amount", placeHolder: "ex) 1097.12")
-            dialog2.show()
-        }
+        
         
         if indexPath.section == 1 && indexPath.row == 0 {
             add_pri()
@@ -218,14 +200,14 @@ class setting: UITableViewController {
         tableview.dataSource = self
         tableview.delegate = self
         
-        cny_.text = table_controller.cny
+        //cny_.text = table_controller.cny
         usd_.text = table_controller.usd
         jpy_.text = table_controller.jpy
 
         defaults?.synchronize()
         let gettext = String(describing: defaults!.object(forKey: "progress_on") ?? "")
         if gettext == "" || gettext == "1"{
-            progresson.isOn = true
+            progresson.isOn = false
         }else{
             progresson.isOn = false
         }
@@ -235,21 +217,21 @@ class setting: UITableViewController {
             money_v.isOn = false
             usd_cell.contentView.alpha = 0.5
             jpy_cell.contentView.alpha = 0.5
-            cny_cell.contentView.alpha = 0.5
+            //cny_cell.contentView.alpha = 0.5
             usd_cell.isUserInteractionEnabled = false
             jpy_cell.isUserInteractionEnabled = false
-            cny_cell.isUserInteractionEnabled = false
+            //cny_cell.isUserInteractionEnabled = false
         }else{
             money_v.isOn = true
             usd_cell.contentView.alpha = 1
             jpy_cell.contentView.alpha = 1
-            cny_cell.contentView.alpha = 1
+            //cny_cell.contentView.alpha = 1
             usd_cell.isUserInteractionEnabled = true
             jpy_cell.isUserInteractionEnabled = true
-            cny_cell.isUserInteractionEnabled = true
+            //cny_cell.isUserInteractionEnabled = true
             usd_text.text = table_controller.usd_f
             jpy_text.text = table_controller.jpy_f
-            cny_text.text = table_controller.cny_f
+            //cny_text.text = table_controller.cny_f
         }
     }
     
