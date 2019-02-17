@@ -94,9 +94,6 @@ class candle: UIViewController  {
         self.webView.loadHTMLString(js, baseURL: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool){
-        
-    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         if check == 1{
@@ -104,12 +101,8 @@ class candle: UIViewController  {
             })
             dialog.show()
         }
-        
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        
-    }
 }
 
 

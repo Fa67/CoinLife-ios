@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="40" maxX="0.0" maxY="0.0"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="Sl9-KT-S7s">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Sl9-KT-S7s">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -73,7 +73,7 @@
                                         <action selector="select_kind_price:" destination="uRD-tW-vNJ" eventType="touchUpInside" id="zkU-xZ-FAv"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow2" translatesAutoresizingMaskIntoConstraints="NO" id="dGQ-oC-1Yi">
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow2" translatesAutoresizingMaskIntoConstraints="NO" id="dGQ-oC-1Yi">
                                     <rect key="frame" x="213" y="0.0" width="15" height="37"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="37" id="VZX-tF-vVj"/>
@@ -574,7 +574,7 @@
                                         <rect key="frame" x="0.0" y="557" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wwD-8q-3fn" id="6Gc-eT-DK0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="피드백" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfe-vT-X1w">
@@ -602,7 +602,7 @@
                                         <rect key="frame" x="0.0" y="607" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UnC-Tb-Q4z" id="T3G-Dd-qMo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리뷰 작성" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5c-my-fmD">
@@ -1119,10 +1119,10 @@
             </objects>
             <point key="canvasLocation" x="-2313" y="-313"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Init loading-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="gogo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="gogo" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="init_loading" customModule="CoinPrice" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="JIA-wf-KSY"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

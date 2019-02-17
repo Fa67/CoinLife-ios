@@ -343,31 +343,7 @@ class wallet: UITableViewController {
     }
     
     func scan_all(){
-        if !(section_change.count == 0){
-            var tmp_str = ""
-            for i in 0...section_change.count - 1 {
-                if(section_change[i] == "Bithumb" || primium_change == "Bithumb"){tmp_str = tmp_str + "bithumb"}
-                if(section_change[i] == "Coinone" || primium_change == "Coinone"){tmp_str = tmp_str + "coinone"}
-                if(section_change[i] == "Poloniex" || primium_change == "Poloniex"){tmp_str = tmp_str + "poloniex"}
-                if(section_change[i] == "BitTrex" || primium_change == "BitTrex"){tmp_str = tmp_str + "bittrex"}
-                if(section_change[i] == "BitFinex" || primium_change == "Bitfinex"){tmp_str = tmp_str + "bitfinex"}
-                if(section_change[i] == "Korbit" || primium_change == "Korbit"){tmp_str = tmp_str + "korbit"}
-                if(section_change[i] == "Coinnest" || primium_change == "Coinnest"){tmp_str = tmp_str + "coinnest"}
-                if(section_change[i] == "BitFlyer" || primium_change == "BitFlyer"){tmp_str = tmp_str + "bitflyer"}
-                if(section_change[i] == "Upbit" || primium_change == "Upbit"){tmp_str = tmp_str + "Upbit"}
-                if(section_change[i] == "Yobit" || primium_change == "Yobit"){tmp_str = tmp_str + "Yobit"}
-            }
-            if(tmp_str.contains("bithumb")){Ticker().bithumb()}
-            if(tmp_str.contains("coinone")){Ticker().coinone()}
-            if(tmp_str.contains("poloniex")){Ticker().poloniex()}
-            if(tmp_str.contains("bittrex")){Ticker().bittrex()}
-            if(tmp_str.contains("bitfinex")){Ticker().bitfinex()}
-            if(tmp_str.contains("korbit")){Ticker().korbit()}
-            if(tmp_str.contains("coinnest")){Ticker().coinnest()}
-            if(tmp_str.contains("bitflyer")){Ticker().bitflyer()}
-            if(tmp_str.contains("Upbit")){Ticker().upbit()}
-            if(tmp_str.contains("Yobit")){Ticker().yobit()}
-        }
+        scan_all_ticker()
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

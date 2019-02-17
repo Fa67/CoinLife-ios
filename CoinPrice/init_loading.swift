@@ -8,27 +8,139 @@
 
 import UIKit
 import Foundation
-class loading: UITabBarController  {
+import ZAlertView
+
+
+var korbit_ex = "" , bitfinex_ex = "" , bittrex_ex = "" , binance_ex = "" , bithumb_ex = "" , poloniex_ex = ""
+var up_list = ""
+var notice = "/"
+var coin_kind: [[String]] = []//여기에 걍 막 저장
+var coin_kind_wallet : [[String]] = []
+var section_change: [String] = []//거래소 리스트
+var section_change2 : [[[String]]] = []//거래소 별로 저장
+var primium: [[String]] = [] //프리미엄 싹다 저장
+var check_upbit = 0
+
+var primium_change = ""
+var primium_change_tmp = ""
+var kind_price = ""
+
+class init_loading: UITabBarController  {
+
     let defaults = UserDefaults(suiteName: "group.jungcode.coin")
+    
+    //10초에 한번씩 스캔
+    var timer:Timer! 
+    var timeCount:Float = 7 //5초마다 갱신
+    @objc func timerDidFire(){
+        scan_all_ticker()
+        timeCount = 7.0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
         
-        //init_()
+        init_()
+        self.load_arr()
+        self.load_primium()
+        self.load_kind()
+        scan_all_ticker()
         
-        let time = DispatchTime.now() + .seconds(0)
-        DispatchQueue.main.asyncAfter(deadline: time) {
-            let storyboard: UIStoryboard = self.storyboard!
-            let nextView = storyboard.instantiateViewController(withIdentifier: "gogo")
-            self.present(nextView, animated: false, completion: nil)
-        }
+        ZAlertView.positiveColor = UIColor(red: 70/255, green: 170/255, blue: 70/255, alpha: 1.0)
+        ZAlertView.negativeColor = UIColor(red: 200/255, green: 70/255, blue: 70/255, alpha: 1.0)
         
-        /*let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextView = storyboard.instantiateInitialViewController()
-        present(nextView!, animated: true, completion: nil)*/
+        if(timer != nil){timer.invalidate()}
+        timer = Timer(timeInterval: 7.0, target: self, selector: #selector(self.timerDidFire), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
     }
+    
+    //코인정보 모든 저장불러오기
+    func load_arr() {
+        var coin_kind_tmp: [[String]] = []
+        var defaults = UserDefaults(suiteName: "group.jungcode.coin")
+        defaults?.synchronize()
+        var gettext = String(describing: defaults!.object(forKey: "arr") ?? "")
+        if gettext == ""{return}
+        var tmp: [String] = []
+        tmp = gettext.components(separatedBy: "#")
+        //print(tmp)
+        for i in 0...tmp.count - 2 {
+            var tmpp_data = tmp[i].components(separatedBy: "@")
+            if tmpp_data.count == 3{
+                if (tmpp_data[2] == "wallet"){
+                    //coin_kind.append([tmpp_data[0], tmpp_data[1],"---","---","wallet","---","---"])
+                }else{
+                    coin_kind_tmp.append([tmpp_data[0], tmpp_data[1],"---","---","---","---","---"])
+                }
+            }else{
+                coin_kind_tmp.append([tmpp_data[0], tmpp_data[1],"---","---","---","---","---"])
+            }
+        }
+        var for_t = tmp.count - 2
+        for _ in 0...tmp.count - 2 {
+            var c_tmp = "---"
+            if (coin_kind_tmp.count > 0){
+                c_tmp = coin_kind_tmp[0][1]
+            }
+            for ii in 0...tmp.count - 2 {
+                if (ii <= for_t){
+                    if (c_tmp == coin_kind_tmp[ii][1]){
+                        //print(coin_kind_tmp[ii])
+                        coin_kind.append(coin_kind_tmp[ii])
+                    }
+                }
+            }
+            
+            var tmp_v = 0
+            for var ii in 0...tmp.count - 2 {
+                ii = ii - tmp_v
+                if (ii <= for_t){
+                    if (c_tmp == coin_kind_tmp[ii][1]){
+                        //print("-")
+                        //print(coin_kind_tmp[ii])
+                        coin_kind_tmp.remove(at: ii)
+                        for_t = for_t - 1
+                        tmp_v = tmp_v + 1
+                    }
+                }
+            }
+            //print("\n")
+            
+        }
+        //print(coin_kind)
+        
+        defaults = UserDefaults(suiteName: "group.jungcode.coin_wallet")
+        defaults?.synchronize()
+        gettext = String(describing: defaults!.object(forKey: "arr") ?? "")
+        if gettext == ""{return}
+        tmp = gettext.components(separatedBy: "#")
+        for i in 0...tmp.count - 2 {
+            var tmpp_data = tmp[i].components(separatedBy: "@")
+            //coin_kind_wallet.append([tmpp_data[0], tmpp_data[1],tmpp_data[2],"---",])
+            coin_kind.append([tmpp_data[0], tmpp_data[1],"---","---","wallet","---","---"])
+        }
+        //return String(describing: defaults!.object(forKey: "score") ?? "0")
+    }
+    
+    func load_kind() {
+        let defaults = UserDefaults(suiteName: "group.jungcode.coin")
+        defaults?.synchronize()
+        let gettext = String(describing: defaults!.object(forKey: "kind") ?? "")
+        do {
+            kind_price=gettext
+        }
+        //return String(describing: defaults!.object(forKey: "score") ?? "0")
+    }
+    
+    func load_primium() {
+        let defaults = UserDefaults(suiteName: "group.jungcode.coin")
+        defaults?.synchronize()
+        let gettext = String(describing: defaults!.object(forKey: "primium") ?? "")
+        do {
+            primium_change=gettext
+        }
+    }
+    
     func init_(){
         var url = URL(string: "https://search.naver.com/p/csearch/content/apirender_ssl.nhn?pkid=141&key=exchangeApiNationOnly&where=nexearch&q=usd&u1=keb&u7=0&u3=USD&u4=KRW&u5=info&u2=1")
         var task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
@@ -48,7 +160,6 @@ class loading: UITabBarController  {
                         table_controller.usd = gettext
                         table_controller.usd_f = gettext
                     }
-                    
                 }
             }
         }
@@ -77,40 +188,6 @@ class loading: UITabBarController  {
         }
         task.resume()
         
-        url = URL(string: "https://search.naver.com/p/csearch/content/apirender_ssl.nhn?pkid=141&key=exchangeApiNationOnly&where=nexearch&q=cny&u1=keb&u7=0&u3=CNY&u4=KRW&u5=info&u2=1")
-        task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
-            guard let data = data, error == nil else { return }
-            let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-            if (parset?.contains("\"price\" : \""))!{
-                table_controller.cny_r = (parset?.components(separatedBy: "\"price\" : \"")[2].components(separatedBy: "\"")[0].replacingOccurrences(of: ",", with: ""))!
-                let gettext2 = String(describing: self.defaults!.object(forKey: "money_v") ?? "")
-                if gettext2 == "" || gettext2 == "0"{
-                    table_controller.cny = table_controller.cny_r
-                }else{
-                    let gettext = String(describing: self.defaults!.object(forKey: "money_cny_f") ?? "")
-                    if gettext == ""{
-                        table_controller.cny = table_controller.cny_r
-                        table_controller.cny_f = table_controller.cny_r
-                    }else{
-                        table_controller.cny = gettext
-                        table_controller.cny_f = gettext
-                    }
-                }
-            }
-        }
-        task.resume()
-        
-        /*
-         url = URL(string: "http://hangang.dkserver.wo.tc")
-         task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
-         guard let data = data, error == nil else { return }
-         let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-         if (parset?.contains("\"temp\":\""))!{
-         table_controller.water = (parset?.components(separatedBy: "\"temp\":\"")[1].components(separatedBy: "\",")[0])!
-         }
-         }
-         task.resume()*/
-        
         url = URL(string: "https://coinmarketcap.com/")
         let task3 = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
             guard let data = data, error == nil else { return }
@@ -127,44 +204,15 @@ class loading: UITabBarController  {
             for i in 1...(cnt?.count)! - 2 {
                 //print(cnt![i])
                 let name = cnt![i].components(separatedBy: "\"")[0]
-                let symbol = self.split2(str: cnt![i],w1: "\"symbol\": \"", w2: "\"")
-                let vol = self.split2(str: cnt![i],w1: "\"24h_volume_usd\": \"", w2: "\"")
-                let price = self.split2(str: cnt![i],w1: "\"price_usd\": \"", w2: "\"")
-                let change = self.split2(str: cnt![i],w1: "\"percent_change_24h\": \"", w2: "\"")
+                let symbol = split_s(str: cnt![i],w1: "\"symbol\": \"", w2: "\"")
+                let vol = split_s(str: cnt![i],w1: "\"24h_volume_usd\": \"", w2: "\"")
+                let price = split_s(str: cnt![i],w1: "\"price_usd\": \"", w2: "\"")
+                let change = split_s(str: cnt![i],w1: "\"percent_change_24h\": \"", w2: "\"")
                 
                 get_market.append([name,vol,price,change,symbol]);
             }
         }
         task2.resume()
-        
-        /*
-         let urll2 = URL(string: "https://finance.yahoo.com/webservice/v1/symbols/allcurrencies/quote")
-         let taskk2 = URLSession.shared.dataTask(with: urll2! as URL) { data, response, error in
-         guard let data = data, error == nil else { return }
-         let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-         if (parset?.contains("<field name=\"name\">USD/KRW</field>"))!{
-         let tmp_usd = parset?.components(separatedBy: "<field name=\"name\">USD/KRW</field>")[1]
-         if (parset?.contains("<field name=\"price\">"))!{
-         let tmp_usd2 = tmp_usd?.components(separatedBy: "<field name=\"price\">")[1]
-         table_controller.usd = (tmp_usd2?.components(separatedBy: "</field>")[0])!
-         }
-         }
-         if (parset?.contains("<field name=\"name\">USD/JPY</field>"))!{
-         let tmp_jpy = parset?.components(separatedBy: "<field name=\"name\">USD/JPY</field>")[1]
-         if (parset?.contains("<field name=\"price\">"))!{
-         let tmp_jpy2 = tmp_jpy?.components(separatedBy: "<field name=\"price\">")[1]
-         table_controller.jpy = (Float(table_controller.usd)! / Float((tmp_jpy2?.components(separatedBy: "</field>")[0])!)! * 100).description
-         }
-         }
-         if (parset?.contains("<field name=\"name\">USD/CNY</field>"))!{
-         let tmp_jpy = parset?.components(separatedBy: "<field name=\"name\">USD/CNY</field>")[1]
-         if (parset?.contains("<field name=\"price\">"))!{
-         let tmp_cny2 = tmp_jpy?.components(separatedBy: "<field name=\"price\">")[1]
-         table_controller.cny = (Float(table_controller.usd)! / Float((tmp_cny2?.components(separatedBy: "</field>")[0])!)!).description
-         }
-         }
-         }
-         taskk2.resume()*/
         
         url = URL(string: "https://coinmarketcap.com/ko/exchanges/bitfinex/")
         let task5 = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
@@ -209,7 +257,7 @@ class loading: UITabBarController  {
         }
         task11.resume()
         
-        url = URL(string: "https://s3.ap-northeast-2.amazonaws.com/crix-production/crix_master")
+        url = URL(string: "https://api.upbit.com/v1/market/all")
         let task12 = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
             guard let data = data, error == nil else { return }
             let parset = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
@@ -218,18 +266,5 @@ class loading: UITabBarController  {
         task12.resume()
     }
     
-    func split2(str:String,w1:String,w2:String) -> String{
-        var tmp = ""
-        if (str.contains(w1)){
-            tmp = str.components(separatedBy: w1)[1]
-        }else{
-            return "0"
-        }
-        if (tmp.contains(w2)){
-            tmp = tmp.components(separatedBy: w2)[0]
-        }else{
-            return "-0"
-        }
-        return tmp
-    }
+    
 }

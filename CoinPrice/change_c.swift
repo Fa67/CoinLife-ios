@@ -24,13 +24,6 @@ class change_c: UITableViewController  {
         tableview.delegate = self
         self.tableView.isEditing = true
     }
-    override func viewWillAppear(_ animated: Bool){
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-    }
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
     }
