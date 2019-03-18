@@ -113,11 +113,9 @@ class Ticker {
                 let text = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
                 if !(text.contains("btc")){return}
                 for i in 0...coin_kind.count - 1 {
-                    if coin_kind[i][1] == "Coinone" && text.contains("\"" + coin_kind[i][0].lowercased() + "\""){
-                        let main_coin_str = text.components(separatedBy: coin_kind[i][0].lowercased())[1]
+                    if coin_kind[i][1] == "Coinone" && text.contains("\"" + coin_kind[i][0].lowercased() + "\":"){
+                        let main_coin_str = text.components(separatedBy: coin_kind[i][0].lowercased() + "\":")[1]
                         coin_kind[i][2] = self.split(str: main_coin_str,w1: "\"last\":\"",w2: "\"")
-                       
-             
                     }else if (coin_kind[i][1] == "Coinone"){
                         coin_kind[i][2] = "미지원"
                  
