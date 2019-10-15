@@ -4,7 +4,7 @@
 
 <pre><a href="https://apps.apple.com/us/app/id1303352869">https://apps.apple.com/us/app/id1303352869</a></pre>
 
-<img alt="icon" src="https://user-images.githubusercontent.com/8678595/66792061-ec652b80-ef31-11e9-9fa9-79f1f7df00f4.png" align="right" width="25%">
+<img alt="icon" src="https://user-images.githubusercontent.com/8678595/66800569-994ea100-ef50-11e9-90aa-8feb27ec74bd.png" align="right" width="25%">
 
 ## Key Features
 - [x] 다음 거래소를 지원합니다. 
